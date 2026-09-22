@@ -1,0 +1,416 @@
+/* ==========================================================================
+   INTERACTIVE ROYAL SOUTH INDIAN WEDDING ENVELOPE (Lagna Patrika)
+   ========================================================================== */
+
+.envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(60, 10, 20, 0.96) 0%, rgba(18, 5, 8, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.5rem;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.9s;
+  overflow: hidden;
+}
+
+.envelope-overlay.hidden-envelope {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Ambient Canvas behind Envelope */
+#envelope-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Skip Intro Link */
+.envelope-skip-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+}
+
+.envelope-skip-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  color: #FFFFFF;
+  border-color: var(--color-gold-light);
+  transform: translateY(-1px);
+}
+
+/* Envelope 3D Stage */
+.envelope-stage {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 310px;
+  perspective: 1200px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .envelope-stage {
+    max-width: 320px;
+    height: 230px;
+  }
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+
+.envelope-wrapper:hover {
+  transform: translateY(-6px) rotateX(4deg);
+}
+
+/* Envelope Body (Royal Crimson Silk & Gold) */
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  background: #6E0E20;
+  background-image: 
+    radial-gradient(ellipse at center, rgba(163, 29, 54, 0.8) 0%, rgba(90, 10, 24, 0.95) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  border-radius: 12px;
+  box-shadow: 
+    0 25px 60px -10px rgba(0, 0, 0, 0.65),
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 2px rgba(212, 175, 55, 0.55);
+  overflow: visible;
+}
+
+/* Side Flaps & Bottom Flap (Fold Geometry) */
+.envelope-folds {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.fold-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-bottom: 175px solid #5C0B1B;
+  border-left: 220px solid transparent;
+  border-right: 220px solid transparent;
+  filter: drop-shadow(0 -3px 6px rgba(0, 0, 0, 0.15));
+}
+
+@media (max-width: 480px) {
+  .fold-bottom {
+    border-bottom: 130px solid #5C0B1B;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+  }
+}
+
+.fold-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  border-left: 210px solid #540817;
+  border-top: 155px solid transparent;
+  border-bottom: 155px solid transparent;
+  opacity: 0.95;
+}
+
+.fold-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  border-right: 210px solid #540817;
+  border-top: 155px solid transparent;
+  border-bottom: 155px solid transparent;
+  opacity: 0.95;
+}
+
+@media (max-width: 480px) {
+  .fold-left {
+    border-left: 155px solid #540817;
+    border-top: 115px solid transparent;
+    border-bottom: 115px solid transparent;
+  }
+  .fold-right {
+    border-right: 155px solid #540817;
+    border-top: 115px solid transparent;
+    border-bottom: 115px solid transparent;
+  }
+}
+
+/* Top Flap with 3D Flip */
+.envelope-top-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 170px solid #781023;
+  border-left: 220px solid transparent;
+  border-right: 220px solid transparent;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 8;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+@media (max-width: 480px) {
+  .envelope-top-flap {
+    border-top: 125px solid #781023;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+  }
+}
+
+/* When envelope opens */
+.envelope-wrapper.is-open .envelope-top-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* The Card Inside the Envelope */
+.envelope-card {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  background: #FFFDF9;
+  border: 1px solid rgba(197, 155, 39, 0.55);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease;
+  overflow: hidden;
+}
+
+.envelope-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(197, 155, 39, 0.35);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.envelope-card-header {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  margin-bottom: 0.4rem;
+}
+
+.envelope-card-names {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-wine-deep);
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 480px) {
+  .envelope-card-names {
+    font-size: 1.35rem;
+  }
+}
+
+.envelope-card-date {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-secondary);
+}
+
+/* Card slide out animation */
+.envelope-wrapper.is-open .envelope-card {
+  transform: translateY(-90px) scale(1.06);
+  z-index: 9;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 480px) {
+  .envelope-wrapper.is-open .envelope-card {
+    transform: translateY(-65px) scale(1.05);
+  }
+}
+
+/* Auspicious Royal Gold Wax Seal Button */
+.wax-seal {
+  position: absolute;
+  top: 135px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #F0D076 0%, #C59B27 60%, #805E0D 100%);
+  border: 2px solid rgba(255, 237, 179, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.45),
+    0 2px 6px rgba(125, 17, 40, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              opacity 0.5s ease;
+  animation: seal-pulse 3.5s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+  .wax-seal {
+    top: 98px;
+    width: 62px;
+    height: 62px;
+  }
+}
+
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.55),
+    0 0 0 6px rgba(212, 175, 55, 0.35);
+}
+
+.wax-seal-inner {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px dashed rgba(125, 17, 40, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #5C0B1B;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .wax-seal-inner {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.wax-monogram {
+  font-family: var(--font-script);
+  font-size: 1.65rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #5C0B1B;
+  font-weight: 700;
+  margin-top: -2px;
+}
+
+@media (max-width: 480px) {
+  .wax-monogram {
+    font-size: 1.35rem;
+  }
+}
+
+.wax-subtext {
+  font-family: var(--font-heading);
+  font-size: 0.42rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #781023;
+  font-weight: 600;
+  margin-top: -2px;
+}
+
+/* Wax Seal Breaking Animation on Open */
+.envelope-wrapper.is-open .wax-seal {
+  transform: translate(-50%, -50%) scale(1.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+/* Open Prompt Label */
+.envelope-prompt {
+  margin-top: 2.2rem;
+  text-align: center;
+  z-index: 10;
+  transition: opacity 0.4s ease;
+}
+
+.envelope-prompt-text {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.envelope-prompt-icon {
+  display: inline-block;
+  animation: float-gentle 2s ease-in-out infinite;
+}
+
+.envelope-wrapper.is-open ~ .envelope-prompt {
+  opacity: 0;
+  pointer-events: none;
+}
