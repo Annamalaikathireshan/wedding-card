@@ -1,0 +1,3092 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Annamalai &amp; Sarmila — 3D Chettinad Heritage Wedding Invitation | 22 Nov 2026 • Madurai</title>
+  <meta name="description" content="Step inside our interactive 3D Chettinad Heritage Mansion to celebrate the wedding of Annamalai &amp; Sarmila on Sunday, 22 November 2026 at Thiruparankundram, Madurai." />
+  <meta name="theme-color" content="#7A0412" />
+
+  <!-- Auspicious Monogram Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%237A0412' stroke='%23D4AF37' stroke-width='4'/%3E%3Ctext x='50%25' y='58%25' font-size='36' font-family='serif' font-weight='bold' fill='%23FED65B' text-anchor='middle' dominant-baseline='middle'%3EA%26S%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts per design.md: Playfair Display, EB Garamond, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sandalwood: '#FDFBF7',
+            surface: '#fff9ed',
+            parchment: '#F7F1E5',
+            container: '#f3ede1',
+            containerHigh: '#ede8dc',
+            vermillion: '#9B2226',
+            vermillionDeep: '#7a0412',
+            vermillionBright: '#B83A24',
+            templeGold: '#D4AF37',
+            champagneGold: '#E5C158',
+            mustard: '#fed65b',
+            indigoTile: '#1D3557',
+            indigoVariant: '#233b5d',
+            teakwood: '#2B1E16',
+            teakDark: '#1d1c14'
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            serif: ['"EB Garamond"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'brass-glow': '0 14px 34px -8px rgba(43, 30, 22, 0.16), 0 4px 12px -2px rgba(155, 34, 38, 0.08)',
+            'gold-foil': 'inset 0 0 0 1px rgba(212, 175, 55, 0.48), 0 0 0 1px rgba(155, 34, 38, 0.1)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Three.js r128 for Lightweight Mobile-First 3D Mansion Walkthrough -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    :root {
+      --surface: #FDFBF7;
+      --parchment: #F7F1E5;
+      --vermillion: #9B2226;
+      --vermillion-deep: #7A0412;
+      --gold: #D4AF37;
+      --gold-light: #FED65B;
+      --indigo: #1D3557;
+      --teak: #2B1E16;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #FDFBF7;
+      color: #2B1E16;
+      font-family: 'EB Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    /* Gold Foil Card Styling per design.md */
+    .gold-foil-card {
+      background: #F7F1E5;
+      box-shadow:
+        inset 0 0 0 1px rgba(212, 175, 55, 0.55),
+        inset 0 0 0 4px #F7F1E5,
+        inset 0 0 0 5px rgba(155, 34, 38, 0.18),
+        0 14px 34px -8px rgba(43, 30, 22, 0.14),
+        0 4px 12px -2px rgba(155, 34, 38, 0.06);
+      border-radius: 0.5rem;
+    }
+
+    /* Dravidian Temple Arch Framing */
+    .temple-arch {
+      border-top-left-radius: 9999px;
+      border-top-right-radius: 9999px;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    /* Subtle Athangudi Geometric Tile Background */
+    .athangudi-subtle {
+      background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.7' opacity='0.22'%3E%3Cpath d='M32 0L64 32L32 64L0 32Z'/%3E%3Ccircle cx='32' cy='32' r='14'/%3E%3Cpath d='M32 10L37 27L54 32L37 37L32 54L27 37L10 32L27 27Z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* 3D Canvas Container */
+    #threeStageContainer {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 10;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 25%, #3d1e12 0%, #1c0d07 100%);
+      touch-action: none;
+    }
+
+    #threeCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Stage 1 Envelope Flap & Wax Seal Animation */
+    .perspective-stage {
+      perspective: 1600px;
+    }
+    .envelope-flap-top {
+      transform-origin: top center;
+      transition: transform 0.95s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.25s 0.3s;
+    }
+    .envelope-is-open .envelope-flap-top {
+      transform: rotateX(180deg);
+      z-index: 5;
+    }
+    .envelope-letter-card {
+      transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s;
+    }
+    .envelope-is-open .envelope-letter-card {
+      transform: translateY(-56px) scale(1.02);
+    }
+    .envelope-is-open .wax-seal-trigger {
+      transform: scale(1.3) rotate(12deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Banana Leaf Surface */
+    .banana-leaf-surface {
+      background: radial-gradient(ellipse at 50% 50%, #4da33b 0%, #358227 55%, #236119 100%);
+      box-shadow: 0 20px 50px rgba(25, 55, 18, 0.35), inset 0 0 30px rgba(185, 240, 130, 0.28);
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.55s ease;
+      transform-origin: left center;
+    }
+    .leaf-is-folded {
+      transform: scaleX(0.1) rotateY(55deg);
+      opacity: 0.2;
+    }
+
+    /* Equalizer Animation */
+    @keyframes eqPulse {
+      0%, 100% { height: 4px; }
+      50% { height: 13px; }
+    }
+    .eq-playing .bar-1 { animation: eqPulse 0.7s infinite ease-in-out 0.1s; }
+    .eq-playing .bar-2 { animation: eqPulse 0.7s infinite ease-in-out 0.3s; }
+    .eq-playing .bar-3 { animation: eqPulse 0.7s infinite ease-in-out 0.2s; }
+
+    /* Custom Scrollbar for Drawers */
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #F7F1E5;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+
+<body class="bg-sandalwood text-teakwood selection:bg-vermillion selection:text-sandalwood">
+
+  <!-- ===================================================================== -->
+  <!-- HOW TO CUSTOMIZE THIS INVITATION LATER:                               -->
+  <!-- Edit the `window.WEDDING_CONFIG` object below to update names, dates, -->
+  <!-- venues, WhatsApp number, photos, or any of the 16 feast menu items.   -->
+  <!-- Both the 3D Mansion and 2D Classic Scroll View read from this object. -->
+  <!-- ===================================================================== -->
+  <script>
+    window.WEDDING_CONFIG = {
+      couple: {
+        groom: "Annamalai",
+        bride: "Sarmila",
+        monogram: "A & S",
+        tamilNames: "அண்ணாமலை & சர்மிளா",
+        invocation: "|| ஓம் முருகா || Om Sri Ganeshaya Namaha || சுபமுகூர்த்த அழைப்பிதழ் ||",
+        catererInvocation: "உ • முனீஸ்வரர் துணை • வைராத்தாள் துணை",
+        welcomeQuote: "வணக்கம். With grateful hearts and the divine blessings of Lord Murugan at Thiruparankundram and our beloved elders, we joyfully invite you to step into our ancestral celebration."
+      },
+      event: {
+        dateDisplay: "Sunday, 22 November 2026",
+        dateShort: "22 Nov 2026",
+        tamilDateDisplay: "22.11.2026 ஞாயிற்றுக்கிழமை",
+        muhurthamTime: "06:00 AM – 07:30 AM IST",
+        receptionTime: "06:30 PM IST Onwards",
+        isoStart: "2026-11-22T06:00:00+05:30",
+        isoEnd: "2026-11-22T21:00:00+05:30",
+        cityShort: "Thiruparankundram, Madurai"
+      },
+      venues: {
+        primary: {
+          badge: "Muhurtham & Noon Kalyana Virundhu",
+          name: "Thiruparankundram Sri Murugan Temple & Nagarathar Mandapam",
+          tamilName: "திருப்பரங்குன்றம் நகரத்தார் மண்டபம், மதுரை",
+          address: "Thiruparankundram Sri Murugan Temple & Nagarathar Mandapam, Madurai, Tamil Nadu 625005",
+          description: "The sacred first abode of Lord Murugan (Arupadai Veedu) where the divine marriage of Murugan and Deivanai took place. The Noon Kalyana Virundhu feast is served at the adjacent historic Thiruparankundram Nagarathar Mandapam.",
+          googleMapsUrl: "https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6",
+          appleMapsUrl: "http://maps.apple.com/?q=Thiruparankundram+Murugan+Temple+Madurai"
+        },
+        reception: {
+          badge: "Grand Evening Reception (18:30 IST)",
+          name: "Meenakshi Grand Kalyana Mandapam",
+          tamilName: "மீனாட்சி கிராண்ட் கல்யாண மண்டபம், திருப்பரங்குன்றம் மெயின் ரோடு, மதுரை",
+          address: "Thiruparankundram Main Road, Madurai, Tamil Nadu 625005",
+          description: "An air-conditioned luxury marriage hall equipped with spacious dining halls, grand stage floral decor, and ample guest parking for the evening reception and family photography.",
+          googleMapsUrl: "https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6"
+        },
+        mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15722.56948564249!2d78.0645!3d9.8828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c504a434c44b%3A0x8aa8d8d3f18e9508!2sThiruparankundram%2C%20Madurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+      },
+      catering: {
+        tamilTitle: "நெடுங்குடி S.மகேஷ் — கந்தவிலாஷ் கேட்டரிங்",
+        englishTitle: "Nedungudi S. Mahesh — Kandhavilash Catering",
+        mealSession: "மதியம் (Noon Kalyana Virundhu)"
+      },
+      whatsappNumber: "", // Optional: Add country code + phone e.g. "919876543210" to direct WhatsApp messages to a specific number
+      images: {
+        // Replace these paths with your own hosted photos anytime; automatic fine-art SVG fallbacks are built in
+        couplePortrait: "./assets/hero-couple.jpg",
+        thaliPhoto: "./assets/gallery-thali.jpg",
+        templePhoto: "./assets/venue-temple.jpg",
+        muhurthamPhoto: "./assets/gallery-muhurtham.jpg"
+      },
+      itinerary: [
+        {
+          time: "Sat, 21 Nov 2026 • 18:30 IST",
+          title: "Mappillai Azhaippu & Sangeeth",
+          location: "Thiruparankundram, Madurai",
+          highlight: false,
+          desc: "Welcoming the groom with royal traditional honors, garland exchange, joyous family music, and an authentic Chettinad dinner."
+        },
+        {
+          time: "Sun, 22 Nov 2026 • 05:30 IST",
+          title: "Mangala Isai & Nadaswaram",
+          location: "Sri Murugan Temple Mandapam",
+          highlight: false,
+          desc: "Sacred dawn ragas played on the Nadaswaram and Thavil, filling the Thiruparankundram temple mandapam with divine vibrations."
+        },
+        {
+          time: "Sun, 22 Nov 2026 • 06:00 – 07:30 IST",
+          title: "Subha Muhurtham & Thali Kettu",
+          location: "Thiruparankundram Murugan Temple",
+          highlight: true,
+          desc: "The sacred hour: Kanyadaanam, tying of the golden Mangalsutra (Thali), Saptapadi (seven steps), and showering of holy Akshata."
+        },
+        {
+          time: "Sun, 22 Nov 2026 • மதியம் / Noon Feast",
+          title: "Chettinad Kalyana Virundhu",
+          location: "Thiruparankundram Nagarathar Mandapam",
+          highlight: false,
+          desc: "Grand 16-item banana-leaf feast by Nedungudi S. Mahesh (Kandhavilash Catering) featuring Saiva Mutton Biryani, Ada Pradhaman & Madurai Jigarthanda."
+        },
+        {
+          time: "Sun, 22 Nov 2026 • 18:30 IST",
+          title: "Grand Wedding Reception",
+          location: "Meenakshi Grand Kalyana Mandapam",
+          highlight: false,
+          desc: "An evening of greetings, blessings, family photographs on stage, and an extravagant celebratory dinner banquet."
+        },
+        {
+          time: "Post Reception • Auspicious Finale",
+          title: "Kalyana Thamboolam Distribution",
+          location: "All Mandapam Halls",
+          highlight: false,
+          desc: "Offering of traditional thamboolam bags with betel leaves, areca nut, sweet Beeda, coconuts, and heartfelt gratitude to our esteemed guests."
+        }
+      ],
+      feastMenu: [
+        { num: 1, tamil: "சாதம் – பருப்பு நெய்", eng: "Steaming Ponni Rice & Dal Ghee", category: "main", icon: "🍚", desc: "Fluffy aged Kaveri Ponni rice served piping hot on the banana leaf, crowned with velvety thuvaram paruppu and aromatic melted cow ghee." },
+        { num: 2, tamil: "கருணைக்கிழங்கு கெட்டிக் குழம்பு", eng: "Karunai Kilangu Ketti Kulambu", category: "main", icon: "🍲", desc: "Signature Chettinad thick tamarind reduction simmered with tender elephant foot yam, small shallots, roasted fenugreek, and gingelly oil." },
+        { num: 3, tamil: "கத்தரிக்காய், முருங்கைக்காய் சாம்பார்", eng: "Brinjal & Drumstick Kalyana Sambar", category: "main", icon: "🥣", desc: "Fragrant Arachuvitta Kalyana Sambar loaded with native striped brinjals, sweet drumsticks, and freshly roasted coriander-fenugreek masala." },
+        { num: 4, tamil: "சௌ சௌ பால் கூட்டு", eng: "Chow Chow Paal Kootu", category: "sides", icon: "🥥", desc: "Delicate chayote squash cubes slow-cooked in sweet first-press coconut milk, yellow moong dal, and tempered with cumin and curry leaves." },
+        { num: 5, tamil: "முட்டைகோஸ், கேரட், பீன்ஸ், பன்னீர் பொரியல்", eng: "Cabbage, Carrot, Beans & Paneer Poriyal", category: "sides", icon: "🥕", desc: "Colorful garden vegetables stir-fried with golden cubes of soft paneer, green chillies, and generous handfuls of fresh grated coconut." },
+        { num: 6, tamil: "உருளை சாப்ஸ்", eng: "Karaikudi Baby Potato Chops", category: "sides", icon: "🥔", desc: "Baby potatoes pan-roasted in aromatic Chettinad fennel-kalpasi spice paste until crisp on the edges and tender inside." },
+        { num: 7, tamil: "மலையாள அவியல்", eng: "Traditional Malayala Avial", category: "sides", icon: "🥘", desc: "A royal medley of ash gourd, raw banana, yam, and drumsticks in a coarse coconut-cumin-curd grind finished with virgin coconut oil." },
+        { num: 8, tamil: "சைவ மட்டன் பிரியாணி – தயிர் பச்சடி", eng: "Royal Veg Mutton Seeraga Samba Briyani & Onion Raitha", category: "main", icon: "🍛", desc: "Kandhavilash Catering’s showstopper! Fragrant Seeraga Samba rice dum-cooked with spiced mock-mutton chunks, mint, and star anise, paired with cool onion raita." },
+        { num: 9, tamil: "சேனை சிப்ஸ்", eng: "Crispy Senai Kilangu Chips", category: "sides", icon: "🍟", desc: "Wafer-thin slices of fresh elephant yam deep-fried to a golden crunch and dusted with rock salt and crushed black pepper." },
+        { num: 10, tamil: "அடப்பிரதம பாயாசம்", eng: "Rich Adapradhaman Payasam", category: "finale", icon: "🍮", desc: "Silky handmade rice ada ribbons slow-simmered in rich Marayoor jaggery, thick coconut milk, cardamom, and ghee-roasted cashews & coconut bits." },
+        { num: 11, tamil: "மைசூர் ரசம்", eng: "Aromatic Mysore Pepper Rasam", category: "main", icon: "🍵", desc: "Rejuvenating digestive broth brewed with freshly roasted black pepper, cumin, toor dal, ripe tomatoes, and aromatic cilantro." },
+        { num: 12, tamil: "தயிர்", eng: "Fresh Artisanal Curd", category: "finale", icon: "🥛", desc: "Cool, creamy artisanal curd set in earthen pots to soothe the palate at the conclusion of the spicy Chettinad meal." },
+        { num: 13, tamil: "அப்பளம்", eng: "Crispy Golden Appalam", category: "sides", icon: "🍘", desc: "Sun-dried Kallidaikurichi black gram papads puffed golden—traditionally crumbled over hot paruppu rice and ghee." },
+        { num: 14, tamil: "ஊறுகாய்", eng: "Festive Pickle (Oorugai)", category: "sides", icon: "🥭", desc: "Zesty sun-cured mango and lemon pickle tempered with mustard seeds, asafoetida, and cold-pressed sesame oil." },
+        { num: 15, tamil: "பீடா, வெற்றிலை பாக்கு", eng: "Kalyana Beeda & Vetrilai Paaku", category: "finale", icon: "🍃", desc: "Auspicious Kumbakonam tender betel leaves, scented areca nut, and rose-petal gulkand sweet Beeda to conclude the wedding feast." },
+        { num: 16, tamil: "மதுரை பேமஸ் ஜிகர்தண்டா", eng: "Madurai Famous Special Jigarthanda", category: "finale", icon: "🍧", desc: "The pride of Madurai! Chilled caramelized reduced milk layered with cooling almond gum (Badam Pisin), fragrant Nannari sarsaparilla syrup, basundi, and a scoop of artisanal khoya ice cream." }
+      ]
+    };
+  </script>
+
+  <!-- ===================================================================== -->
+  <!-- PERSISTENT TOP SACRED STATUS BAR (NEVER BURIED BEHIND ANIMATION)      -->
+  <!-- Always visible across Landing, 3D Walkthrough, and 2D Classic Scroll  -->
+  <!-- ===================================================================== -->
+  <header id="persistentTopHud" class="fixed top-0 left-0 right-0 z-50 bg-[#1d120b]/95 backdrop-blur-md border-b border-templeGold/60 text-sandalwood shadow-lg">
+    <div class="w-full h-1 bg-gradient-to-r from-vermillionDeep via-mustard to-vermillionDeep"></div>
+    <div class="max-w-[1280px] mx-auto px-3 sm:px-5 h-14 sm:h-16 flex items-center justify-between gap-2">
+      
+      <!-- Left: Couple Identity & Core Event Summary (1-Tap Opens Quick Info Sheet) -->
+      <button onclick="openModalDrawer('quickInfoModal')" type="button" class="flex items-center gap-2.5 text-left group focus:outline-none">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-vermillionDeep border-2 border-templeGold flex items-center justify-center shrink-0 shadow group-hover:scale-105 transition-transform">
+          <span class="font-display text-mustard font-bold text-xs sm:text-sm tracking-wider">A&amp;S</span>
+        </div>
+        <div class="leading-tight">
+          <div class="flex items-center gap-1.5">
+            <span class="font-display text-sm sm:text-base font-semibold text-sandalwood group-hover:text-mustard transition-colors">
+              Annamalai &amp; Sarmila
+            </span>
+            <span class="hidden md:inline-block px-2 py-0.5 rounded-full bg-vermillion/80 border border-templeGold/50 font-sans text-[10px] uppercase tracking-wider text-mustard">
+              22 Nov 2026 • 6:00 AM
+            </span>
+          </div>
+          <p class="font-sans text-[10px] sm:text-[11px] text-champagneGold/90 tracking-wider">
+            <span class="md:hidden">22 Nov 2026 • </span>Thiruparankundram, Madurai <span class="underline text-mustard ml-1">Info &nearr;</span>
+          </p>
+        </div>
+      </button>
+
+      <!-- Right: Always-Accessible Action Pills (Quick Info, 3D/2D Mode Switch, Audio, RSVP) -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <!-- Quick Info / Essential Details Sheet Trigger -->
+        <button onclick="openModalDrawer('quickInfoModal')" type="button" class="px-2.5 sm:px-3 py-1.5 rounded-full bg-sandalwood/10 hover:bg-sandalwood/20 border border-templeGold/60 text-champagneGold font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.08em] font-semibold transition-all flex items-center gap-1" title="Essential Wedding Details">
+          <span>📋</span>
+          <span class="hidden sm:inline">Details</span>
+        </button>
+
+        <!-- 3D Mansion / 2D Lite View Switcher -->
+        <button id="modeToggleBtn" onclick="toggleExperienceMode()" type="button" class="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-indigoTile hover:bg-indigoVariant border border-templeGold text-sandalwood font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.08em] font-semibold transition-all flex items-center gap-1.5 shadow-sm">
+          <span id="modeToggleIcon">🏛️</span>
+          <span id="modeToggleText">2D Scroll View</span>
+        </button>
+
+        <!-- Veena / Nadaswaram Audio Synthesizer Toggle -->
+        <button onclick="toggleTraditionalMusic()" type="button" class="px-2.5 sm:px-3 py-1.5 rounded-full bg-sandalwood/10 hover:bg-sandalwood/20 border border-templeGold/60 text-mustard font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.08em] font-semibold transition-all flex items-center gap-1.5" aria-label="Toggle Traditional Veena Music">
+          <svg class="w-3.5 h-3.5 text-mustard shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+          <span id="hudMusicLabel" class="hidden md:inline">Veena</span>
+          <div class="eq-indicator flex items-end gap-0.5 h-3">
+            <span class="bar-1 w-0.5 h-1 bg-mustard rounded-full"></span>
+            <span class="bar-2 w-0.5 h-2 bg-mustard rounded-full"></span>
+            <span class="bar-3 w-0.5 h-1 bg-mustard rounded-full"></span>
+          </div>
+        </button>
+
+        <!-- Primary Sacred RSVP Trigger (Always 1 Tap Away) -->
+        <button onclick="openModalDrawer('rsvpModal')" type="button" class="px-3 sm:px-4 py-1.5 rounded-full bg-vermillion hover:bg-vermillionBright text-sandalwood border border-templeGold font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.1em] font-bold shadow-md transition-all">
+          RSVP
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- STAGE 1: COMPACT ROYAL WAX SEAL LANDING CARD OVERLAY                  -->
+  <!-- Non-blocking: Core details & skip options are immediately visible     -->
+  <!-- ===================================================================== -->
+  <div id="landingOverlay" class="fixed inset-0 z-40 pt-16 pb-6 px-4 bg-gradient-to-b from-[#1e0e08]/95 via-[#32170e]/90 to-[#140905]/95 backdrop-blur-sm flex flex-col justify-center items-center overflow-y-auto transition-opacity duration-500">
+    
+    <div class="w-full max-w-lg mx-auto my-auto text-center">
+      <!-- Auspicious Invocation -->
+      <p class="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-mustard font-semibold">
+        || உ || முனீஸ்வரர் துணை • வைராத்தாள் துணை || ஓம் முருகா ||
+      </p>
+      <h1 class="font-display text-2xl sm:text-4xl text-sandalwood font-semibold mt-1">
+        Annamalai <span class="text-templeGold italic font-normal">&amp;</span> Sarmila
+      </h1>
+      <p class="font-sans text-xs uppercase tracking-[0.12em] text-champagneGold mt-1">
+        Sunday, 22 November 2026 • Muhurtham 6:00 AM • Thiruparankundram, Madurai
+      </p>
+
+      <!-- Brass-Accented Chettinad Envelope -->
+      <div class="perspective-stage mt-4">
+        <div id="chettinadEnvelope" onclick="breakWaxSealAndStart()" role="button" tabindex="0" aria-label="Break Royal Wax Seal to Enter 3D Chettinad Mansion" class="relative bg-gradient-to-b from-[#f9f1e1] via-[#f1e5ce] to-[#e4d3b5] rounded-xl border-2 border-templeGold shadow-2xl p-5 sm:p-7 min-h-[290px] sm:min-h-[320px] flex flex-col items-center justify-center cursor-pointer select-none">
+          
+          <!-- 4 Brass Corners -->
+          <div class="w-9 h-9 border-t-4 border-l-4 border-templeGold absolute top-2 left-2 rounded-tl pointer-events-none"></div>
+          <div class="w-9 h-9 border-t-4 border-r-4 border-templeGold absolute top-2 right-2 rounded-tr pointer-events-none"></div>
+          <div class="w-9 h-9 border-b-4 border-l-4 border-templeGold absolute bottom-2 left-2 rounded-bl pointer-events-none"></div>
+          <div class="w-9 h-9 border-b-4 border-r-4 border-templeGold absolute bottom-2 right-2 rounded-br pointer-events-none"></div>
+
+          <!-- Top Folding Flap -->
+          <div class="envelope-flap-top absolute top-0 left-0 right-0 h-40 sm:h-44 z-20 pointer-events-none">
+            <svg class="w-full h-full drop-shadow-md" viewBox="0 0 600 220" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="envFlapGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#f6ecda" />
+                  <stop offset="100%" stop-color="#dfd0b4" />
+                </linearGradient>
+              </defs>
+              <polygon points="0,0 600,0 300,200" fill="url(#envFlapGrad)" stroke="#D4AF37" stroke-width="3" />
+              <polygon points="24,6 576,6 300,186" fill="none" stroke="#9B2226" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.55" />
+            </svg>
+          </div>
+
+          <!-- Rising Invitation Card Inside -->
+          <div class="envelope-letter-card relative z-10 w-full max-w-sm bg-sandalwood border-2 border-templeGold rounded-lg p-4 sm:p-5 text-center shadow-md">
+            <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-vermillion font-bold block">
+              || சுபமுகூர்த்த அழைப்பிதழ் ||
+            </span>
+            <h2 class="font-display text-2xl sm:text-3xl font-semibold text-vermillion mt-1">
+              Annamalai &amp; Sarmila
+            </h2>
+            <p class="font-serif text-sm sm:text-base text-teakwood font-medium mt-0.5">
+              22.11.2026 ஞாயிற்றுக்கிழமை • திருப்பரங்குன்றம், மதுரை
+            </p>
+            <!-- Mini Live Countdown -->
+            <div class="mt-2.5 pt-2 border-t border-templeGold/40 flex items-center justify-center gap-3 font-sans text-[11px] font-bold text-indigoTile">
+              <span>⏳ <strong id="envDays">13</strong>d : <strong id="envHours">14</strong>h : <strong id="envMins">30</strong>m to Muhurtham</span>
+            </div>
+          </div>
+
+          <!-- Embossed Royal Wax Seal -->
+          <div class="relative z-30 mt-3 flex flex-col items-center">
+            <div class="wax-seal-trigger w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[#b8292f] via-[#7A0412] to-[#4a020a] border-4 border-templeGold shadow-2xl flex flex-col items-center justify-center transition-all duration-500 hover:scale-105">
+              <div class="w-18 h-18 sm:w-20 sm:h-20 rounded-full border-2 border-dashed border-mustard/80 flex flex-col items-center justify-center p-2">
+                <span class="font-display text-xl sm:text-2xl font-bold text-mustard tracking-wider">A&amp;S</span>
+                <span class="font-sans text-[9px] uppercase tracking-[0.18em] text-sandalwood font-semibold">2026</span>
+              </div>
+              <span class="absolute -inset-1.5 rounded-full border border-templeGold/60 animate-ping opacity-35 pointer-events-none"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Entry Buttons: 3D Walkthrough OR 2D Classic Scroll OR Quick Info -->
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+        <button onclick="breakWaxSealAndStart()" type="button" class="px-5 py-3 rounded-full bg-vermillion hover:bg-vermillionBright text-mustard border-2 border-templeGold font-sans text-xs uppercase tracking-[0.12em] font-bold shadow-xl transition-all">
+          ✨ Break Seal &amp; Enter 3D Mansion
+        </button>
+        <button onclick="switchDirectlyTo2D()" type="button" class="px-4 py-3 rounded-full bg-sandalwood/15 hover:bg-sandalwood/25 text-sandalwood border border-templeGold/70 font-sans text-xs uppercase tracking-[0.1em] font-semibold transition-all">
+          📜 Read in 2D Classic View
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE 3D MANSION STAGE (THREE.JS WEBGL VIEWPORT + SPATIAL HUD)  -->
+  <!-- ===================================================================== -->
+  <div id="threeStageContainer" aria-label="Interactive 3D Chettinad Heritage Mansion">
+    <canvas id="threeCanvas"></canvas>
+
+    <!-- Top-Center Contextual Stage Banner & Touch/Swipe Hint -->
+    <div id="stageContextBanner" class="fixed top-16 sm:top-20 left-1/2 -translate-x-1/2 z-30 w-[92%] max-w-md pointer-events-none transition-all duration-300">
+      <div class="bg-[#1d120b]/85 backdrop-blur-md border border-templeGold/80 rounded-2xl px-4 py-2.5 text-center shadow-xl pointer-events-auto">
+        <div class="flex items-center justify-between gap-2">
+          <span id="stageStepBadge" class="px-2 py-0.5 rounded bg-vermillion text-mustard font-sans text-[10px] uppercase tracking-wider font-bold">
+            Stop 1 of 4 • Mukappu Vaasal
+          </span>
+          <span class="font-sans text-[10px] text-champagneGold/80">
+            👆 Swipe to Look • Tap Objects
+          </span>
+        </div>
+        <h2 id="stageTitleText" class="font-display text-lg sm:text-xl font-semibold text-sandalwood mt-1">
+          The Carved Burma Teakwood Doors
+        </h2>
+        <p id="stageSubtitleText" class="font-serif text-sm text-champagneGold/90 leading-snug">
+          Tap the brass knockers on the 3D door to unlatch the bolt and enter the mansion.
+        </p>
+
+        <!-- Dynamic Contextual Primary Action Button inside 3D Scene -->
+        <div class="mt-2.5 flex flex-wrap items-center justify-center gap-2">
+          <button id="stagePrimaryActionBtn" onclick="handleStagePrimaryAction()" type="button" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-vermillionDeep via-vermillion to-vermillionDeep text-mustard border border-templeGold font-sans text-[11px] uppercase tracking-[0.12em] font-bold shadow-md hover:scale-105 transition-transform">
+            🚪 Tap to Open Teak Doors
+          </button>
+          <button id="stageNextStopBtn" onclick="goToNext3DStop()" type="button" class="px-3 py-1.5 rounded-full bg-sandalwood/15 hover:bg-sandalwood/25 text-sandalwood border border-templeGold/50 font-sans text-[10px] uppercase tracking-wider font-semibold">
+            Next Stop &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Thumb-Friendly Spatial Navigation Dock (Mobile-First) -->
+    <nav id="bottomSpatialDock" aria-label="3D Mansion Navigation Stops" class="fixed bottom-3 left-1/2 -translate-x-1/2 z-30 w-[96%] max-w-2xl bg-[#1d120b]/95 backdrop-blur-md border-2 border-templeGold rounded-2xl p-1.5 shadow-2xl">
+      <div class="grid grid-cols-6 gap-1">
+        <!-- Stop 1: Mukappu Door -->
+        <button onclick="moveTo3DStop(0)" id="dock-btn-0" type="button" class="dock-stop-btn flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-vermillion text-mustard border border-templeGold transition-all">
+          <span class="text-sm sm:text-base">🚪</span>
+          <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-tight font-bold mt-0.5 truncate w-full text-center">1. Door</span>
+        </button>
+
+        <!-- Stop 2: Thinnai Greeting -->
+        <button onclick="moveTo3DStop(1)" id="dock-btn-1" type="button" class="dock-stop-btn flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-sandalwood/80 hover:bg-sandalwood/10 transition-all">
+          <span class="text-sm sm:text-base">💑</span>
+          <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-tight font-semibold mt-0.5 truncate w-full text-center">2. Thinnai</span>
+        </button>
+
+        <!-- Stop 3: Central Mutram Courtyard -->
+        <button onclick="moveTo3DStop(2)" id="dock-btn-2" type="button" class="dock-stop-btn flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-sandalwood/80 hover:bg-sandalwood/10 transition-all">
+          <span class="text-sm sm:text-base">🪷</span>
+          <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-tight font-semibold mt-0.5 truncate w-full text-center">3. Mutram</span>
+        </button>
+
+        <!-- Stop 4: Manavarai Wedding Stage -->
+        <button onclick="moveTo3DStop(3)" id="dock-btn-3" type="button" class="dock-stop-btn flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-sandalwood/80 hover:bg-sandalwood/10 transition-all">
+          <span class="text-sm sm:text-base">🔥</span>
+          <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-tight font-semibold mt-0.5 truncate w-full text-center">4. Stage</span>
+        </button>
+
+        <!-- Portal Drawer: 16-Item Banana Leaf Feast -->
+        <button onclick="openModalDrawer('virundhuModal')" type="button" class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-[#236119]/80 hover:bg-[#2d7a21] text-sandalwood border border-[#7bc758]/60 transition-all">
+          <span class="text-sm sm:text-base">🍃</span>
+          <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-tight font-bold mt-0.5 truncate w-full text-center">Feast (16)</span>
+        </button>
+
+        <!-- Portal Drawer: Route Map & Venues -->
+        <button onclick="openModalDrawer('mapModal')" type="button" class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-indigoTile/90 hover:bg-indigoVariant text-sandalwood border border-templeGold/50 transition-all">
+          <span class="text-sm sm:text-base">🧭</span>
+          <span class="font-sans text-[9px] sm:text-[10px] uppercase tracking-tight font-bold mt-0.5 truncate w-full text-center">Map</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- CLASSIC 2D LITE SCROLL VIEW (GRACEFUL FALLBACK & FULL SINGLE-PAGE)    -->
+  <!-- Guests can toggle between 3D Mansion and this 2D Scroll View anytime  -->
+  <!-- ===================================================================== -->
+  <main id="classic2DViewContainer" class="hidden relative z-20 pt-16 pb-20 bg-sandalwood">
+    
+    <!-- 2D Hero Section -->
+    <section class="py-10 sm:py-16 px-4 sm:px-6 bg-gradient-to-b from-parchment via-sandalwood to-parchment border-b border-templeGold/40 text-center">
+      <div class="max-w-4xl mx-auto">
+        <span class="inline-block px-4 py-1 rounded-full bg-vermillion/10 border border-templeGold font-sans text-[11px] uppercase tracking-[0.15em] text-vermillion font-bold">
+          || ஓம் முருகா || முனீஸ்வரர் துணை • வைராத்தாள் துணை || சுபமுகூர்த்தம் ||
+        </span>
+        <h1 class="font-display text-4xl sm:text-6xl font-semibold text-vermillion mt-4">
+          Annamalai <span class="text-templeGold italic font-normal">&amp;</span> Sarmila
+        </h1>
+        <p class="font-serif text-xl sm:text-2xl text-teakwood mt-2">
+          Sunday, 22 November 2026 (22.11.2026 ஞாயிற்றுக்கிழமை) • Muhurtham: 06:00 – 07:30 AM IST
+        </p>
+        <p class="font-sans text-xs uppercase tracking-[0.14em] text-indigoTile font-bold mt-1">
+          📍 Thiruparankundram Sri Murugan Temple &amp; Nagarathar Mandapam, Madurai
+        </p>
+
+        <!-- Couple Fine-Art Arch Portrait -->
+        <div class="temple-arch mx-auto w-60 sm:w-72 h-72 sm:h-80 mt-6 bg-gradient-to-b from-[#7a0412] via-[#4d0911] to-[#2B1E16] border-4 border-templeGold shadow-xl relative overflow-hidden flex flex-col items-center justify-end p-4">
+          <img src="./assets/hero-couple.jpg" alt="Annamalai and Sarmila" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-cover" />
+          <!-- Built-in SVG Fine-Art Fallback Portrait -->
+          <svg class="w-48 h-48 relative z-10 pointer-events-none" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="84" r="58" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="4 3" />
+            <g transform="translate(38, 44)">
+              <circle cx="32" cy="28" r="15" fill="#e0ac69" stroke="#D4AF37" stroke-width="1.5" />
+              <path d="M12 72C12 54 21 46 32 46C43 46 52 54 52 72V118H12V72Z" fill="#FDFBF7" stroke="#D4AF37" stroke-width="2" />
+              <path d="M15 49L49 90" stroke="#D4AF37" stroke-width="6" />
+            </g>
+            <g transform="translate(92, 48)">
+              <circle cx="32" cy="26" r="18" fill="#1d1c14" />
+              <circle cx="32" cy="28" r="14.5" fill="#e6b88a" stroke="#D4AF37" stroke-width="1.5" />
+              <path d="M12 70C12 52 20 45 32 45C44 45 52 52 52 70V114H12V70Z" fill="#9B2226" stroke="#D4AF37" stroke-width="2" />
+              <path d="M14 52L50 84" stroke="#FED65B" stroke-width="7" />
+            </g>
+          </svg>
+          <span class="relative z-20 px-3 py-1 rounded-full bg-teakwood/90 border border-templeGold font-sans text-[10px] uppercase tracking-widest text-mustard font-semibold">
+            Annamalai &amp; Sarmila • 22 Nov 2026
+          </span>
+        </div>
+
+        <!-- Countdown & Quick CTAs -->
+        <div class="mt-8 max-w-xl mx-auto gold-foil-card p-5 sm:p-6">
+          <p class="font-sans text-[11px] uppercase tracking-[0.15em] text-vermillion font-bold mb-3">
+            Counting Down To Subha Muhurtham
+          </p>
+          <div class="grid grid-cols-4 gap-2.5 sm:gap-4">
+            <div class="bg-sandalwood border border-templeGold rounded-lg py-2.5 px-2">
+              <span id="liteDays" class="font-display text-2xl sm:text-3xl font-bold text-vermillion">13</span>
+              <span class="block font-sans text-[9px] uppercase tracking-widest text-teakwood/70">Days</span>
+            </div>
+            <div class="bg-sandalwood border border-templeGold rounded-lg py-2.5 px-2">
+              <span id="liteHours" class="font-display text-2xl sm:text-3xl font-bold text-vermillion">14</span>
+              <span class="block font-sans text-[9px] uppercase tracking-widest text-teakwood/70">Hours</span>
+            </div>
+            <div class="bg-sandalwood border border-templeGold rounded-lg py-2.5 px-2">
+              <span id="liteMinutes" class="font-display text-2xl sm:text-3xl font-bold text-vermillion">30</span>
+              <span class="block font-sans text-[9px] uppercase tracking-widest text-teakwood/70">Minutes</span>
+            </div>
+            <div class="bg-sandalwood border border-templeGold rounded-lg py-2.5 px-2">
+              <span id="liteSeconds" class="font-display text-2xl sm:text-3xl font-bold text-vermillion">00</span>
+              <span class="block font-sans text-[9px] uppercase tracking-widest text-teakwood/70">Seconds</span>
+            </div>
+          </div>
+
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+            <button onclick="toggleExperienceMode()" type="button" class="px-5 py-2.5 rounded bg-indigoTile text-sandalwood font-sans text-xs uppercase tracking-wider font-bold border border-templeGold">
+              🏛️ Launch 3D Mansion Walkthrough
+            </button>
+            <button onclick="openModalDrawer('rsvpModal')" type="button" class="px-5 py-2.5 rounded bg-vermillion text-sandalwood font-sans text-xs uppercase tracking-wider font-bold border border-templeGold">
+              ✉️ RSVP &amp; WhatsApp
+            </button>
+            <button onclick="downloadWeddingICS()" type="button" class="px-4 py-2.5 rounded bg-sandalwood text-teakwood font-sans text-xs uppercase tracking-wider font-semibold border border-templeGold">
+              📅 Save .ICS
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2D Section: Order of Events -->
+    <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <span class="font-sans text-xs uppercase tracking-[0.15em] text-indigoTile font-bold">மணவறை • Sacred Stage</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-teakwood mt-1">Order of Auspicious Events</h2>
+      </div>
+      <div id="liteItineraryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </section>
+
+    <!-- 2D Section: 16-Item Banana Leaf Feast -->
+    <section class="py-12 px-4 sm:px-6 bg-parchment border-y border-templeGold/50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-8">
+          <span class="font-sans text-xs uppercase tracking-[0.15em] text-vermillion font-bold">விருந்து கூடம் • Kalyana Virundhu</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-semibold text-teakwood mt-1">நெடுங்குடி S.மகேஷ் — கந்தவிலாஷ் கேட்டரிங்</h2>
+          <p class="font-serif text-lg text-vermillion font-semibold mt-1">
+            நாள் : 22.11.2026 ஞாயிற்றுக்கிழமை • இடம் : திருப்பரங்குன்றம் நகரத்தார் மண்டபம், மதுரை (மதியம்)
+          </p>
+        </div>
+        <div id="liteFeastGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- 2D Section: Venues & Map -->
+    <section class="py-12 px-4 sm:px-6 max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <span class="font-sans text-xs uppercase tracking-[0.15em] text-indigoTile font-bold">வழிகாட்டி • Route Map</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-teakwood mt-1">Madurai Wedding Venues</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="gold-foil-card p-6">
+          <span class="px-3 py-1 rounded-full bg-vermillion text-sandalwood font-sans text-[10px] uppercase tracking-wider font-bold">Muhurtham &amp; Noon Feast</span>
+          <h3 class="font-display text-2xl font-semibold text-teakwood mt-3">Thiruparankundram Sri Murugan Temple &amp; Nagarathar Mandapam</h3>
+          <p class="font-serif text-base text-teakwood/85 mt-2">Thiruparankundram, Madurai, Tamil Nadu 625005</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-vermillion text-sandalwood font-sans text-xs uppercase tracking-wider font-semibold">Google Maps &nearr;</a>
+            <button onclick="copyTextToClipboard('Thiruparankundram Nagarathar Mandapam, Madurai 625005', 'Venue address copied!')" class="px-4 py-2 rounded bg-sandalwood border border-templeGold font-sans text-xs uppercase tracking-wider font-semibold">Copy Address</button>
+          </div>
+        </div>
+        <div class="gold-foil-card p-6">
+          <span class="px-3 py-1 rounded-full bg-indigoTile text-sandalwood font-sans text-[10px] uppercase tracking-wider font-bold">Evening Reception (18:30 IST)</span>
+          <h3 class="font-display text-2xl font-semibold text-teakwood mt-3">Meenakshi Grand Kalyana Mandapam</h3>
+          <p class="font-serif text-base text-teakwood/85 mt-2">Thiruparankundram Main Road, Madurai, Tamil Nadu 625005</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded bg-indigoTile text-sandalwood font-sans text-xs uppercase tracking-wider font-semibold">Google Maps &nearr;</a>
+            <button onclick="copyTextToClipboard('Meenakshi Grand Kalyana Mandapam, Thiruparankundram Main Road, Madurai 625005', 'Reception address copied!')" class="px-4 py-2 rounded bg-sandalwood border border-templeGold font-sans text-xs uppercase tracking-wider font-semibold">Copy Address</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DRAWER 1: ESSENTIAL QUICK INFO SHEET (ALWAYS 1 TAP AWAY)        -->
+  <!-- ===================================================================== -->
+  <div id="quickInfoModal" class="modal-drawer fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="gold-foil-card max-w-2xl w-full max-h-[88vh] overflow-y-auto custom-scroll p-5 sm:p-8 relative">
+      <div class="flex items-start justify-between gap-4 border-b border-templeGold/50 pb-4">
+        <div>
+          <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-vermillion font-bold">At-A-Glance Invitation Summary</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-teakwood">Annamalai &amp; Sarmila</h2>
+        </div>
+        <button onclick="closeAllModalDrawers()" type="button" class="w-9 h-9 rounded-full bg-sandalwood border border-templeGold text-teakwood hover:bg-vermillion hover:text-sandalwood font-bold text-lg">&times;</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">📅 Auspicious Date &amp; Muhurtham</span>
+          <p class="font-display text-lg font-semibold text-teakwood mt-1">Sunday, 22 November 2026</p>
+          <p class="font-serif text-base text-teakwood/85">22.11.2026 ஞாயிற்றுக்கிழமை</p>
+          <p class="font-sans text-xs font-bold text-indigoTile mt-1">Muhurtham: 06:00 AM – 07:30 AM IST</p>
+        </div>
+
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">📍 Primary Wedding &amp; Feast Venue</span>
+          <p class="font-display text-lg font-semibold text-teakwood mt-1">Thiruparankundram, Madurai</p>
+          <p class="font-serif text-sm text-teakwood/85">Sri Murugan Temple Mandapam &amp; Thiruparankundram Nagarathar Mandapam, Madurai 625005</p>
+        </div>
+      </div>
+
+      <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60 mb-5">
+        <span class="font-sans text-[10px] uppercase tracking-wider text-indigoTile font-bold">🍃 Noon Kalyana Virundhu Caterer</span>
+        <p class="font-display text-lg font-semibold text-vermillion mt-0.5">நெடுங்குடி S.மகேஷ் — கந்தவிலாஷ் கேட்டரிங்</p>
+        <p class="font-serif text-sm text-teakwood/85">16-Item Traditional Banana Leaf Feast including Saiva Mutton Biryani, Ada Pradhaman &amp; Madurai Famous Jigarthanda.</p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-templeGold/40">
+        <div class="flex flex-wrap gap-2">
+          <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded bg-vermillion text-sandalwood font-sans text-xs uppercase tracking-wider font-bold border border-templeGold">
+            📍 Google Maps Directions
+          </a>
+          <button onclick="downloadWeddingICS()" type="button" class="px-4 py-2.5 rounded bg-sandalwood hover:bg-containerHigh text-teakwood font-sans text-xs uppercase tracking-wider font-semibold border border-templeGold">
+            📅 Save to Calendar (.ics)
+          </button>
+        </div>
+        <button onclick="openModalDrawer('rsvpModal')" type="button" class="px-5 py-2.5 rounded bg-indigoTile text-sandalwood font-sans text-xs uppercase tracking-wider font-bold border border-templeGold">
+          RSVP Now &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DRAWER 2: MANAVARAI (ORDER OF AUSPICIOUS EVENTS & TIMELINES)    -->
+  <!-- ===================================================================== -->
+  <div id="manavaraiModal" class="modal-drawer fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="gold-foil-card max-w-4xl w-full max-h-[88vh] overflow-y-auto custom-scroll p-5 sm:p-8 relative">
+      <div class="flex items-start justify-between gap-4 border-b border-templeGold/50 pb-4 mb-6">
+        <div>
+          <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-indigoTile font-bold">மணவறை • Pillar I: Sacred Wedding Stage</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-semibold text-teakwood">Order of Auspicious Events</h2>
+        </div>
+        <button onclick="closeAllModalDrawers()" type="button" class="w-9 h-9 rounded-full bg-sandalwood border border-templeGold text-teakwood hover:bg-vermillion hover:text-sandalwood font-bold text-lg">&times;</button>
+      </div>
+
+      <div id="modalItineraryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+      <div class="mt-6 pt-4 border-t border-templeGold/40 flex flex-wrap items-center justify-between gap-3">
+        <button onclick="downloadWeddingICS()" type="button" class="px-5 py-2.5 rounded bg-vermillion text-sandalwood font-sans text-xs uppercase tracking-wider font-bold border border-templeGold">
+          + Add Muhurtham to Phone Calendar (.ics)
+        </button>
+        <button onclick="closeAllModalDrawers()" type="button" class="px-5 py-2.5 rounded bg-sandalwood border border-templeGold font-sans text-xs uppercase tracking-wider font-semibold">
+          Return to 3D Mansion
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DRAWER 3: VIRUNDHU KOODAM (16-ITEM UNFOLDING BANANA LEAF MENU)  -->
+  <!-- ===================================================================== -->
+  <div id="virundhuModal" class="modal-drawer fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="gold-foil-card max-w-5xl w-full max-h-[90vh] overflow-y-auto custom-scroll p-4 sm:p-8 relative">
+      <div class="flex items-start justify-between gap-4 border-b border-templeGold/50 pb-4 mb-5">
+        <div>
+          <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-vermillion font-bold">
+            உ • முனீஸ்வரர் துணை • வைராத்தாள் துணை • விருந்து கூடம்
+          </span>
+          <h2 class="font-display text-xl sm:text-3xl font-bold text-[#b81d43] mt-0.5">
+            நெடுங்குடி S.மகேஷ் — கந்தவிலாஷ் கேட்டரிங்
+          </h2>
+          <p class="font-serif text-sm sm:text-base text-teakwood font-semibold">
+            நாள் : 22.11.2026 ஞாயிற்றுக்கிழமை • இடம் : திருப்பரங்குன்றம் நகரத்தார் மண்டபம், மதுரை (மதியம்)
+          </p>
+        </div>
+        <button onclick="closeAllModalDrawers()" type="button" class="w-9 h-9 rounded-full bg-sandalwood border border-templeGold text-teakwood hover:bg-vermillion hover:text-sandalwood font-bold text-lg shrink-0">&times;</button>
+      </div>
+
+      <!-- Interactive Unfolding Banana Leaf + Dish Spotlight -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-8">
+        <div class="lg:col-span-7 perspective-stage">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold">
+              🍃 Tap any dish (1–16) on the Banana Leaf
+            </span>
+            <button onclick="replayBananaLeafUnfold()" type="button" class="px-3 py-1 rounded bg-sandalwood border border-templeGold font-sans text-[10px] uppercase tracking-wider font-semibold">
+              Replay Unfold
+            </button>
+          </div>
+
+          <div id="interactiveBananaLeaf" class="banana-leaf-surface rounded-[34px_96px_96px_34px] border-4 border-[#7bc758] p-3.5 sm:p-5 relative overflow-hidden">
+            <div class="absolute left-0 right-0 top-1/2 h-1.5 bg-gradient-to-r from-[#b5e884] via-[#d7f7b5] to-[#8fd158] -translate-y-1/2 opacity-80 pointer-events-none"></div>
+            <!-- Top Row on Leaf (8 Items) -->
+            <div id="leafTopRow" class="relative z-10 grid grid-cols-4 gap-1.5 sm:gap-2 mb-5"></div>
+            <!-- Bottom Row on Leaf (8 Items) -->
+            <div id="leafBottomRow" class="relative z-10 grid grid-cols-4 gap-1.5 sm:gap-2 mt-5"></div>
+          </div>
+        </div>
+
+        <!-- Dish Inspector Card -->
+        <div class="lg:col-span-5 bg-sandalwood border-2 border-templeGold rounded-xl p-5 shadow-md">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span id="spotlightNumberBadge" class="px-2.5 py-0.5 rounded bg-vermillion text-sandalwood font-sans text-[10px] uppercase tracking-wider font-bold">
+              Item #1 of 16 • MAIN
+            </span>
+            <span class="font-sans text-[10px] uppercase tracking-wider text-indigoTile font-bold">
+              Kandhavilash Special
+            </span>
+          </div>
+          <h3 id="spotlightTamilTitle" class="font-display text-2xl font-bold text-vermillion">
+            1. சாதம் – பருப்பு நெய்
+          </h3>
+          <p id="spotlightEngTitle" class="font-serif text-lg font-semibold text-teakwood mt-0.5">
+            Steaming Ponni Rice &amp; Dal Ghee
+          </p>
+          <p id="spotlightDesc" class="font-serif text-base text-teakwood/85 mt-2.5 leading-relaxed">
+            Fluffy aged Kaveri Ponni rice served piping hot on the banana leaf, crowned with velvety thuvaram paruppu and aromatic melted cow ghee.
+          </p>
+        </div>
+      </div>
+
+      <!-- Filter Tabs & All 16 Cards -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-5">
+        <button onclick="filterFeastMenu('all')" id="feast-tab-all" class="px-3.5 py-1.5 rounded-full font-sans text-[11px] uppercase tracking-wider font-bold bg-vermillion text-sandalwood border border-templeGold">
+          அனைத்தும் • All 16 Items
+        </button>
+        <button onclick="filterFeastMenu('main')" id="feast-tab-main" class="px-3.5 py-1.5 rounded-full font-sans text-[11px] uppercase tracking-wider font-semibold bg-sandalwood text-teakwood border border-templeGold/60">
+          Rice, Biryani &amp; Gravies
+        </button>
+        <button onclick="filterFeastMenu('sides')" id="feast-tab-sides" class="px-3.5 py-1.5 rounded-full font-sans text-[11px] uppercase tracking-wider font-semibold bg-sandalwood text-teakwood border border-templeGold/60">
+          Kootu, Poriyal &amp; Crisps
+        </button>
+        <button onclick="filterFeastMenu('finale')" id="feast-tab-finale" class="px-3.5 py-1.5 rounded-full font-sans text-[11px] uppercase tracking-wider font-semibold bg-sandalwood text-teakwood border border-templeGold/60">
+          Payasam, Jigarthanda &amp; Beeda
+        </button>
+      </div>
+
+      <div id="modalFeastGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DRAWER 4: NINAIVU ARANGAM (STORY, ATTIRE, STAY & GALLERY)       -->
+  <!-- ===================================================================== -->
+  <div id="storyModal" class="modal-drawer fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="gold-foil-card max-w-4xl w-full max-h-[88vh] overflow-y-auto custom-scroll p-5 sm:p-8 relative">
+      <div class="flex items-start justify-between gap-4 border-b border-templeGold/50 pb-4 mb-6">
+        <div>
+          <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-indigoTile font-bold">நினைவு அரங்கம் • Pillar III: Story, Attire &amp; Hospitality</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-semibold text-teakwood">Our Sacred Journey &amp; Madurai Guide</h2>
+        </div>
+        <button onclick="closeAllModalDrawers()" type="button" class="w-9 h-9 rounded-full bg-sandalwood border border-templeGold text-teakwood hover:bg-vermillion hover:text-sandalwood font-bold text-lg">&times;</button>
+      </div>
+
+      <!-- 4 Story Milestones -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">1. The Beginning</span>
+          <h3 class="font-display text-xl font-semibold text-teakwood mt-0.5">When Stars Aligned</h3>
+          <p class="font-serif text-base text-teakwood/85 mt-1">With the grace of elders, our horoscopes harmonized and our first meeting sparked an instant connection filled with mutual respect and shared values.</p>
+        </div>
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">2. The Tradition</span>
+          <h3 class="font-display text-xl font-semibold text-teakwood mt-0.5">Nichayathartham</h3>
+          <p class="font-serif text-base text-teakwood/85 mt-1">Surrounded by both families, we exchanged auspicious thamboolam plates, fragrant Madurai malli, and the formal Lagna Patrika.</p>
+        </div>
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">3. Sacred Abode</span>
+          <h3 class="font-display text-xl font-semibold text-teakwood mt-0.5">Thiruparankundram</h3>
+          <p class="font-serif text-base text-teakwood/85 mt-1">Choosing Thiruparankundram—where Lord Murugan and Deivanai wed—as our sacred sanctuary to begin our eternal journey.</p>
+        </div>
+        <div class="bg-sandalwood p-4 rounded-lg border-2 border-vermillion">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">4. 22 November 2026</span>
+          <h3 class="font-display text-xl font-semibold text-vermillion mt-0.5">Subha Muhurtham</h3>
+          <p class="font-serif text-base text-teakwood/85 mt-1">The golden Thali will be tied amidst resonant Nadaswaram melodies, Vedic mantras, and showers of blessed Akshata rice.</p>
+        </div>
+      </div>
+
+      <!-- Attire & Madurai Travel Guide -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-indigoTile font-bold">👘 Traditional Attire</span>
+          <h4 class="font-display text-lg font-semibold text-teakwood mt-1">South Indian Silk Splendor</h4>
+          <p class="font-serif text-sm text-teakwood/85 mt-1">Ladies: Kanchipuram Silk Sarees with temple jewelry &amp; Madurai malli. Gentlemen: Silk Veshti (Dhoti) with Angavastram or Silk Kurta.</p>
+        </div>
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-indigoTile font-bold">✈️ Reaching Madurai</span>
+          <h4 class="font-display text-lg font-semibold text-teakwood mt-1">Airport &amp; Rail Transit</h4>
+          <p class="font-serif text-sm text-teakwood/85 mt-1">Madurai Airport (IXM) is 20 mins from Thiruparankundram. Madurai Junction (MDU) is connected by Vande Bharat &amp; express trains.</p>
+        </div>
+        <div class="bg-sandalwood p-4 rounded-lg border border-templeGold/60">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-indigoTile font-bold">🏨 Recommended Stay</span>
+          <h4 class="font-display text-lg font-semibold text-teakwood mt-1">Madurai Hospitality</h4>
+          <p class="font-serif text-sm text-teakwood/85 mt-1">Special blocks arranged at Heritage Madurai, Courtyard by Marriott, and Fortune Pandiyan. Code: ANNAMALAI-SARMILA-WEDDING.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DRAWER 5: VAZHIKAATTI (ANTIQUE PARCHMENT VENUE & ROUTE MAP)     -->
+  <!-- ===================================================================== -->
+  <div id="mapModal" class="modal-drawer fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="gold-foil-card max-w-4xl w-full max-h-[88vh] overflow-y-auto custom-scroll p-5 sm:p-8 relative">
+      <div class="flex items-start justify-between gap-4 border-b border-templeGold/50 pb-4 mb-6">
+        <div>
+          <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-indigoTile font-bold">வழிகாட்டி • Pillar IV: Antique Parchment Route Scroll</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-semibold text-teakwood">Wedding Venues &amp; Directions</h2>
+        </div>
+        <button onclick="closeAllModalDrawers()" type="button" class="w-9 h-9 rounded-full bg-sandalwood border border-templeGold text-teakwood hover:bg-vermillion hover:text-sandalwood font-bold text-lg">&times;</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+        <!-- Venue 1 -->
+        <div class="bg-sandalwood p-5 rounded-lg border-2 border-templeGold flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded bg-vermillion text-sandalwood font-sans text-[10px] uppercase tracking-wider font-bold">
+              Muhurtham (06:00 AM) &amp; Noon Virundhu
+            </span>
+            <h3 class="font-display text-xl sm:text-2xl font-semibold text-teakwood mt-2">
+              Thiruparankundram Sri Murugan Temple &amp; Nagarathar Mandapam
+            </h3>
+            <p class="font-serif text-base text-vermillion font-semibold mt-1">
+              திருப்பரங்குன்றம் நகரத்தார் மண்டபம், மதுரை - 625005
+            </p>
+            <p class="font-serif text-sm text-teakwood/85 mt-2">
+              The sacred first abode of Lord Murugan where He wed Deivanai. The Noon 16-item Kalyana Virundhu is served at the adjacent historic Thiruparankundram Nagarathar Mandapam.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-templeGold/40 flex flex-wrap gap-2">
+            <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded bg-vermillion text-sandalwood font-sans text-[11px] uppercase tracking-wider font-bold">
+              Google Maps &nearr;
+            </a>
+            <a href="http://maps.apple.com/?q=Thiruparankundram+Murugan+Temple+Madurai" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded bg-parchment border border-templeGold text-teakwood font-sans text-[11px] uppercase tracking-wider font-semibold">
+              Apple Maps
+            </a>
+            <button onclick="copyTextToClipboard('Thiruparankundram Nagarathar Mandapam, Thiruparankundram, Madurai, Tamil Nadu 625005', 'Temple & Mandapam address copied!')" type="button" class="px-3.5 py-2 rounded bg-parchment border border-templeGold text-teakwood font-sans text-[11px] uppercase tracking-wider font-semibold">
+              Copy Address
+            </button>
+          </div>
+        </div>
+
+        <!-- Venue 2 -->
+        <div class="bg-sandalwood p-5 rounded-lg border-2 border-templeGold flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-0.5 rounded bg-indigoTile text-sandalwood font-sans text-[10px] uppercase tracking-wider font-bold">
+              Grand Evening Reception (18:30 IST)
+            </span>
+            <h3 class="font-display text-xl sm:text-2xl font-semibold text-teakwood mt-2">
+              Meenakshi Grand Kalyana Mandapam
+            </h3>
+            <p class="font-serif text-base text-indigoTile font-semibold mt-1">
+              Thiruparankundram Main Road, Madurai, Tamil Nadu 625005
+            </p>
+            <p class="font-serif text-sm text-teakwood/85 mt-2">
+              An air-conditioned luxury marriage hall equipped with spacious dining halls, grand floral stage decor, and ample guest parking for the evening reception.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-templeGold/40 flex flex-wrap gap-2">
+            <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded bg-indigoTile text-sandalwood font-sans text-[11px] uppercase tracking-wider font-bold">
+              View Location &nearr;
+            </a>
+            <button onclick="copyTextToClipboard('Meenakshi Grand Kalyana Mandapam, Thiruparankundram Main Road, Madurai, Tamil Nadu 625005', 'Reception hall address copied!')" type="button" class="px-3.5 py-2 rounded bg-parchment border border-templeGold text-teakwood font-sans text-[11px] uppercase tracking-wider font-semibold">
+              Copy Address
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Embedded Google Map -->
+      <div class="rounded-lg overflow-hidden border-2 border-templeGold h-64 sm:h-80">
+        <iframe
+          class="w-full h-full"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15722.56948564249!2d78.0645!3d9.8828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c504a434c44b%3A0x8aa8d8d3f18e9508!2sThiruparankundram%2C%20Madurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Thiruparankundram Madurai Map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL DRAWER 6: SACRED RSVP & WHATSAPP CONFIRMATION + ADMIN           -->
+  <!-- ===================================================================== -->
+  <div id="rsvpModal" class="modal-drawer fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+    <div class="gold-foil-card max-w-xl w-full max-h-[90vh] overflow-y-auto custom-scroll p-5 sm:p-8 relative">
+      <div class="flex items-start justify-between gap-4 border-b border-templeGold/50 pb-4 mb-5">
+        <div>
+          <span class="font-sans text-[10px] uppercase tracking-[0.16em] text-vermillion font-bold">மங்கள வருகை • Auspicious RSVP</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-teakwood">Will You Grace Our Wedding?</h2>
+        </div>
+        <button onclick="closeAllModalDrawers()" type="button" class="w-9 h-9 rounded-full bg-sandalwood border border-templeGold text-teakwood hover:bg-vermillion hover:text-sandalwood font-bold text-lg">&times;</button>
+      </div>
+
+      <form id="rsvpForm" onsubmit="submitWeddingRsvp(event)" class="space-y-4">
+        <div>
+          <label for="rsvpName" class="block font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold mb-1">Full Name(s) *</label>
+          <input id="rsvpName" type="text" required placeholder="e.g. Senthil Kumar & Family" class="w-full px-3.5 py-2.5 rounded bg-sandalwood border border-templeGold focus:border-vermillion focus:outline-none font-serif text-lg text-teakwood" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label for="rsvpAttendance" class="block font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold mb-1">Attendance *</label>
+            <select id="rsvpAttendance" class="w-full px-3.5 py-2.5 rounded bg-sandalwood border border-templeGold font-serif text-lg text-teakwood">
+              <option value="Joyfully Attending">✓ Joyfully Attending</option>
+              <option value="Sending Blessings from Afar">✗ Sending Blessings from Afar</option>
+            </select>
+          </div>
+          <div>
+            <label for="rsvpGuests" class="block font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold mb-1">Number of Guests</label>
+            <select id="rsvpGuests" class="w-full px-3.5 py-2.5 rounded bg-sandalwood border border-templeGold font-serif text-lg text-teakwood">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5+ Guests (Family)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label for="rsvpDietary" class="block font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold mb-1">Feast Preference</label>
+            <select id="rsvpDietary" class="w-full px-3.5 py-2.5 rounded bg-sandalwood border border-templeGold font-serif text-base text-teakwood">
+              <option value="Traditional Pure Veg (Banana Leaf)">Traditional Pure Veg (Banana Leaf)</option>
+              <option value="Jain Vegetarian">Jain Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+            </select>
+          </div>
+          <div>
+            <label for="rsvpSong" class="block font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold mb-1">Nadaswaram Melody Request</label>
+            <input id="rsvpSong" type="text" placeholder="e.g. Kalyana Malai..." class="w-full px-3.5 py-2.5 rounded bg-sandalwood border border-templeGold font-serif text-base text-teakwood" />
+          </div>
+        </div>
+
+        <div>
+          <label for="rsvpMessage" class="block font-sans text-[11px] uppercase tracking-wider text-teakwood font-bold mb-1">Blessings &amp; Wishes for Annamalai &amp; Sarmila</label>
+          <textarea id="rsvpMessage" rows="2" placeholder="Share your heartfelt blessings..." class="w-full px-3.5 py-2 rounded bg-sandalwood border border-templeGold font-serif text-base text-teakwood"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 px-6 rounded bg-vermillion hover:bg-vermillionBright text-sandalwood font-sans text-xs uppercase tracking-[0.14em] font-bold border border-templeGold shadow-brass-glow transition-all">
+          Submit RSVP Confirmation &rarr;
+        </button>
+      </form>
+
+      <!-- Instant WhatsApp Confirmation Box -->
+      <div id="rsvpConfirmationCard" class="hidden mt-5 p-5 rounded-lg bg-gradient-to-br from-[#7A0412] to-[#42030a] text-sandalwood border-2 border-templeGold text-center">
+        <h3 class="font-display text-2xl font-semibold text-mustard">
+          Nandri, <span id="confirmedGuestName">Dear Guest</span>!
+        </h3>
+        <p class="font-serif text-base text-sandalwood/90 mt-1">
+          Your RSVP is saved. Send an instant confirmation via WhatsApp below:
+        </p>
+        <a id="whatsappConfirmLink" href="#" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#1ebe5a] text-white font-sans text-xs uppercase tracking-wider font-bold shadow-lg">
+          <span>Confirm via WhatsApp</span>
+          <span>&nearr;</span>
+        </a>
+      </div>
+
+      <!-- Couple Admin Guest List & CSV Export Section -->
+      <div class="mt-5 pt-4 border-t border-templeGold/40">
+        <div class="flex items-center justify-between">
+          <span class="font-sans text-[11px] text-teakwood/70">Confirmed Attending Seats: <strong id="adminTotalSeats" class="text-vermillion">6</strong></span>
+          <button onclick="exportGuestListCSV()" type="button" class="font-sans text-[11px] uppercase tracking-wider text-vermillion font-bold underline">
+            Export Guest List (.CSV)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastBox" class="fixed bottom-20 right-4 z-50 hidden bg-teakwood text-sandalwood border-2 border-templeGold rounded-lg px-4 py-2.5 shadow-2xl flex items-center gap-2.5">
+    <span class="text-mustard">❈</span>
+    <span id="toastMessage" class="font-serif text-base"></span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION & THREE.JS 3D ARCHITECTURAL WALKTHROUGH SCRIPT            -->
+  <!-- ===================================================================== -->
+  <script>
+    // =====================================================================
+    // 1. STATE & EXPERIENCE MODE MANAGEMENT (3D MANSION vs 2D LITE SCROLL)
+    // =====================================================================
+    let currentExperienceMode = '3D'; // '3D' or '2D'
+    let current3DStopIndex = 0;
+    let areTeakDoorsOpen = false;
+    let isAnyDrawerOpen = false;
+
+    const MANSION_STOPS = [
+      {
+        badge: "Stop 1 of 4 • Mukappu Vaasal",
+        title: "The Carved Burma Teakwood Doors",
+        subtitle: "Tap the brass knockers on the 3D door to unlatch the bolt and enter the mansion.",
+        ctaText: "🚪 Tap to Open Teak Doors",
+        camPos: { x: 0, y: 2.3, z: 11.2 },
+        lookAt: { x: 0, y: 2.3, z: 0 }
+      },
+      {
+        badge: "Stop 2 of 4 • Thinnai Veranda",
+        title: "Annamalai & Sarmila Welcome You",
+        subtitle: "Cross the sunlit veranda pillars and view the couple's auspicious welcome portrait.",
+        ctaText: "📋 View Wedding Summary",
+        camPos: { x: 0, y: 2.25, z: 2.4 },
+        lookAt: { x: 0, y: 2.3, z: -4.5 }
+      },
+      {
+        badge: "Stop 3 of 4 • Central Mutram Hub",
+        title: "The Sunlit Athangudi Courtyard",
+        subtitle: "Swipe to look around the 8 teak pillars & sacred Urli, or tap any golden portal.",
+        ctaText: "🍃 Unfold 16-Item Feast Leaf",
+        camPos: { x: 0, y: 2.4, z: -5.2 },
+        lookAt: { x: 0, y: 2.1, z: -12.0 }
+      },
+      {
+        badge: "Stop 4 of 4 • Manavarai Stage",
+        title: "The Sacred Muhurtham Mandapam",
+        subtitle: "Sunday, 22 Nov 2026 • 06:00 – 07:30 AM IST at Thiruparankundram, Madurai.",
+        ctaText: "🔥 Open Muhurtham Timeline",
+        camPos: { x: 0, y: 2.35, z: -13.0 },
+        lookAt: { x: 0, y: 2.5, z: -20.5 }
+      }
+    ];
+
+    function breakWaxSealAndStart() {
+      const env = document.getElementById('chettinadEnvelope');
+      env.classList.add('envelope-is-open');
+      if (!isMusicPlaying) toggleTraditionalMusic();
+      else playTempleBellChime();
+
+      setTimeout(() => {
+        const overlay = document.getElementById('landingOverlay');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => overlay.classList.add('hidden'), 500);
+      }, 900);
+    }
+
+    function switchDirectlyTo2D() {
+      const overlay = document.getElementById('landingOverlay');
+      overlay.classList.add('hidden');
+      setExperienceMode('2D');
+    }
+
+    function toggleExperienceMode() {
+      setExperienceMode(currentExperienceMode === '3D' ? '2D' : '3D');
+    }
+
+    function setExperienceMode(mode) {
+      currentExperienceMode = mode;
+      const threeContainer = document.getElementById('threeStageContainer');
+      const classicContainer = document.getElementById('classic2DViewContainer');
+      const modeText = document.getElementById('modeToggleText');
+      const modeIcon = document.getElementById('modeToggleIcon');
+
+      if (mode === '2D') {
+        threeContainer.classList.add('hidden');
+        classicContainer.classList.remove('hidden');
+        modeIcon.textContent = '🏛️';
+        modeText.textContent = '3D Mansion View';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        classicContainer.classList.add('hidden');
+        threeContainer.classList.remove('hidden');
+        modeIcon.textContent = '📜';
+        modeText.textContent = '2D Scroll View';
+        onThreeResize();
+      }
+    }
+
+    // =====================================================================
+    // 2. PROCEDURAL HIGH-RESOLUTION PBR TEXTURES & IBL ENVIRONMENT
+    // =====================================================================
+    function createCourtyardEnvMap(renderer) {
+      const pmremGenerator = new THREE.PMREMGenerator(renderer);
+      pmremGenerator.compileEquirectangularShader();
+
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 256;
+      const ctx = c.getContext('2d');
+
+      // Morning sky daylight gradient overhead
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, 128);
+      skyGrad.addColorStop(0, '#5a8cc2'); // Soft morning Tamil Nadu blue
+      skyGrad.addColorStop(0.65, '#dfb875'); // Sun-gilded horizon
+      skyGrad.addColorStop(1, '#fffde8'); // Radiant sun rim
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, 512, 128);
+
+      // Courtyard floor & wall warm ambient bounce (terracotta, timber, brass)
+      const floorGrad = ctx.createLinearGradient(0, 128, 0, 256);
+      floorGrad.addColorStop(0, '#782a17'); // Baked terracotta roof & Athangudi warm tone
+      floorGrad.addColorStop(0.5, '#402210'); // Deep seasoned Burma teakwood
+      floorGrad.addColorStop(1, '#1a0d05'); // Deep courtyard shadow base
+      ctx.fillStyle = floorGrad;
+      ctx.fillRect(0, 128, 512, 128);
+
+      // Morning Sun Disc Highlight
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(200, 72, 24, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Soft sun halo
+      const sunHalo = ctx.createRadialGradient(200, 72, 20, 200, 72, 80);
+      sunHalo.addColorStop(0, 'rgba(255, 248, 220, 0.6)');
+      sunHalo.addColorStop(1, 'rgba(255, 230, 180, 0)');
+      ctx.fillStyle = sunHalo;
+      ctx.beginPath();
+      ctx.arc(200, 72, 80, 0, Math.PI * 2);
+      ctx.fill();
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.mapping = THREE.EquirectangularReflectionMapping;
+      const envMap = pmremGenerator.fromEquirectangular(tex).texture;
+      pmremGenerator.dispose();
+      tex.dispose();
+      return envMap;
+    }
+
+    function createAthangudiGlassTileTexture() {
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 512;
+      const ctx = c.getContext('2d');
+
+      // Dark Mortar Grout Background
+      ctx.fillStyle = '#26180f';
+      ctx.fillRect(0, 0, 512, 512);
+
+      // Terracotta Red Main Tile Base
+      ctx.fillStyle = '#8f291e';
+      ctx.fillRect(6, 6, 500, 500);
+
+      // Inner Cream Pinstripe Border
+      ctx.strokeStyle = '#fbf5e6';
+      ctx.lineWidth = 8;
+      ctx.strokeRect(24, 24, 464, 464);
+
+      // Gilded Corner Accents
+      const drawCornerFan = (cx, cy, startA, endA) => {
+        ctx.fillStyle = '#d49b29';
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, 76, startA, endA);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#fcf3dc';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+      };
+      drawCornerFan(24, 24, 0, Math.PI / 2);
+      drawCornerFan(488, 24, Math.PI / 2, Math.PI);
+      drawCornerFan(488, 488, Math.PI, Math.PI * 1.5);
+      drawCornerFan(24, 488, Math.PI * 1.5, Math.PI * 2);
+
+      // Central Royal Indigo Diamond
+      ctx.fillStyle = '#173052';
+      ctx.strokeStyle = '#fed766';
+      ctx.lineWidth = 7;
+      ctx.beginPath();
+      ctx.moveTo(256, 44);
+      ctx.lineTo(468, 256);
+      ctx.lineTo(256, 468);
+      ctx.lineTo(44, 256);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Inner Ivory Diamond Frame
+      ctx.strokeStyle = '#fcf4e4';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(256, 92);
+      ctx.lineTo(420, 256);
+      ctx.lineTo(256, 420);
+      ctx.lineTo(92, 256);
+      ctx.closePath();
+      ctx.stroke();
+
+      // Eight-Petaled Sacred Lotus Star Medallion
+      const drawLotusPetal = (angle, len, w, color) => {
+        ctx.save();
+        ctx.translate(256, 256);
+        ctx.rotate(angle);
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.quadraticCurveTo(w, len * 0.5, 0, len);
+        ctx.quadraticCurveTo(-w, len * 0.5, 0, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      };
+
+      for (let i = 0; i < 8; i++) {
+        const ang = (i * Math.PI) / 4;
+        drawLotusPetal(ang, 96, 26, '#e8b838');
+        drawLotusPetal(ang + Math.PI / 8, 70, 18, '#ffd868');
+      }
+
+      // Center Concentric Crimson & Gold Bindu
+      ctx.fillStyle = '#9B2226';
+      ctx.beginPath();
+      ctx.arc(256, 256, 36, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#FED65B';
+      ctx.beginPath();
+      ctx.arc(256, 256, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Glass plate reflection highlight sheen
+      const glassSheen = ctx.createLinearGradient(0, 0, 512, 512);
+      glassSheen.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
+      glassSheen.addColorStop(0.5, 'rgba(255, 255, 255, 0.0)');
+      glassSheen.addColorStop(1, 'rgba(255, 255, 255, 0.08)');
+      ctx.fillStyle = glassSheen;
+      ctx.fillRect(0, 0, 512, 512);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(16, 26);
+      return tex;
+    }
+
+    function createAthangudiNormalTexture() {
+      const c = document.createElement('canvas');
+      c.width = 256;
+      c.height = 256;
+      const ctx = c.getContext('2d');
+
+      // Flat normal (128, 128, 255)
+      ctx.fillStyle = 'rgb(128, 128, 255)';
+      ctx.fillRect(0, 0, 256, 256);
+
+      // Beveled grout relief borders
+      ctx.fillStyle = 'rgb(155, 128, 230)';
+      ctx.fillRect(0, 0, 256, 6);
+      ctx.fillStyle = 'rgb(105, 128, 230)';
+      ctx.fillRect(0, 250, 256, 6);
+      ctx.fillStyle = 'rgb(128, 155, 230)';
+      ctx.fillRect(0, 0, 6, 256);
+      ctx.fillStyle = 'rgb(128, 105, 230)';
+      ctx.fillRect(250, 0, 6, 256);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(16, 26);
+      return tex;
+    }
+
+    function createKolamThresholdTexture() {
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 256;
+      const ctx = c.getContext('2d');
+
+      // Polished Jet-Black Granite Threshold
+      ctx.fillStyle = '#14181b';
+      ctx.fillRect(0, 0, 512, 256);
+
+      // Delicate Auspicious White Rice-Flour Kolam Pattern
+      ctx.strokeStyle = 'rgba(250, 250, 252, 0.88)';
+      ctx.lineWidth = 3.5;
+
+      // Outer Kolam Border Line
+      ctx.strokeRect(18, 18, 476, 220);
+      ctx.strokeStyle = 'rgba(250, 250, 252, 0.45)';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(26, 26, 460, 204);
+
+      // Central Sacred Lotus Kolam Motifs
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+      ctx.lineWidth = 3;
+      const kolamCenters = [128, 256, 384];
+      kolamCenters.forEach(cx => {
+        const cy = 128;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+        ctx.stroke();
+
+        for (let j = 0; j < 8; j++) {
+          const a = (j * Math.PI) / 4;
+          const px = cx + Math.cos(a) * 44;
+          const py = cy + Math.sin(a) * 44;
+          ctx.beginPath();
+          ctx.arc(px, py, 18, a + Math.PI * 0.7, a + Math.PI * 2.3);
+          ctx.stroke();
+        }
+      });
+
+      // Sacred Tamil Invocation Accent
+      ctx.fillStyle = 'rgba(254, 214, 91, 0.9)';
+      ctx.font = 'bold 16px EB Garamond, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('|| சுபமஸ்து • நல்வரவு ||', 256, 238);
+
+      return new THREE.CanvasTexture(c);
+    }
+
+    function createTerracottaRoofTileTexture() {
+      const c = document.createElement('canvas');
+      c.width = 256;
+      c.height = 256;
+      const ctx = c.getContext('2d');
+
+      // Clay country tiles (curved flutes and baked earth hues)
+      ctx.fillStyle = '#913b23';
+      ctx.fillRect(0, 0, 256, 256);
+
+      for (let y = 0; y < 256; y += 32) {
+        // Tile lap line
+        ctx.fillStyle = '#4a1b0e';
+        ctx.fillRect(0, y, 256, 5);
+
+        // Individual tile flutes
+        for (let x = 0; x < 256; x += 16) {
+          const tileGrad = ctx.createLinearGradient(x, 0, x + 16, 0);
+          tileGrad.addColorStop(0, '#5e2313');
+          tileGrad.addColorStop(0.5, '#ab4d31');
+          tileGrad.addColorStop(1, '#662615');
+          ctx.fillStyle = tileGrad;
+          ctx.fillRect(x + 1, y + 5, 14, 27);
+        }
+      }
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(12, 6);
+      return tex;
+    }
+
+    function createHighResBurmaTeakDoorTexture(isLeftLeaf) {
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 1024;
+      const ctx = c.getContext('2d');
+
+      // Seasoned Deep Burma Teak Base with Warm Amber Annular Rings
+      const woodGrad = ctx.createLinearGradient(0, 0, 512, 1024);
+      woodGrad.addColorStop(0, '#532b15');
+      woodGrad.addColorStop(0.35, '#3d1e0d');
+      woodGrad.addColorStop(0.7, '#492512');
+      woodGrad.addColorStop(1, '#2c1206');
+      ctx.fillStyle = woodGrad;
+      ctx.fillRect(0, 0, 512, 1024);
+
+      // Fine organic teakwood micro-grain streaks
+      ctx.fillStyle = 'rgba(28, 12, 4, 0.22)';
+      for (let i = 0; i < 220; i++) {
+        const x = Math.random() * 512;
+        const w = 1.5 + Math.random() * 3.5;
+        ctx.fillRect(x, 0, w, 1024);
+      }
+
+      // Outer Heavy Carved Teak Frame Molding
+      ctx.strokeStyle = '#6a3a1d';
+      ctx.lineWidth = 20;
+      ctx.strokeRect(16, 16, 480, 992);
+      ctx.strokeStyle = '#220e05';
+      ctx.lineWidth = 5;
+      ctx.strokeRect(26, 26, 460, 972);
+
+      function drawCarvedWoodPanel(x, y, w, h, archTop = false) {
+        // Recessed shadow cavity
+        ctx.fillStyle = '#261208';
+        ctx.strokeStyle = '#7c4623';
+        ctx.lineWidth = 10;
+        ctx.beginPath();
+        if (archTop) {
+          ctx.moveTo(x, y + h);
+          ctx.lineTo(x, y + w * 0.45);
+          ctx.quadraticCurveTo(x + w / 2, y - 24, x + w, y + w * 0.45);
+          ctx.lineTo(x + w, y + h);
+          ctx.closePath();
+        } else {
+          ctx.rect(x, y, w, h);
+        }
+        ctx.fill();
+        ctx.stroke();
+
+        // Inner bevel edge
+        ctx.strokeStyle = '#965a2f';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        if (archTop) {
+          ctx.moveTo(x + 8, y + h - 8);
+          ctx.lineTo(x + 8, y + w * 0.45);
+          ctx.quadraticCurveTo(x + w / 2, y - 12, x + w - 8, y + w * 0.45);
+          ctx.lineTo(x + w - 8, y + h - 8);
+          ctx.closePath();
+        } else {
+          ctx.rect(x + 8, y + 8, w - 16, h - 16);
+        }
+        ctx.stroke();
+      }
+
+      // 1. Top Panel: Gajalakshmi Relief Medallion
+      drawCarvedWoodPanel(54, 52, 404, 252, true);
+      // Gold-leaf highlight circle
+      const goldMed = ctx.createRadialGradient(256, 192, 20, 256, 192, 70);
+      goldMed.addColorStop(0, '#ffd868');
+      goldMed.addColorStop(0.7, '#b2801e');
+      goldMed.addColorStop(1, '#532f08');
+      ctx.fillStyle = goldMed;
+      ctx.beginPath();
+      ctx.arc(256, 192, 68, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#fef08a';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      ctx.fillStyle = '#301708';
+      ctx.font = 'bold 24px Playfair Display, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(isLeftLeaf ? 'கஜலட்சுமி' : 'அஷ்டலட்சுமி', 256, 200);
+
+      // 2. Middle Knocker Escutcheon Panel
+      drawCarvedWoodPanel(54, 342, 404, 186, false);
+      // Gilded floral plate behind 3D knocker
+      ctx.fillStyle = '#D4AF37';
+      ctx.beginPath();
+      ctx.arc(256, 435, 48, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#ffe484';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // 3. Lower Twin Guardian Panels
+      drawCarvedWoodPanel(54, 560, 188, 178, false);
+      drawCarvedWoodPanel(270, 560, 188, 178, false);
+
+      // 4. Bottom Lotus Medallion Panel
+      drawCarvedWoodPanel(54, 770, 404, 198, false);
+      ctx.strokeStyle = '#a66c38';
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.arc(256, 868, 70, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Gilded Boss Stud Accents along door rails
+      const studRows = [322, 540, 750, 980];
+      const studCols = [72, 256, 440];
+      studRows.forEach(ry => {
+        studCols.forEach(cx => {
+          const studGrad = ctx.createRadialGradient(cx - 3, ry - 3, 2, cx, ry, 10);
+          studGrad.addColorStop(0, '#fff4b8');
+          studGrad.addColorStop(0.6, '#d4af37');
+          studGrad.addColorStop(1, '#664c05');
+          ctx.fillStyle = studGrad;
+          ctx.beginPath();
+          ctx.arc(cx, ry, 10, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      });
+
+      return new THREE.CanvasTexture(c);
+    }
+
+    function createGoldenMedallionTexture(badge, title, subtitle, icon, bgHex = '#7A0412') {
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 512;
+      const ctx = c.getContext('2d');
+
+      // Outer Circular Clip
+      ctx.beginPath();
+      ctx.arc(256, 256, 250, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+
+      // Background Jewel Radial Gradient
+      const bgGrad = ctx.createRadialGradient(256, 256, 40, 256, 256, 250);
+      bgGrad.addColorStop(0, bgHex);
+      bgGrad.addColorStop(1, '#0e0503');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, 512, 512);
+
+      // Double Concentric Gold Beaded Rim
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 14;
+      ctx.beginPath();
+      ctx.arc(256, 256, 240, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#FED65B';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(256, 256, 224, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Auspicious Gold Dots around perimeter
+      for (let i = 0; i < 36; i++) {
+        const a = (i * Math.PI) / 18;
+        const x = 256 + Math.cos(a) * 232;
+        const y = 256 + Math.sin(a) * 232;
+        ctx.fillStyle = '#FED65B';
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Center Icon Emblem
+      ctx.font = '84px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(icon, 256, 155);
+
+      // Badge Tag
+      ctx.fillStyle = '#FED65B';
+      ctx.font = 'bold 20px Plus Jakarta Sans, sans-serif';
+      ctx.fillText(badge, 256, 250);
+
+      // Main Title
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 38px Playfair Display, serif';
+      ctx.fillText(title, 256, 305);
+
+      // Subtitle
+      ctx.fillStyle = '#E5C158';
+      ctx.font = '22px EB Garamond, serif';
+      ctx.fillText(subtitle, 256, 355);
+
+      // Tap to Open Pill
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.25)';
+      ctx.beginPath();
+      ctx.roundRect(146, 400, 220, 44, 22);
+      ctx.fill();
+      ctx.strokeStyle = '#FED65B';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#FED65B';
+      ctx.font = 'bold 16px Plus Jakarta Sans, sans-serif';
+      ctx.fillText('தட்டவும் • TAP TO EXPLORE', 256, 428);
+
+      return new THREE.CanvasTexture(c);
+    }
+
+    function createBannerSignTexture(topTag, mainTitle, subTitle, bgHex = '#7A0412') {
+      const c = document.createElement('canvas');
+      c.width = 512;
+      c.height = 256;
+      const ctx = c.getContext('2d');
+
+      ctx.fillStyle = bgHex;
+      ctx.fillRect(0, 0, 512, 256);
+
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 10;
+      ctx.strokeRect(10, 10, 492, 236);
+
+      ctx.strokeStyle = '#FED65B';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(22, 22, 468, 212);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#FED65B';
+      ctx.font = 'bold 20px Plus Jakarta Sans, sans-serif';
+      ctx.fillText(topTag, 256, 68);
+
+      ctx.fillStyle = '#FDFBF7';
+      ctx.font = 'bold 36px Playfair Display, serif';
+      ctx.fillText(mainTitle, 256, 132);
+
+      ctx.fillStyle = '#E5C158';
+      ctx.font = '22px EB Garamond, serif';
+      ctx.fillText(subTitle, 256, 188);
+
+      return new THREE.CanvasTexture(c);
+    }
+
+    // =====================================================================
+    // 3. THREE.JS PHOTOREALISTIC CHETTINAD MANSION ARCHITECTURE SETUP
+    // =====================================================================
+    let scene, camera, renderer;
+    let leftDoorPivot, rightDoorPivot, aldropBoltMesh;
+    let urliLotusGroup, waterMeshRef, dustPointsMesh;
+    let garlandLeavesGroup;
+    const interactiveMeshes = [];
+    const flamePointLights = [];
+    const floatingMedallions = [];
+
+    // Smooth Camera Interpolation State
+    const camCurrentPos = new THREE.Vector3(0, 2.3, 11.2);
+    const camTargetPos = new THREE.Vector3(0, 2.3, 11.2);
+    const camCurrentLook = new THREE.Vector3(0, 2.3, 0);
+    const camTargetLook = new THREE.Vector3(0, 2.3, 0);
+
+    // Momentum / Inertia Damped Look-Around Controls
+    let yawOffset = 0;
+    let pitchOffset = 0;
+    let targetYawOffset = 0;
+    let targetPitchOffset = 0;
+    let yawVelocity = 0;
+    let pitchVelocity = 0;
+    let isPointerDown = false;
+    let prevPointerX = 0;
+    let prevPointerY = 0;
+    let pointerDownX = 0;
+    let pointerDownY = 0;
+
+    function initThreeMansion() {
+      const canvas = document.getElementById('threeCanvas');
+      try {
+        renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          powerPreference: 'high-performance'
+        });
+      } catch (err) {
+        setExperienceMode('2D');
+        return;
+      }
+
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      // Color Management & ACES Filmic Tone Mapping for Photorealism
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.08;
+
+      // Real-Time Soft Directional Shadow Mapping
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x1a0d07);
+      scene.fog = new THREE.FogExp2(0x1a0d07, 0.016);
+
+      // Generate Procedural IBL Environment Map for Specular Brass, Teak & Glass Tile Reflections
+      const envMap = createCourtyardEnvMap(renderer);
+      scene.environment = envMap;
+
+      const aspect = window.innerWidth / Math.max(window.innerHeight, 1);
+      const adaptiveFov = aspect < 1 ? 68 : 50;
+      camera = new THREE.PerspectiveCamera(adaptiveFov, aspect, 0.1, 100);
+      camera.position.copy(camCurrentPos);
+
+      // Warm Ambient Skylight & Courtyard Bounce
+      const hemiLight = new THREE.HemisphereLight(0xfff5e3, 0x3d2010, 0.85);
+      scene.add(hemiLight);
+
+      // Directional Morning Sunlight Angled Down Into Open Mutram Skylight
+      const sunLight = new THREE.DirectionalLight(0xfffaeb, 1.65);
+      sunLight.position.set(6, 20, 5);
+      sunLight.target.position.set(0, 1, -8);
+      scene.add(sunLight.target);
+
+      sunLight.castShadow = true;
+      sunLight.shadow.mapSize.width = 2048;
+      sunLight.shadow.mapSize.height = 2048;
+      sunLight.shadow.camera.near = 1.0;
+      sunLight.shadow.camera.far = 46;
+      sunLight.shadow.camera.left = -12;
+      sunLight.shadow.camera.right = 12;
+      sunLight.shadow.camera.top = 16;
+      sunLight.shadow.camera.bottom = -16;
+      sunLight.shadow.bias = -0.0004;
+      sunLight.shadow.radius = 2.4;
+      scene.add(sunLight);
+
+      // Build Complete Architectural Zones
+      buildFloorAndWalls();
+      buildMukappuVaasalAndTeakDoors();
+      buildThinnaiAndCourtyardPillars();
+      buildMutramUrliAndPortals();
+      buildManavaraiWeddingStage();
+      buildAtmosphericSunbeamMotes();
+
+      // Bind Listeners
+      setupPointerAndTouchControls(canvas);
+      window.addEventListener('resize', onThreeResize);
+
+      // Start Animation Loop
+      animateThreeLoop();
+    }
+
+    function buildFloorAndWalls() {
+      // 1. World-Famous Athangudi Tile Floor with Clearcoat Mirror Luster
+      const athangudiTex = createAthangudiGlassTileTexture();
+      const athangudiNorm = createAthangudiNormalTexture();
+      const floorGeo = new THREE.PlaneGeometry(24, 42);
+      const floorMat = new THREE.MeshPhysicalMaterial({
+        map: athangudiTex,
+        normalMap: athangudiNorm,
+        normalScale: new THREE.Vector2(0.35, 0.35),
+        roughness: 0.2,
+        metalness: 0.04,
+        clearcoat: 0.88,
+        clearcoatRoughness: 0.1,
+        reflectivity: 0.75
+      });
+      const floorMesh = new THREE.Mesh(floorGeo, floorMat);
+      floorMesh.rotation.x = -Math.PI / 2;
+      floorMesh.position.set(0, 0, -6);
+      floorMesh.receiveShadow = true;
+      scene.add(floorMesh);
+
+      // Sunken Granite Mutram Drain Groove at Z = -8.5
+      const drainMat = new THREE.MeshStandardMaterial({ color: 0x181a1c, roughness: 0.65, metalness: 0.1 });
+      const drainBorder = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.06, 9.6), drainMat);
+      drainBorder.position.set(0, 0.03, -8.5);
+      drainBorder.receiveShadow = true;
+      scene.add(drainBorder);
+
+      // 2. Lime-Plaster Courtyard Perimeter Walls with Teak Baseboards & Cornices
+      const limeMat = new THREE.MeshStandardMaterial({ color: 0xf5eee1, roughness: 0.78, metalness: 0.02 });
+      const teakWoodMat = new THREE.MeshStandardMaterial({ color: 0x3d2010, roughness: 0.45, metalness: 0.1 });
+
+      const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.5, 7.2, 38), limeMat);
+      leftWall.position.set(-10, 3.6, -6);
+      leftWall.castShadow = true;
+      leftWall.receiveShadow = true;
+      scene.add(leftWall);
+
+      const rightWall = new THREE.Mesh(new THREE.BoxGeometry(0.5, 7.2, 38), limeMat);
+      rightWall.position.set(10, 3.6, -6);
+      rightWall.castShadow = true;
+      rightWall.receiveShadow = true;
+      scene.add(rightWall);
+
+      // Back Wall Behind Wedding Stage
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(20, 7.2, 0.6), limeMat);
+      backWall.position.set(0, 3.6, -24.8);
+      backWall.receiveShadow = true;
+      scene.add(backWall);
+
+      // Teak Baseboard Skirting
+      const leftBaseboard = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.45, 38), teakWoodMat);
+      leftBaseboard.position.set(-9.75, 0.225, -6);
+      scene.add(leftBaseboard);
+
+      const rightBaseboard = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.45, 38), teakWoodMat);
+      rightBaseboard.position.set(9.75, 0.225, -6);
+      scene.add(rightBaseboard);
+
+      // 3. Authentic Sloped Terracotta Clay Tile Roof Eaves Over Colonnades
+      const roofTex = createTerracottaRoofTileTexture();
+      const roofMat = new THREE.MeshStandardMaterial({
+        map: roofTex,
+        roughness: 0.75,
+        metalness: 0.05
+      });
+
+      // Left Colonnade Sloped Roof
+      const leftRoof = new THREE.Mesh(new THREE.PlaneGeometry(5.2, 36), roofMat);
+      leftRoof.position.set(-7.4, 6.0, -6);
+      leftRoof.rotation.x = -Math.PI / 2;
+      leftRoof.rotation.y = 0.38; // 22-degree inward pitch
+      leftRoof.castShadow = true;
+      leftRoof.receiveShadow = true;
+      scene.add(leftRoof);
+
+      // Right Colonnade Sloped Roof
+      const rightRoof = new THREE.Mesh(new THREE.PlaneGeometry(5.2, 36), roofMat);
+      rightRoof.position.set(7.4, 6.0, -6);
+      rightRoof.rotation.x = -Math.PI / 2;
+      rightRoof.rotation.y = -0.38;
+      rightRoof.castShadow = true;
+      rightRoof.receiveShadow = true;
+      scene.add(rightRoof);
+
+      // Exposed Timber Ceiling Rafters (Kazhukkol)
+      for (let z = 6; z >= -22; z -= 1.8) {
+        const rafter = new THREE.Mesh(new THREE.BoxGeometry(20, 0.22, 0.18), teakWoodMat);
+        rafter.position.set(0, 6.5, z);
+        rafter.castShadow = true;
+        scene.add(rafter);
+      }
+    }
+
+    function buildMukappuVaasalAndTeakDoors() {
+      const limeMat = new THREE.MeshStandardMaterial({ color: 0xf5ede1, roughness: 0.8 });
+      const teakMat = new THREE.MeshStandardMaterial({ color: 0x3d2010, roughness: 0.48, metalness: 0.12 });
+      const brassMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 });
+
+      // Black Granite Threshold Step with Delicate Auspicious Kolam
+      const kolamTex = createKolamThresholdTexture();
+      const stepMat = new THREE.MeshStandardMaterial({
+        map: kolamTex,
+        roughness: 0.32,
+        metalness: 0.15
+      });
+      const stepMesh = new THREE.Mesh(new THREE.BoxGeometry(10.5, 0.26, 1.8), stepMat);
+      stepMesh.position.set(0, 0.13, 5.2);
+      stepMesh.receiveShadow = true;
+      scene.add(stepMesh);
+
+      // Left & Right Flanking Thinnai Facade Walls
+      const leftFacade = new THREE.Mesh(new THREE.BoxGeometry(6.6, 6.8, 0.6), limeMat);
+      leftFacade.position.set(-5.6, 3.4, 4.6);
+      leftFacade.castShadow = true;
+      leftFacade.receiveShadow = true;
+      scene.add(leftFacade);
+
+      const rightFacade = new THREE.Mesh(new THREE.BoxGeometry(6.6, 6.8, 0.6), limeMat);
+      rightFacade.position.set(5.6, 3.4, 4.6);
+      rightFacade.castShadow = true;
+      rightFacade.receiveShadow = true;
+      scene.add(rightFacade);
+
+      // Carved Burma Teakwood Door Frame Jambs & Lintel with Gajalakshmi Pediment
+      const topLintel = new THREE.Mesh(new THREE.BoxGeometry(5.6, 1.35, 0.95), teakMat);
+      topLintel.position.set(0, 5.45, 4.6);
+      topLintel.castShadow = true;
+      scene.add(topLintel);
+
+      const leftJamb = new THREE.Mesh(new THREE.BoxGeometry(0.5, 5.2, 0.85), teakMat);
+      leftJamb.position.set(-2.25, 2.6, 4.6);
+      leftJamb.castShadow = true;
+      scene.add(leftJamb);
+
+      const rightJamb = new THREE.Mesh(new THREE.BoxGeometry(0.5, 5.2, 0.85), teakMat);
+      rightJamb.position.set(2.25, 2.6, 4.6);
+      rightJamb.castShadow = true;
+      scene.add(rightJamb);
+
+      // Auspicious 3D Thoranam (Individual Mango Leaves + Marigold Pom-Poms)
+      garlandLeavesGroup = new THREE.Group();
+      for (let i = -11; i <= 11; i++) {
+        const x = i * 0.19;
+        const norm = (Math.abs(i) % 6) / 6;
+        const curveY = 4.72 - Math.sin(norm * Math.PI) * 0.44;
+
+        // Individual sculpted pointed mango leaf
+        const leafGeo = new THREE.ConeGeometry(0.045, 0.24, 4);
+        const leafMat = new THREE.MeshStandardMaterial({ color: 0x2e6f21, roughness: 0.5 });
+        const leafMesh = new THREE.Mesh(leafGeo, leafMat);
+        leafMesh.rotation.z = Math.PI + (i % 2 === 0 ? 0.2 : -0.2);
+        leafMesh.position.set(x, curveY - 0.08, 5.06);
+        garlandLeavesGroup.add(leafMesh);
+
+        // Fluffy Marigold blossom pom-pom
+        const flowerMat = new THREE.MeshStandardMaterial({
+          color: i % 2 === 0 ? 0xfacc15 : 0xea580c,
+          roughness: 0.65
+        });
+        const flowerMesh = new THREE.Mesh(new THREE.SphereGeometry(0.09, 10, 10), flowerMat);
+        flowerMesh.scale.set(1, 0.85, 1);
+        flowerMesh.position.set(x, curveY, 5.08);
+        garlandLeavesGroup.add(flowerMesh);
+      }
+      scene.add(garlandLeavesGroup);
+
+      // Load Burma Teak Wood Texture with Procedural Fallback
+      let leftDoorTex = createHighResBurmaTeakDoorTexture(true);
+      let rightDoorTex = createHighResBurmaTeakDoorTexture(false);
+
+      const texLoader = new THREE.TextureLoader();
+      texLoader.load(
+        './assets/chettinad-door.jpg',
+        loadedTex => {
+          loadedTex.encoding = THREE.sRGBEncoding;
+          if (leftDoorMeshRef && rightDoorMeshRef) {
+            leftDoorMeshRef.material.map = loadedTex;
+            rightDoorMeshRef.material.map = loadedTex;
+            leftDoorMeshRef.material.needsUpdate = true;
+            rightDoorMeshRef.material.needsUpdate = true;
+          }
+        },
+        undefined,
+        () => {} // Smoothly retains procedural high-res fallback
+      );
+
+      // LEFT CARVED BURMA TEAK DOOR LEAF (Hinged at X = -2.0, Z = 4.6)
+      leftDoorPivot = new THREE.Group();
+      leftDoorPivot.position.set(-2.0, 0.26, 4.6);
+
+      const leftDoorMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(2.0, 4.75, 0.22),
+        new THREE.MeshStandardMaterial({
+          map: leftDoorTex,
+          roughness: 0.44,
+          metalness: 0.12
+        })
+      );
+      leftDoorMesh.position.set(1.0, 2.375, 0);
+      leftDoorMesh.castShadow = true;
+      leftDoorMesh.receiveShadow = true;
+      leftDoorMesh.userData = { action: 'toggleDoors' };
+      interactiveMeshes.push(leftDoorMesh);
+      var leftDoorMeshRef = leftDoorMesh;
+      leftDoorPivot.add(leftDoorMesh);
+
+      // 3D Brass Ring Knocker & Lion Escutcheon on Left Door
+      const leftKnocker = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.038, 12, 28), brassMat);
+      leftKnocker.position.set(1.0, 2.65, 0.14);
+      leftKnocker.castShadow = true;
+      leftKnocker.userData = { action: 'toggleDoors' };
+      interactiveMeshes.push(leftKnocker);
+      leftDoorPivot.add(leftKnocker);
+
+      // 3D Brass Pyramid Studs (Kumizhi) along left door rails
+      const studGeo = new THREE.ConeGeometry(0.045, 0.045, 4);
+      studGeo.rotateX(Math.PI / 2);
+      const studCols = [0.35, 1.0, 1.65];
+      const studRows = [1.1, 2.1, 3.2, 4.1];
+      studRows.forEach(sy => {
+        studCols.forEach(sx => {
+          const stud = new THREE.Mesh(studGeo, brassMat);
+          stud.position.set(sx, sy, 0.12);
+          stud.castShadow = true;
+          leftDoorPivot.add(stud);
+        });
+      });
+      scene.add(leftDoorPivot);
+
+      // RIGHT CARVED BURMA TEAK DOOR LEAF (Hinged at X = +2.0, Z = 4.6)
+      rightDoorPivot = new THREE.Group();
+      rightDoorPivot.position.set(2.0, 0.26, 4.6);
+
+      const rightDoorMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(2.0, 4.75, 0.22),
+        new THREE.MeshStandardMaterial({
+          map: rightDoorTex,
+          roughness: 0.44,
+          metalness: 0.12
+        })
+      );
+      rightDoorMesh.position.set(-1.0, 2.375, 0);
+      rightDoorMesh.castShadow = true;
+      rightDoorMesh.receiveShadow = true;
+      rightDoorMesh.userData = { action: 'toggleDoors' };
+      interactiveMeshes.push(rightDoorMesh);
+      var rightDoorMeshRef = rightDoorMesh;
+      rightDoorPivot.add(rightDoorMesh);
+
+      // 3D Brass Ring Knocker on Right Door
+      const rightKnocker = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.038, 12, 28), brassMat);
+      rightKnocker.position.set(-1.0, 2.65, 0.14);
+      rightKnocker.castShadow = true;
+      rightKnocker.userData = { action: 'toggleDoors' };
+      interactiveMeshes.push(rightKnocker);
+      rightDoorPivot.add(rightKnocker);
+
+      // Studs along right door
+      studRows.forEach(sy => {
+        studCols.forEach(sx => {
+          const stud = new THREE.Mesh(studGeo, brassMat);
+          stud.position.set(-sx, sy, 0.12);
+          stud.castShadow = true;
+          rightDoorPivot.add(stud);
+        });
+      });
+
+      // 3D Sliding Brass Aldrop Bolt Assembly with Brackets
+      aldropBoltMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.85, 16), brassMat);
+      aldropBoltMesh.rotation.z = Math.PI / 2;
+      aldropBoltMesh.position.set(-1.85, 2.25, 0.16);
+      aldropBoltMesh.castShadow = true;
+      rightDoorPivot.add(aldropBoltMesh);
+
+      scene.add(rightDoorPivot);
+    }
+
+    function buildThinnaiAndCourtyardPillars() {
+      const teakPillarMat = new THREE.MeshStandardMaterial({ color: 0x402210, roughness: 0.38, metalness: 0.15 });
+      const granitePlinthMat = new THREE.MeshStandardMaterial({ color: 0x25282d, roughness: 0.65, metalness: 0.12 });
+      const brassCollarMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 });
+
+      // Helper for authentic Chettinad lathe-turned pillar with Bodhai lotus brackets
+      function createChettinadPillar(x, z) {
+        const pillarGroup = new THREE.Group();
+        pillarGroup.position.set(x, 0, z);
+
+        // 1. Chiselled Square Granite Plinth Base
+        const plinth = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.45, 0.85), granitePlinthMat);
+        plinth.position.y = 0.225;
+        plinth.castShadow = true;
+        plinth.receiveShadow = true;
+        pillarGroup.add(plinth);
+
+        // 2. Turned Brass Base Collar
+        const collar = new THREE.Mesh(new THREE.TorusGeometry(0.32, 0.05, 12, 24), brassCollarMat);
+        collar.rotation.x = Math.PI / 2;
+        collar.position.y = 0.5;
+        pillarGroup.add(collar);
+
+        // 3. Lathe-Turned Fluted Burma Teak Shaft
+        const lowerSwell = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.32, 1.2, 20), teakPillarMat);
+        lowerSwell.position.y = 1.1;
+        lowerSwell.castShadow = true;
+        pillarGroup.add(lowerSwell);
+
+        const mainShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.28, 3.4, 20), teakPillarMat);
+        mainShaft.position.y = 3.35;
+        mainShaft.castShadow = true;
+        pillarGroup.add(mainShaft);
+
+        // 4. Upper Brass Neck Ring
+        const neckRing = new THREE.Mesh(new THREE.TorusGeometry(0.26, 0.04, 10, 20), brassCollarMat);
+        neckRing.rotation.x = Math.PI / 2;
+        neckRing.position.y = 5.08;
+        pillarGroup.add(neckRing);
+
+        // 5. Traditional Carved Bodhai Lotus Bracket Capital
+        const capitalCore = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.35, 0.72), teakPillarMat);
+        capitalCore.position.y = 5.35;
+        capitalCore.castShadow = true;
+        pillarGroup.add(capitalCore);
+
+        // 4-Way Extended Lotus Bud Corbel Arms
+        const armX = new THREE.Mesh(new THREE.BoxGeometry(1.25, 0.22, 0.45), teakPillarMat);
+        armX.position.y = 5.52;
+        armX.castShadow = true;
+        pillarGroup.add(armX);
+
+        const armZ = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.22, 1.25), teakPillarMat);
+        armZ.position.y = 5.52;
+        armZ.castShadow = true;
+        pillarGroup.add(armZ);
+
+        scene.add(pillarGroup);
+      }
+
+      // 8 Grand Courtyard Colonnade Pillars
+      const pillarZPositions = [1.5, -2.5, -7.5, -12.5];
+      pillarZPositions.forEach(zPos => {
+        createChettinadPillar(-4.8, zPos);
+        createChettinadPillar(4.8, zPos);
+      });
+
+      // Flanking Auspicious Kuthuvilakku Brass Standing Lamps with Glowing Flames
+      function createKuthuvilakkuLamp(x, z) {
+        const lampGroup = new THREE.Group();
+        lampGroup.position.set(x, 0, z);
+
+        const base = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.32, 0.22, 20), brassCollarMat);
+        base.position.y = 0.11;
+        base.castShadow = true;
+        lampGroup.add(base);
+
+        const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.065, 1.25, 16), brassCollarMat);
+        stem.position.y = 0.82;
+        stem.castShadow = true;
+        lampGroup.add(stem);
+
+        const bowl = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.1, 0.14, 20), brassCollarMat);
+        bowl.position.y = 1.48;
+        bowl.castShadow = true;
+        lampGroup.add(bowl);
+
+        // Sculpted 3D Teardrop Flame with Radiant Core
+        const flameCore = new THREE.Mesh(
+          new THREE.SphereGeometry(0.05, 12, 12),
+          new THREE.MeshBasicMaterial({ color: 0xffffff })
+        );
+        flameCore.scale.set(0.7, 1.8, 0.7);
+        flameCore.position.y = 1.62;
+        lampGroup.add(flameCore);
+
+        const flameMantle = new THREE.Mesh(
+          new THREE.SphereGeometry(0.09, 12, 12),
+          new THREE.MeshBasicMaterial({
+            color: 0xffa028,
+            transparent: true,
+            opacity: 0.85,
+            blending: THREE.AdditiveBlending
+          })
+        );
+        flameMantle.scale.set(0.8, 2.0, 0.8);
+        flameMantle.position.y = 1.63;
+        lampGroup.add(flameMantle);
+
+        // Dynamic Flickering Point Light
+        const light = new THREE.PointLight(0xffa236, 1.15, 6.8, 2.0);
+        light.position.set(x, 1.7, z);
+        scene.add(light);
+        flamePointLights.push({
+          light,
+          flameMantle,
+          baseIntensity: 1.15,
+          phase: Math.random() * Math.PI * 2
+        });
+
+        scene.add(lampGroup);
+      }
+
+      // Position lamps at entrance, veranda, and colonnade corners
+      createKuthuvilakkuLamp(-2.8, 5.3);
+      createKuthuvilakkuLamp(2.8, 5.3);
+      createKuthuvilakkuLamp(-2.8, -1.2);
+      createKuthuvilakkuLamp(2.8, -1.2);
+      createKuthuvilakkuLamp(-3.8, -15.5);
+      createKuthuvilakkuLamp(3.8, -15.5);
+
+      // Stop 2: Thinnai Welcome Shrine Arch with High-Res Couple Portrait
+      const shrineGroup = new THREE.Group();
+      shrineGroup.position.set(0, 0, -1.2);
+
+      const frameMat = new THREE.MeshStandardMaterial({ color: 0x3d2010, roughness: 0.45 });
+      const goldFrameMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 });
+
+      // Ornate Dravidian Arch Pedestal
+      const archBorder = new THREE.Mesh(new THREE.BoxGeometry(4.2, 2.4, 0.16), frameMat);
+      archBorder.position.y = 3.6;
+      archBorder.castShadow = true;
+      shrineGroup.add(archBorder);
+
+      const goldLining = new THREE.Mesh(new THREE.BoxGeometry(4.0, 2.2, 0.18), goldFrameMat);
+      goldLining.position.y = 3.6;
+      shrineGroup.add(goldLining);
+
+      // Fine-Art Couple Portrait Canvas
+      const texLoader = new THREE.TextureLoader();
+      const portraitTex = texLoader.load(
+        './assets/hero-couple.jpg',
+        t => { t.encoding = THREE.sRGBEncoding; },
+        undefined,
+        () => {}
+      );
+      const portraitMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(3.6, 1.9),
+        new THREE.MeshStandardMaterial({ map: portraitTex, roughness: 0.35 })
+      );
+      portraitMesh.position.set(0, 3.6, 0.11);
+      portraitMesh.userData = { action: 'openModal', modalId: 'quickInfoModal' };
+      interactiveMeshes.push(portraitMesh);
+      shrineGroup.add(portraitMesh);
+
+      // Auspicious Gilded Caption Plaque
+      const plaqueMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(3.2, 0.4, 0.08),
+        new THREE.MeshStandardMaterial({ color: 0x7A0412, roughness: 0.35, metalness: 0.3 })
+      );
+      plaqueMesh.position.set(0, 2.4, 0.14);
+      shrineGroup.add(plaqueMesh);
+
+      scene.add(shrineGroup);
+    }
+
+    function buildMutramUrliAndPortals() {
+      const brassMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 });
+
+      // Central Sacred Brass Urli at Z = -8.5
+      const urliGroup = new THREE.Group();
+      urliGroup.position.set(0, 0, -8.5);
+
+      const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.95, 1.25, 0.45, 28), brassMat);
+      pedestal.position.y = 0.225;
+      pedestal.castShadow = true;
+      pedestal.receiveShadow = true;
+      urliGroup.add(pedestal);
+
+      const bowl = new THREE.Mesh(new THREE.CylinderGeometry(1.45, 0.78, 0.6, 32), brassMat);
+      bowl.position.y = 0.72;
+      bowl.castShadow = true;
+      urliGroup.add(bowl);
+
+      // Flared Rim
+      const rim = new THREE.Mesh(new THREE.TorusGeometry(1.44, 0.06, 12, 32), brassMat);
+      rim.rotation.x = Math.PI / 2;
+      rim.position.y = 1.02;
+      urliGroup.add(rim);
+
+      // Side Brass Ring Handles (Kadas)
+      const handleL = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.035, 10, 20), brassMat);
+      handleL.position.set(-1.48, 0.88, 0);
+      urliGroup.add(handleL);
+
+      const handleR = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.035, 10, 20), brassMat);
+      handleR.position.set(1.48, 0.88, 0);
+      urliGroup.add(handleR);
+
+      // Animated Glistening Sacred Water Surface
+      const waterMat = new THREE.MeshPhysicalMaterial({
+        color: 0x174d6b,
+        roughness: 0.08,
+        metalness: 0.15,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.08,
+        reflectivity: 0.95,
+        transmission: 0.5,
+        transparent: true,
+        opacity: 0.92
+      });
+      waterMeshRef = new THREE.Mesh(new THREE.CircleGeometry(1.36, 32), waterMat);
+      waterMeshRef.rotation.x = -Math.PI / 2;
+      waterMeshRef.position.y = 0.98;
+      waterMeshRef.receiveShadow = true;
+      urliGroup.add(waterMeshRef);
+
+      // Floating Multi-Layered Pink Sacred Lotuses & Marigold Petals
+      urliLotusGroup = new THREE.Group();
+      urliLotusGroup.position.y = 1.01;
+
+      function createLotusBlossom(x, z, scale = 1.0) {
+        const flower = new THREE.Group();
+        flower.position.set(x, 0, z);
+        flower.scale.setScalar(scale);
+
+        // Green Lily Pad Base
+        const padMat = new THREE.MeshStandardMaterial({ color: 0x276624, roughness: 0.5 });
+        const pad = new THREE.Mesh(new THREE.CircleGeometry(0.24, 16, 0, Math.PI * 1.85), padMat);
+        pad.rotation.x = -Math.PI / 2;
+        flower.add(pad);
+
+        // Outer & Inner Pink Petals
+        const petalMat = new THREE.MeshStandardMaterial({ color: 0xf472b6, roughness: 0.38 });
+        for (let i = 0; i < 8; i++) {
+          const a = (i * Math.PI) / 4;
+          const petal = new THREE.Mesh(new THREE.ConeGeometry(0.065, 0.22, 5), petalMat);
+          petal.rotation.x = 0.45;
+          petal.rotation.y = a;
+          petal.position.set(Math.cos(a) * 0.08, 0.05, Math.sin(a) * 0.08);
+          flower.add(petal);
+        }
+
+        // Golden Seed Pod Center
+        const seedPod = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.05, 0.03, 0.06, 12),
+          new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.3 })
+        );
+        seedPod.position.y = 0.06;
+        flower.add(seedPod);
+
+        return flower;
+      }
+
+      urliLotusGroup.add(createLotusBlossom(0, 0, 1.25));
+      urliLotusGroup.add(createLotusBlossom(0.55, 0.35, 0.9));
+      urliLotusGroup.add(createLotusBlossom(-0.5, 0.4, 0.85));
+      urliLotusGroup.add(createLotusBlossom(-0.45, -0.45, 0.95));
+      urliLotusGroup.add(createLotusBlossom(0.5, -0.4, 0.85));
+
+      // Adrift Marigold Petal Flakes on Water
+      for (let p = 0; p < 18; p++) {
+        const pAng = Math.random() * Math.PI * 2;
+        const pDist = 0.3 + Math.random() * 0.85;
+        const petalFlake = new THREE.Mesh(
+          new THREE.CircleGeometry(0.032, 6),
+          new THREE.MeshStandardMaterial({ color: p % 2 === 0 ? 0xfacc15 : 0xea580c, roughness: 0.6 })
+        );
+        petalFlake.rotation.x = -Math.PI / 2;
+        petalFlake.position.set(Math.cos(pAng) * pDist, 0.01, Math.sin(pAng) * pDist);
+        urliLotusGroup.add(petalFlake);
+      }
+      urliGroup.add(urliLotusGroup);
+      scene.add(urliGroup);
+
+      // 4 Interactive 3D Floating Golden Medallion Portals
+      const portalConfigs = [
+        {
+          x: -3.5, y: 2.35, z: -6.6,
+          badge: "PILLAR I • மணவறை",
+          title: "1. Manavarai",
+          sub: "Muhurtham Timings",
+          icon: "🛕",
+          bg: "#7A0412",
+          modalId: "manavaraiModal"
+        },
+        {
+          x: 3.5, y: 2.35, z: -6.6,
+          badge: "PILLAR II • விருந்து",
+          title: "2. Virundhu Feast",
+          sub: "16-Item Banana Leaf",
+          icon: "🍃",
+          bg: "#1b4d18",
+          modalId: "virundhuModal"
+        },
+        {
+          x: -3.5, y: 2.35, z: -10.5,
+          badge: "PILLAR III • வரலாறு",
+          title: "3. Story & Attire",
+          sub: "Couple Moments & Stay",
+          icon: "💑",
+          bg: "#1D3557",
+          modalId: "storyModal"
+        },
+        {
+          x: 3.5, y: 2.35, z: -10.5,
+          badge: "PILLAR IV • வழிகாட்டி",
+          title: "4. Route Map",
+          sub: "Venues, Nav & RSVP",
+          icon: "🧭",
+          bg: "#5a4103",
+          modalId: "mapModal"
+        }
+      ];
+
+      portalConfigs.forEach((cfg, idx) => {
+        const group = new THREE.Group();
+        group.position.set(cfg.x, cfg.y, cfg.z);
+
+        const tex = createGoldenMedallionTexture(cfg.badge, cfg.title, cfg.sub, cfg.icon, cfg.bg);
+        const medallionMesh = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.92, 0.92, 0.1, 32),
+          [
+            new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 }),
+            new THREE.MeshStandardMaterial({ map: tex, roughness: 0.28, metalness: 0.2 }),
+            new THREE.MeshStandardMaterial({ color: 0x3d2010, roughness: 0.45 })
+          ]
+        );
+        medallionMesh.rotation.x = Math.PI / 2;
+        medallionMesh.userData = { action: 'openModal', modalId: cfg.modalId };
+        interactiveMeshes.push(medallionMesh);
+        group.add(medallionMesh);
+
+        // Glowing Pulsing Halo Ring
+        const haloMat = new THREE.MeshBasicMaterial({
+          color: 0xfed65b,
+          transparent: true,
+          opacity: 0.45,
+          blending: THREE.AdditiveBlending
+        });
+        const haloRing = new THREE.Mesh(new THREE.TorusGeometry(1.08, 0.035, 12, 32), haloMat);
+        group.add(haloRing);
+
+        group.userData = {
+          baseY: cfg.y,
+          haloRing,
+          phase: idx * 1.2
+        };
+        floatingMedallions.push(group);
+        scene.add(group);
+      });
+    }
+
+    function buildManavaraiWeddingStage() {
+      const stageGroup = new THREE.Group();
+      stageGroup.position.set(0, 0, -19.5);
+
+      const goldMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 });
+      const teakMat = new THREE.MeshStandardMaterial({ color: 0x3d2010, roughness: 0.48 });
+      const carpetMat = new THREE.MeshStandardMaterial({ color: 0x820c18, roughness: 0.65 });
+
+      // Raised Crimson Ceremonial Dais
+      const daisTier1 = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.4, 4.8), carpetMat);
+      daisTier1.position.y = 0.2;
+      daisTier1.castShadow = true;
+      daisTier1.receiveShadow = true;
+      stageGroup.add(daisTier1);
+
+      const daisTier2 = new THREE.Mesh(new THREE.BoxGeometry(7.8, 0.35, 3.8), carpetMat);
+      daisTier2.position.y = 0.55;
+      daisTier2.castShadow = true;
+      daisTier2.receiveShadow = true;
+      stageGroup.add(daisTier2);
+
+      // Gold Border Trim around Platform
+      const daisTrim = new THREE.Mesh(new THREE.BoxGeometry(8.0, 0.08, 4.0), goldMat);
+      daisTrim.position.y = 0.72;
+      stageGroup.add(daisTrim);
+
+      // Ornate Carved Dravidian Temple Gopuram Archway Backdrop
+      const archBackdrop = new THREE.Mesh(new THREE.BoxGeometry(6.6, 4.2, 0.24), teakMat);
+      archBackdrop.position.set(0, 2.9, -1.6);
+      archBackdrop.castShadow = true;
+      stageGroup.add(archBackdrop);
+
+      // Auspicious Wedding Monogram Plaque
+      const bannerTex = createBannerSignTexture(
+        "|| ஓம் முருகா • சுபமுகூர்த்தம் • 22.11.2026 ||",
+        "Annamalai & Sarmila",
+        "Thiruparankundram Sri Murugan Temple & Nagarathar Mandapam",
+        "#7A0412"
+      );
+      const bannerMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(5.8, 2.8),
+        new THREE.MeshStandardMaterial({ map: bannerTex, roughness: 0.35, metalness: 0.15 })
+      );
+      bannerMesh.position.set(0, 2.9, -1.45);
+      bannerMesh.userData = { action: 'openModal', modalId: 'manavaraiModal' };
+      interactiveMeshes.push(bannerMesh);
+      stageGroup.add(bannerMesh);
+
+      // Gilded Gopuram Canopy Crown
+      const canopy = new THREE.Mesh(new THREE.ConeGeometry(4.4, 1.8, 4), goldMat);
+      canopy.rotation.y = Math.PI / 4;
+      canopy.position.set(0, 5.8, -1.45);
+      canopy.castShadow = true;
+      stageGroup.add(canopy);
+
+      // Cascading Fresh White Jasmine & Rose Floral Garlands Flanking the Arch
+      for (let side = -1; side <= 1; side += 2) {
+        for (let g = 0; g < 18; g++) {
+          const flower = new THREE.Mesh(
+            new THREE.SphereGeometry(0.1, 8, 8),
+            new THREE.MeshStandardMaterial({
+              color: g % 3 === 0 ? 0xbe123c : g % 3 === 1 ? 0xffffff : 0xfacc15,
+              roughness: 0.55
+            })
+          );
+          flower.position.set(side * 2.85, 4.8 - g * 0.22, -1.4 + (g % 2) * 0.04);
+          stageGroup.add(flower);
+        }
+      }
+
+      // Sacred Ceremonial Poornakumbham (Brass Pot with Mango Leaves & Coconut)
+      const kumbhamGroup = new THREE.Group();
+      kumbhamGroup.position.set(0, 0.75, 0.4);
+
+      const pot = new THREE.Mesh(new THREE.SphereGeometry(0.24, 16, 16), goldMat);
+      pot.position.y = 0.22;
+      pot.castShadow = true;
+      kumbhamGroup.add(pot);
+
+      const coconut = new THREE.Mesh(
+        new THREE.SphereGeometry(0.15, 12, 12),
+        new THREE.MeshStandardMaterial({ color: 0x5a2d0c, roughness: 0.75 })
+      );
+      coconut.scale.set(0.9, 1.35, 0.9);
+      coconut.position.y = 0.48;
+      coconut.castShadow = true;
+      kumbhamGroup.add(coconut);
+
+      for (let m = 0; m < 5; m++) {
+        const ma = (m * Math.PI * 2) / 5;
+        const mLeaf = new THREE.Mesh(
+          new THREE.ConeGeometry(0.06, 0.26, 4),
+          new THREE.MeshStandardMaterial({ color: 0x1f5c18, roughness: 0.5 })
+        );
+        mLeaf.rotation.x = 0.55;
+        mLeaf.rotation.y = ma;
+        mLeaf.position.set(Math.cos(ma) * 0.1, 0.38, Math.sin(ma) * 0.1);
+        kumbhamGroup.add(mLeaf);
+      }
+      stageGroup.add(kumbhamGroup);
+
+      scene.add(stageGroup);
+    }
+
+    function buildAtmosphericSunbeamMotes() {
+      const motesCount = 180;
+      const geo = new THREE.BufferGeometry();
+      const positions = new Float32Array(motesCount * 3);
+
+      for (let i = 0; i < motesCount; i++) {
+        positions[i * 3 + 0] = (Math.random() - 0.5) * 8.5;
+        positions[i * 3 + 1] = 0.8 + Math.random() * 5.2;
+        positions[i * 3 + 2] = -3.5 - Math.random() * 11.5;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+      const mat = new THREE.PointsMaterial({
+        color: 0xffe28a,
+        size: 0.085,
+        transparent: true,
+        opacity: 0.65,
+        blending: THREE.AdditiveBlending
+      });
+      dustPointsMesh = new THREE.Points(geo, mat);
+      scene.add(dustPointsMesh);
+    }
+
+    // =====================================================================
+    // 4. 3D NAVIGATION, DOOR SWING & RAYCASTER INTERACTION
+    // =====================================================================
+    function swing3DTeakDoors(openState) {
+      areTeakDoorsOpen = openState;
+      playTempleBellChime();
+      if (openState && current3DStopIndex === 0) {
+        setTimeout(() => moveTo3DStop(1), 680);
+      }
+      updateStageBannerUI();
+    }
+
+    function moveTo3DStop(stopIndex) {
+      if (stopIndex > 0 && !areTeakDoorsOpen) {
+        areTeakDoorsOpen = true;
+        playTempleBellChime();
+      }
+      current3DStopIndex = stopIndex;
+      const stop = MANSION_STOPS[stopIndex];
+
+      camTargetPos.set(stop.camPos.x, stop.camPos.y, stop.camPos.z);
+      camTargetLook.set(stop.lookAt.x, stop.lookAt.y, stop.lookAt.z);
+
+      targetYawOffset = 0;
+      targetPitchOffset = 0;
+      yawVelocity = 0;
+      pitchVelocity = 0;
+
+      updateStageBannerUI();
+    }
+
+    function goToNext3DStop() {
+      const nextIdx = (current3DStopIndex + 1) % MANSION_STOPS.length;
+      moveTo3DStop(nextIdx);
+    }
+
+    function handleStagePrimaryAction() {
+      if (current3DStopIndex === 0) {
+        swing3DTeakDoors(!areTeakDoorsOpen);
+      } else if (current3DStopIndex === 1) {
+        openModalDrawer('quickInfoModal');
+      } else if (current3DStopIndex === 2) {
+        openModalDrawer('virundhuModal');
+      } else if (current3DStopIndex === 3) {
+        openModalDrawer('manavaraiModal');
+      }
+    }
+
+    function updateStageBannerUI() {
+      const stop = MANSION_STOPS[current3DStopIndex];
+      document.getElementById('stageStepBadge').textContent = stop.badge;
+      document.getElementById('stageTitleText').textContent = stop.title;
+      document.getElementById('stageSubtitleText').textContent = stop.subtitle;
+
+      const primaryBtn = document.getElementById('stagePrimaryActionBtn');
+      if (current3DStopIndex === 0 && areTeakDoorsOpen) {
+        primaryBtn.textContent = '🚶 Enter Thinnai Veranda →';
+      } else {
+        primaryBtn.textContent = stop.ctaText;
+      }
+
+      // Highlight active spatial dock button
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`dock-btn-${i}`);
+        if (!btn) continue;
+        if (i === current3DStopIndex) {
+          btn.className = 'dock-stop-btn flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-vermillion text-mustard border border-templeGold transition-all';
+        } else {
+          btn.className = 'dock-stop-btn flex flex-col items-center justify-center py-1.5 px-1 rounded-xl text-sandalwood/80 hover:bg-sandalwood/10 transition-all';
+        }
+      }
+    }
+
+    function setupPointerAndTouchControls(canvas) {
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+
+      canvas.addEventListener('pointerdown', e => {
+        isPointerDown = true;
+        prevPointerX = e.clientX;
+        prevPointerY = e.clientY;
+        pointerDownX = e.clientX;
+        pointerDownY = e.clientY;
+        yawVelocity = 0;
+        pitchVelocity = 0;
+      });
+
+      window.addEventListener('pointermove', e => {
+        if (!isPointerDown) return;
+        const dx = e.clientX - prevPointerX;
+        const dy = e.clientY - prevPointerY;
+        prevPointerX = e.clientX;
+        prevPointerY = e.clientY;
+
+        yawVelocity = -dx * 0.0038;
+        pitchVelocity = -dy * 0.0028;
+
+        targetYawOffset = Math.max(-1.3, Math.min(1.3, targetYawOffset + yawVelocity));
+        targetPitchOffset = Math.max(-0.38, Math.min(0.42, targetPitchOffset + pitchVelocity));
+      });
+
+      window.addEventListener('pointerup', e => {
+        if (!isPointerDown) return;
+        isPointerDown = false;
+
+        const moveDist = Math.hypot(e.clientX - pointerDownX, e.clientY - pointerDownY);
+        if (moveDist < 10) {
+          // Precise Tap / Click: Raycast 3D Interactive Hotspots
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+          raycaster.setFromCamera(mouse, camera);
+          const hits = raycaster.intersectObjects(interactiveMeshes, true);
+          if (hits.length > 0) {
+            // Find userData from hit mesh or its closest parent
+            let obj = hits[0].object;
+            while (obj && !obj.userData.action && obj.parent) {
+              obj = obj.parent;
+            }
+            const data = obj ? obj.userData : hits[0].object.userData;
+            if (data && data.action === 'toggleDoors') {
+              swing3DTeakDoors(!areTeakDoorsOpen);
+            } else if (data && data.action === 'openModal' && data.modalId) {
+              openModalDrawer(data.modalId);
+            }
+          }
+        }
+      });
+    }
+
+    function onThreeResize() {
+      if (!renderer || !camera) return;
+      const w = window.innerWidth;
+      const h = Math.max(window.innerHeight, 1);
+      const aspect = w / h;
+      camera.fov = aspect < 1 ? 68 : 50;
+      camera.aspect = aspect;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+
+    function animateThreeLoop() {
+      requestAnimationFrame(animateThreeLoop);
+
+      // Battery & Performance Optimization: Pause rendering when in 2D mode, tab hidden, or drawer open
+      if (currentExperienceMode !== '3D' || isAnyDrawerOpen || document.hidden || !renderer) {
+        return;
+      }
+
+      const time = performance.now() * 0.001;
+
+      // Animate 3D Teakwood Double Doors & Brass Aldrop Bolt with Spring Damper
+      if (leftDoorPivot && rightDoorPivot) {
+        const targetLeftRot = areTeakDoorsOpen ? -Math.PI * 0.65 : 0;
+        const targetRightRot = areTeakDoorsOpen ? Math.PI * 0.65 : 0;
+        leftDoorPivot.rotation.y += (targetLeftRot - leftDoorPivot.rotation.y) * 0.065;
+        rightDoorPivot.rotation.y += (targetRightRot - rightDoorPivot.rotation.y) * 0.065;
+
+        if (aldropBoltMesh) {
+          const targetBoltX = areTeakDoorsOpen ? -1.45 : -1.85;
+          aldropBoltMesh.position.x += (targetBoltX - aldropBoltMesh.position.x) * 0.12;
+        }
+      }
+
+      // Gentle Thoranam Sway in the Courtyard Breeze
+      if (garlandLeavesGroup) {
+        garlandLeavesGroup.rotation.z = Math.sin(time * 1.6) * 0.012;
+      }
+
+      // Animate Lotuses & Water Ripples in Sacred Brass Urli
+      if (urliLotusGroup) {
+        urliLotusGroup.rotation.y = time * 0.18;
+      }
+      if (waterMeshRef) {
+        waterMeshRef.position.y = 0.98 + Math.sin(time * 2.4) * 0.004;
+      }
+
+      // Organic Multi-Frequency Kuthuvilakku Flame Flicker
+      flamePointLights.forEach(item => {
+        const flicker =
+          Math.sin(time * 8.5 + item.phase) * 0.14 +
+          Math.sin(time * 19.3 + item.phase) * 0.06;
+        item.light.intensity = item.baseIntensity + flicker;
+        if (item.flameMantle) {
+          const s = 1.0 + flicker * 0.45;
+          item.flameMantle.scale.set(0.8 * s, 2.0 * s, 0.8 * s);
+        }
+      });
+
+      // Animate 3D Floating Golden Medallion Portals
+      floatingMedallions.forEach(group => {
+        const u = group.userData;
+        group.position.y = u.baseY + Math.sin(time * 2.2 + u.phase) * 0.07;
+        if (u.haloRing) {
+          const pulse = 1.0 + Math.sin(time * 3.5 + u.phase) * 0.08;
+          u.haloRing.scale.set(pulse, pulse, pulse);
+        }
+      });
+
+      // Atmospheric Golden Sunbeam Motes Drift
+      if (dustPointsMesh) {
+        const pos = dustPointsMesh.geometry.attributes.position.array;
+        for (let i = 1; i < pos.length; i += 3) {
+          pos[i] += Math.sin(time + i) * 0.0025;
+          if (pos[i] > 6.0) pos[i] = 1.0;
+        }
+        dustPointsMesh.geometry.attributes.position.needsUpdate = true;
+      }
+
+      // Smooth Momentum Damping for Touch Look-Around
+      if (!isPointerDown) {
+        yawVelocity *= 0.92;
+        pitchVelocity *= 0.92;
+        targetYawOffset = Math.max(-1.3, Math.min(1.3, targetYawOffset + yawVelocity));
+        targetPitchOffset = Math.max(-0.38, Math.min(0.42, targetPitchOffset + pitchVelocity));
+      }
+
+      // Smooth Camera Glide Interpolation
+      camCurrentPos.lerp(camTargetPos, 0.05);
+      camCurrentLook.lerp(camTargetLook, 0.05);
+      yawOffset += (targetYawOffset - yawOffset) * 0.09;
+      pitchOffset += (targetPitchOffset - pitchOffset) * 0.09;
+
+      camera.position.copy(camCurrentPos);
+
+      const lookDir = new THREE.Vector3().subVectors(camCurrentLook, camCurrentPos);
+      lookDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), yawOffset);
+      const lookTarget = new THREE.Vector3().addVectors(camCurrentPos, lookDir);
+      lookTarget.y += pitchOffset * 4.2;
+      camera.lookAt(lookTarget);
+
+      renderer.render(scene, camera);
+    }
+
+    // =====================================================================
+    // 5. MODAL DRAWER MANAGEMENT & DYNAMIC CONTENT RENDERING
+    // =====================================================================
+    function openModalDrawer(modalId) {
+      closeAllModalDrawers();
+      const el = document.getElementById(modalId);
+      if (el) {
+        el.classList.remove('hidden');
+        isAnyDrawerOpen = true;
+        playTempleBellChime();
+      }
+    }
+
+    function closeAllModalDrawers() {
+      document.querySelectorAll('.modal-drawer').forEach(el => el.classList.add('hidden'));
+      isAnyDrawerOpen = false;
+    }
+
+    function renderAllConfiguredContent() {
+      const cfg = window.WEDDING_CONFIG;
+
+      // 1. Render Itinerary Cards (both in Manavarai Modal & 2D Lite View)
+      const itineraryHTML = cfg.itinerary.map(item => `
+        <article class="bg-sandalwood p-5 rounded-lg border-2 ${item.highlight ? 'border-vermillion ring-2 ring-vermillion/30' : 'border-templeGold/70'} flex flex-col justify-between shadow-sm">
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded ${item.highlight ? 'bg-vermillion text-sandalwood' : 'bg-indigoTile/10 text-indigoTile border border-indigoTile/40'} font-sans text-[10px] uppercase tracking-wider font-bold">
+              ${item.time}
+            </span>
+            <h3 class="font-display text-xl font-semibold ${item.highlight ? 'text-vermillion' : 'text-teakwood'} mt-2">
+              ${item.title}
+            </h3>
+            <p class="font-serif text-base text-teakwood/85 mt-1.5 leading-relaxed">
+              ${item.desc}
+            </p>
+          </div>
+          <div class="mt-4 pt-2.5 border-t border-templeGold/40 font-sans text-[10px] uppercase tracking-wider text-vermillion font-bold">
+            📍 ${item.location}
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('modalItineraryGrid').innerHTML = itineraryHTML;
+      document.getElementById('liteItineraryGrid').innerHTML = itineraryHTML;
+
+      // 2. Render Banana Leaf Interactive Hotspots (16 Items)
+      const topLeafIndices = [13, 3, 4, 5, 6, 8, 12, 9]; // Pickles, sides, payasam
+      const bottomLeafIndices = [7, 0, 1, 2, 10, 11, 14, 15]; // Biryani, rice, sambar, rasam, curd, beeda, Jigarthanda
+
+      const buildLeafSpot = idx => {
+        const dish = cfg.feastMenu[idx];
+        const isSpecial = dish.num === 16 || dish.num === 8 || dish.num === 1;
+        return `
+          <button onclick="inspectBananaLeafDish(${idx})" id="leaf-spot-${idx}" type="button" class="p-2 rounded-xl ${
+            dish.num === 16 ? 'bg-[#7a0412]/90 border-2 border-mustard text-mustard' : isSpecial ? 'bg-white/25 border border-mustard text-sandalwood' : 'bg-white/15 border border-white/30 text-sandalwood'
+          } hover:bg-white/35 text-center transition-all">
+            <span class="text-base block">${dish.icon}</span>
+            <span class="font-sans text-[9px] sm:text-[10px] font-bold block leading-tight mt-0.5 truncate">${dish.num}. ${dish.tamil}</span>
+          </button>
+        `;
+      };
+
+      document.getElementById('leafTopRow').innerHTML = topLeafIndices.map(buildLeafSpot).join('');
+      document.getElementById('leafBottomRow').innerHTML = bottomLeafIndices.map(buildLeafSpot).join('');
+
+      // 3. Render 16-Item Feast Cards Grid
+      filterFeastMenu('all');
+      document.getElementById('liteFeastGrid').innerHTML = buildFeastCardsHTML('all');
+    }
+
+    function buildFeastCardsHTML(categoryFilter) {
+      return window.WEDDING_CONFIG.feastMenu
+        .filter(item => categoryFilter === 'all' || item.category === categoryFilter)
+        .map((item, idx) => {
+          const isJigarthanda = item.num === 16;
+          return `
+            <div onclick="inspectBananaLeafDish(${item.num - 1})" class="cursor-pointer rounded-lg p-4 border-2 transition-all hover:-translate-y-0.5 ${
+              isJigarthanda
+                ? 'bg-gradient-to-br from-[#7A0412] to-[#42030a] text-sandalwood border-templeGold shadow-md'
+                : 'bg-sandalwood text-teakwood border-templeGold/70 hover:border-vermillion shadow-sm'
+            }">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-full ${isJigarthanda ? 'bg-mustard text-vermillionDeep' : 'bg-parchment text-vermillion'} border border-templeGold flex items-center justify-center text-lg shrink-0">
+                  ${item.icon}
+                </div>
+                <div>
+                  <span class="font-sans text-[10px] uppercase tracking-wider font-bold ${isJigarthanda ? 'text-mustard' : 'text-vermillion'}">
+                    Item #${item.num} ${isJigarthanda ? '• ★ Madurai Pride' : ''}
+                  </span>
+                  <h4 class="font-display text-base font-bold leading-snug mt-0.5">${item.tamil}</h4>
+                  <p class="font-serif text-sm font-semibold ${isJigarthanda ? 'text-champagneGold' : 'text-indigoTile'}">${item.eng}</p>
+                  <p class="font-serif text-xs ${isJigarthanda ? 'text-sandalwood/85' : 'text-teakwood/80'} mt-1">${item.desc}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+    }
+
+    function filterFeastMenu(cat) {
+      ['all', 'main', 'sides', 'finale'].forEach(c => {
+        const btn = document.getElementById(`feast-tab-${c}`);
+        if (!btn) return;
+        btn.className = c === cat
+          ? 'px-3.5 py-1.5 rounded-full font-sans text-[11px] uppercase tracking-wider font-bold bg-vermillion text-sandalwood border border-templeGold'
+          : 'px-3.5 py-1.5 rounded-full font-sans text-[11px] uppercase tracking-wider font-semibold bg-sandalwood text-teakwood border border-templeGold/60';
+      });
+      document.getElementById('modalFeastGrid').innerHTML = buildFeastCardsHTML(cat);
+    }
+
+    function inspectBananaLeafDish(index) {
+      const dish = window.WEDDING_CONFIG.feastMenu[index];
+      if (!dish) return;
+      document.getElementById('spotlightNumberBadge').textContent = `Item #${dish.num} of 16 • ${dish.category.toUpperCase()}`;
+      document.getElementById('spotlightTamilTitle').textContent = `${dish.num}. ${dish.tamil}`;
+      document.getElementById('spotlightEngTitle').textContent = dish.eng;
+      document.getElementById('spotlightDesc').textContent = dish.desc;
+      playTempleBellChime();
+    }
+
+    function replayBananaLeafUnfold() {
+      const leaf = document.getElementById('interactiveBananaLeaf');
+      leaf.classList.add('leaf-is-folded');
+      setTimeout(() => leaf.classList.remove('leaf-is-folded'), 150);
+    }
+
+    // =====================================================================
+    // 6. COUNTDOWN CLOCK, ICS CALENDAR, CLIPBOARD, AUDIO & RSVP
+    // =====================================================================
+    function updateCountdowns() {
+      const target = new Date(window.WEDDING_CONFIG.event.isoStart).getTime();
+      const diff = Math.max(0, target - Date.now());
+
+      const d = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      const m = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+      const s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+      const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+      setTxt('envDays', d); setTxt('envHours', h); setTxt('envMins', m);
+      setTxt('liteDays', d); setTxt('liteHours', h); setTxt('liteMinutes', m); setTxt('liteSeconds', s);
+    }
+
+    // Web Audio API Carnatic Veena & Temple Bell Synthesizer
+    let audioCtx = null;
+    let isMusicPlaying = false;
+    let melodyInterval = null;
+    const ragaNotes = [261.63, 293.66, 329.63, 392.00, 493.88, 523.25, 493.88, 392.00, 329.63, 293.66];
+    let noteIndex = 0;
+
+    function ensureAudio() {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AC();
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playVeenaPluck(freq) {
+      if (!audioCtx || !isMusicPlaying) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq * 0.985, now);
+      osc.frequency.exponentialRampToValueAtTime(freq, now + 0.12);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(0.045, now + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + 1.7);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 1.75);
+    }
+
+    function playTempleBellChime() {
+      try {
+        ensureAudio();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1046.5, now);
+        gain.gain.setValueAtTime(0.025, now);
+        gain.gain.exponentialRampToValueAtTime(0.0005, now + 0.9);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.95);
+      } catch (e) {}
+    }
+
+    function toggleTraditionalMusic() {
+      ensureAudio();
+      isMusicPlaying = !isMusicPlaying;
+      const eqs = document.querySelectorAll('.eq-indicator');
+      if (isMusicPlaying) {
+        eqs.forEach(el => el.classList.add('eq-playing'));
+        playVeenaPluck(ragaNotes[noteIndex]);
+        melodyInterval = setInterval(() => {
+          noteIndex = (noteIndex + 1) % ragaNotes.length;
+          playVeenaPluck(ragaNotes[noteIndex]);
+        }, 1550);
+      } else {
+        eqs.forEach(el => el.classList.remove('eq-playing'));
+        if (melodyInterval) clearInterval(melodyInterval);
+      }
+    }
+
+    function copyTextToClipboard(text, toastMsg) {
+      const area = document.createElement('textarea');
+      area.value = text;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand('copy');
+      document.body.removeChild(area);
+      showToast(toastMsg);
+    }
+
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      document.getElementById('toastMessage').textContent = msg;
+      box.classList.remove('hidden');
+      setTimeout(() => box.classList.add('hidden'), 3500);
+    }
+
+    function downloadWeddingICS() {
+      const ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Annamalai & Sarmila Wedding//EN',
+        'BEGIN:VEVENT',
+        'SUMMARY:Chettinad Heritage Wedding of Annamalai & Sarmila',
+        'DTSTART:20261122T060000',
+        'DTEND:20261122T153000',
+        'LOCATION:Thiruparankundram Nagarathar Mandapam & Sri Murugan Temple, Madurai 625005',
+        'DESCRIPTION:Subha Muhurtham (06:00-07:30 AM IST) followed by Noon Chettinad Kalyana Virundhu at Thiruparankundram Nagarathar Mandapam, Madurai.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'annamalai_sarmila_wedding_2026.ics';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Wedding Calendar Event (.ics) saved!');
+    }
+
+    const rsvpEntries = [
+      { name: 'Thiru. Meyyappan & Family', status: 'Joyfully Attending', guests: 4, dietary: 'Traditional Pure Veg (Banana Leaf)', song: 'Kalyana Malai' },
+      { name: 'Smt. Valliammai Nachiyar', status: 'Joyfully Attending', guests: 2, dietary: 'Traditional Pure Veg (Banana Leaf)', song: 'Alaipayuthey Kanna' }
+    ];
+
+    function submitWeddingRsvp(e) {
+      e.preventDefault();
+      const name = document.getElementById('rsvpName').value.trim();
+      const status = document.getElementById('rsvpAttendance').value;
+      const guests = parseInt(document.getElementById('rsvpGuests').value, 10) || 1;
+      const dietary = document.getElementById('rsvpDietary').value;
+      const song = document.getElementById('rsvpSong').value.trim();
+      const msg = document.getElementById('rsvpMessage').value.trim();
+
+      rsvpEntries.push({ name, status, guests, dietary, song });
+
+      const totalSeats = rsvpEntries.reduce((acc, r) => acc + (r.status.includes('Attending') ? Number(r.guests) : 0), 0);
+      document.getElementById('adminTotalSeats').textContent = totalSeats;
+
+      document.getElementById('confirmedGuestName').textContent = name;
+      const waPhone = window.WEDDING_CONFIG.whatsappNumber || '';
+      const waText = encodeURIComponent(
+        `Vanakkam! RSVP for Annamalai & Sarmila Wedding (22 Nov 2026, Thiruparankundram, Madurai):\n• Name: ${name}\n• Status: ${status}\n• Guests: ${guests}\n• Dietary: ${dietary}\n• Wishes: ${msg || 'Vaazhga Valamudan!'}`
+      );
+      document.getElementById('whatsappConfirmLink').href = `https://wa.me/${waPhone}?text=${waText}`;
+      document.getElementById('rsvpConfirmationCard').classList.remove('hidden');
+
+      playTempleBellChime();
+      showToast(`Nandri, ${name}! Your RSVP is confirmed.`);
+    }
+
+    function exportGuestListCSV() {
+      const rows = [['Guest Name', 'Attendance Status', 'Seats', 'Dietary Preference', 'Melody Request']];
+      rsvpEntries.forEach(r => rows.push([r.name, r.status, r.guests, r.dietary, r.song || '']));
+      const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\r\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'annamalai_sarmila_wedding_guests.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Guest List CSV exported!');
+    }
+
+    window.onload = function () {
+      renderAllConfiguredContent();
+      updateCountdowns();
+      setInterval(updateCountdowns, 1000);
+      initThreeMansion();
+    };
+  </script>
+</body>
+</html>

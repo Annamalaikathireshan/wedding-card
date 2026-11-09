@@ -1,40 +1,40 @@
-# Annamalai & Sarmila — South Indian Wedding Celebration 🪔🌸
+# Annamalai & Sarmila — Chettinad Heritage Wedding Celebration 🪔🏛️
 
-A responsive, high-aesthetic South Indian digital wedding invitation website built with HTML5, CSS3, and modern JavaScript. Inspired by traditional temple grandeur and atelier digital craftsmanship like **The Digital Yes** (`@thedigitalyes`).
-
-Designed for **Annamalai & Sarmila's wedding** in **Madurai, Tamil Nadu** on **22 November 2026** at the historic **Thiruparankundram Sri Murugan Temple**.
+An interactive, responsive Chettinad Heritage wedding invitation simulating a majestic walkthrough into an ancestral Chettinad heritage mansion in Tamil Nadu. Built with HTML5, CSS3 3D transforms, Web Audio API, and vanilla JavaScript for **Annamalai & Sarmila's wedding** on **22 November 2026** at the historic **Thiruparankundram Sri Murugan Temple, Madurai**.
 
 Optimized for **GitHub Pages** deployment with zero build tools or server dependencies.
 
 ---
 
-## ✨ Features & Highlights
+## ✨ Walkthrough Experience & Highlights
 
-- ✉️ **Royal South Indian Wedding Envelope (Lagna Patrika)**: A royal crimson silk textured envelope with gold borders, sealed with an embossed royal gold stamp with monogram `A & S 2026`. Clicking or tapping breaks the seal, showers golden sparkles, and smoothly slides the card into view.
-- 🪔 **Authentic South Indian Aesthetic**:
-  - Auspicious colors: *Kumkum Crimson, Temple Gold, Turmeric Yellow, Peacock Green, and Raw Silk Ivory*.
-  - Fine-art traditional South Indian couple portrait, temple gopuram, sacred Thali (Mangalsutra), and Akshata rice shower photography.
-  - Tamil invocations (`|| ஓம் முருகா ||`, `|| சுபமுகூர்த்தம் ||`).
-- ⏳ **Live Countdown to Subha Muhurtham**: Real-time counter ticking down to **22 November 2026 at 06:00 AM IST** (Brahma Muhurtham).
-- 📅 **Save to Calendar**: One-click `.ics` iCalendar download with wedding venue details for Apple Calendar, Google Calendar, and Outlook.
-- 🛕 **Order of Auspicious Events**:
-  - *Nov 21 &bull; 18:30 IST* &mdash; Mappillai Azhaippu, Nichayathartham & Sangeeth Evening
-  - *Nov 22 &bull; 05:30 IST* &mdash; Mangala Isai & Nadaswaram Ragas
-  - *Nov 22 &bull; 06:00 &ndash; 07:30 IST* &mdash; Subha Muhurtham & Sacred Thali Kettu
-  - *Nov 22 &bull; 08:00 IST* &mdash; Traditional South Indian Kalyana Virundhu (Banana Leaf Feast)
-  - *Nov 22 &bull; 18:30 IST* &mdash; Grand Wedding Reception & Musical Evening
-- 📍 **Venues & Direct Google Maps**:
-  - Direct integration with Google Maps: [Thiruparankundram Murugan Temple, Madurai](https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6)
-  - Apple Maps & "Copy Address" buttons with animated toast alerts.
-- 👗 **Traditional Attire & Palette Guide**: Guidance on Kanchipuram Silk Sarees (Pattu Pudavai), temple jewelry, and traditional Silk Veshti & Angavastram.
-- 🖼️ **Touch-Enabled Photo Lightbox**: Zoomable gallery with keyboard and touch swipe navigation.
-- 📝 **Live RSVP with WhatsApp Sync & CSV Export**:
-  - Confirms attendance for Muhurtham and the traditional Kalyana Virundhu feast.
-  - Celebratory confetti & yellow Akshata shower on submission.
-  - Sends instant formatted confirmation via WhatsApp.
-  - Built-in **Couple Admin Roster** with live confirmed headcount and a one-click **"Export CSV File"** button.
-- 🤫 **Silent & Music-Free**: No background music, respecting the user's preference.
-- 📱 **Mobile & Desktop Responsive**: Seamlessly adapts from 375px mobile viewports to 4K displays.
+1. **🏛️ Landing Screen (The Auspicious Start)**:
+   - A Chettinad brass-accented invitation card enclosed in a vintage vermillion letter envelope, sealed with an embossed royal wax stamp (`A & S 2026`).
+   - Gentle Carnatic Veena & Nadaswaram ambient background track playing softly with an animated equalizer and toggleable Mute/Unmute button (synthesized with Web Audio API).
+   - Clicking the wax seal bursts golden sparkles & Akshata, unfolds the envelope flaps, and glides the camera forward.
+
+2. **🚪 The Grand Entrance (Mukappu Vaasal & Thinnai)**:
+   - 3D camera zoom transition stops right in front of carved Burma teakwood double doors with brass lion-head knockers, studs, and a fresh mango leaf and marigold toran.
+   - Clicking the door ("திறக்க சொடுக்கவும் • Click to Open") swings both doors open in 3D perspective (`rotateY(-108deg)` and `108deg`).
+   - Glides past the raised veranda (*thinnai*) and polished stone pillars, unveiling an embedded cinematic couple-reveal motion portrait greeting from Annamalai & Sarmila.
+
+3. **🪷 The Central Courtyard / Mutram (The Main Hub)**:
+   - The camera settles into the sunlit central open courtyard (*mutram*) paved with geometric Athangudi tiles, glowing brass lamps (*kuthuvilakku*), and a central bronze Urli with floating water, blooming lotuses, and marigolds.
+   - **4 Interactive Architectural Navigation Pillars**:
+     1. 🛕 **Manavarai (மணவறை)**: Direct glide to the sacred stage, displaying the Subha Muhurtham & Reception timelines, countdown, and Add to Calendar (.ics).
+     2. 🍃 **Virundhu Koodam (விருந்து கூடம்)**: Unfolds an authentic banana-leaf feast menu animation with course tabs and signature Chettinad dishes (Vellai Paniyaram, Ponni Rice & Ghee, Kalyana Sambar, Ennai Kathirikai Gothsu, Potato Roast, Pineapple Rasam, Paal Payasam, Thamboolam).
+     3. 🖼️ **Ninaivu Arangam (நினைவு அரங்கம்)**: Corridor of framed moments in carved teakwood borders that enlarge on click into a touch-enabled lightbox gallery.
+     4. 📜 **Vazhikaatti (வழிகாட்டி)**: Rolls out like an antique parchment map, embedding live Google Maps directions to the temple and reception mandapam.
+
+4. **🎨 Chettinad Heritage Grandeur Design System (`design.md`)**:
+   - Palette: Deep Terracotta Vermillion (`#9B2226`), Temple Gold (`#D4AF37`), Athangudi Indigo (`#1D3557`), Teakwood Charcoal (`#2B1E16`), Sandalwood Ivory Canvas (`#FFF9ED`).
+   - Typography: Playfair Display (Royal Headers), EB Garamond (Narrative Body), Plus Jakarta Sans (Labels, Form Inputs, Timestamps).
+   - Hot-stamped gold foil insets, warm brass ambient shadows, and Dravidian temple arch frames.
+
+5. **📝 Sacred RSVP with WhatsApp Sync & CSV Export**:
+   - Live guest attendance, headcount, banana leaf dietary preferences, and blessings.
+   - Direct formatted confirmation via WhatsApp (`+91 98765 43210`).
+   - Couple Admin modal with live headcount roster and one-click "Export CSV File".
 
 ---
 
@@ -44,7 +44,7 @@ Optimized for **GitHub Pages** deployment with zero build tools or server depend
    ```bash
    git init
    git add .
-   git commit -m "feat: Annamalai & Sarmila South Indian wedding invitation"
+   git commit -m "feat: Chettinad heritage wedding invitation revamp"
    git branch -M main
    git remote add origin https://github.com/<your-username>/<your-repo-name>.git
    git push -u origin main
@@ -68,13 +68,5 @@ Open [http://localhost:8080](http://localhost:8080) in your browser.
 
 ---
 
-## 🛠️ Personalization
-
-- **WhatsApp Phone Number**: In `js/rsvp.js`, update `COUPLE_PHONE_NUMBER` with your WhatsApp number (e.g. `919876543210`).
-- **Target Date**: In `js/countdown.js`, the date is configured for `2026-11-22T06:00:00+05:30`.
-- **Venue Link**: In `index.html`, the venue points to `https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6`.
-
----
-
 ## 📄 License
-Crafted with love for Annamalai & Sarmila's auspicious wedding celebration.
+Crafted with love for Annamalai & Sarmila's Chettinad Heritage wedding celebration.

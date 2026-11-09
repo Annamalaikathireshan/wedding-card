@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Annamalai &amp; Sarmila — Chettinad Heritage Wedding Celebration | 22 Nov 2026 &bull; Madurai</title>
+  <meta name="title" content="Annamalai &amp; Sarmila — Chettinad Heritage Wedding Celebration | 22 Nov 2026 &bull; Madurai">
+  <meta name="description" content="Experience the majestic Chettinad Heritage wedding celebration of Annamalai &amp; Sarmila on 22 November 2026 at Thiruparankundram, Madurai, Tamil Nadu.">
+  <meta name="keywords" content="Annamalai Sarmila wedding, Chettinad heritage wedding invitation, Madurai wedding, Thiruparankundram Murugan temple wedding, Athangudi tiles, Tamil wedding card">
+  <meta name="author" content="Annamalai &amp; Sarmila">
+  <meta name="theme-color" content="#7A0412">
+  <meta name="color-scheme" content="light">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Annamalai &amp; Sarmila — Chettinad Heritage Wedding Celebration">
+  <meta property="og:description" content="Step into a grand Chettinad heritage mansion to celebrate our auspicious wedding at Thiruparankundram, Madurai on 22 November 2026.">
+  <meta property="og:image" content="./assets/hero-couple.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Annamalai &amp; Sarmila — Chettinad Heritage Wedding Celebration">
+  <meta name="twitter:description" content="Step into a grand Chettinad heritage mansion to celebrate our auspicious wedding at Thiruparankundram, Madurai on 22 November 2026.">
+  <meta name="twitter:image" content="./assets/hero-couple.jpg">
+
+  <!-- Favicon (Auspicious Monogram) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%237A0412' stroke='%23D4AF37' stroke-width='4'/%3E%3Ctext x='50%25' y='58%25' font-size='38' font-family='serif' font-weight='bold' fill='%23FED65B' text-anchor='middle' dominant-baseline='middle'%3EA%26S%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Playfair Display + EB Garamond + Plus Jakarta Sans (as per design.md) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/animations.css">
+  <link rel="stylesheet" href="./css/chettinad.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Structured Data / JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Chettinad Heritage Wedding of Annamalai & Sarmila",
+    "startDate": "2026-11-22T06:00:00+05:30",
+    "endDate": "2026-11-22T21:00:00+05:30",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Thiruparankundram Murugan Temple Mandapam",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Thiruparankundram",
+        "addressLocality": "Madurai",
+        "postalCode": "625005",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      }
+    },
+    "image": ["./assets/hero-couple.jpg"],
+    "description": "The auspicious Chettinad Heritage wedding ceremony and Kalyana Virundhu of Annamalai & Sarmila at Thiruparankundram, Madurai."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Background Subtle Ambient Sparkle Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ========================================================================
+       STAGE 1: LANDING SCREEN (The Auspicious Start)
+       Chettinad brass-accented invitation card in vintage envelope with wax stamp
+       ======================================================================== -->
+  <div id="chettinad-landing-overlay" class="chettinad-landing-overlay" role="dialog" aria-modal="true" aria-label="Chettinad Heritage Wedding Invitation">
+    <canvas id="landing-canvas" style="position: absolute; inset:0; pointer-events: none; z-index: 1;"></canvas>
+
+    <!-- Top Controls: Music Toggle & Skip -->
+    <div class="landing-top-controls">
+      <button class="music-toggle-btn" type="button" aria-label="Toggle Traditional Music">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18V5l12-2v13"></path>
+          <circle cx="6" cy="18" r="3"></circle>
+          <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+        <span class="music-toggle-text">Veena / Nadaswaram</span>
+        <div class="eq-bars">
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+        </div>
+      </button>
+
+      <button id="landing-skip-btn" class="landing-skip-btn" type="button">
+        Skip to Courtyard &rarr;
+      </button>
+    </div>
+
+    <!-- Chettinad Brass-Accented Envelope Container -->
+    <div class="chettinad-envelope-container">
+      <div id="chettinad-envelope" class="chettinad-envelope" tabindex="0" role="button" aria-label="Open Chettinad Wedding Invitation">
+        <!-- 4 Authentic Chettinad Brass Corners -->
+        <div class="brass-corner top-left"></div>
+        <div class="brass-corner top-right"></div>
+        <div class="brass-corner bottom-left"></div>
+        <div class="brass-corner bottom-right"></div>
+
+        <!-- Inside Auspicious Letter Card -->
+        <div class="envelope-inside-card">
+          <span style="font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-vermillion); margin-bottom: 0.5rem; display: block;">
+            || சுபமுகூர்த்த அழைப்பிதழ் ||
+          </span>
+          <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--color-vermillion); line-height: 1.1; margin-bottom: 0.4rem;">
+            Annamalai &amp; Sarmila
+          </div>
+          <div style="font-family: var(--font-label); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-teak); text-transform: uppercase;">
+            22 November 2026 &bull; Madurai, Tamil Nadu
+          </div>
+        </div>
+
+        <!-- Folding Envelope Flaps -->
+        <div class="envelope-flap-top"></div>
+        <div class="envelope-flap-left"></div>
+        <div class="envelope-flap-right"></div>
+        <div class="envelope-flap-bottom"></div>
+
+        <!-- Embossed Royal Gold Wax Seal -->
+        <button id="chettinad-wax-seal" class="chettinad-wax-seal" type="button" aria-label="Break Seal to Enter Heritage Mansion">
+          <span class="monogram">A&amp;S</span>
+          <span class="year">2026</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pulsing Prompt Text -->
+    <div class="landing-prompt">
+      <span>&starf;</span>
+      Click the Royal Wax Seal to Enter the Heritage Mansion
+      <span>&starf;</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SITE HEADER & NAVIGATION
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <a href="#hero" class="nav-monogram" aria-label="Annamalai and Sarmila Home">
+        A &amp; S
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#mukappu-vaasal" class="nav-link">Mukappu</a></li>
+          <li><a href="#mutram" class="nav-link">Mutram Hub</a></li>
+          <li><a href="#manavarai" class="nav-link">Manavarai</a></li>
+          <li><a href="#virundhu-koodam" class="nav-link">Virundhu Menu</a></li>
+          <li><a href="#ninaivu-arangam" class="nav-link">Story &amp; Gallery</a></li>
+          <li><a href="#vazhikaatti" class="nav-link">Route Map</a></li>
+          <li><a href="#rsvp" class="nav-link">RSVP</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Audio Equalizer / Mute Toggle Button -->
+        <button class="music-toggle-btn" type="button" aria-label="Toggle Traditional Music">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+          <span class="music-toggle-text" style="display: none;">Music</span>
+          <div class="eq-bars">
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+            <div class="eq-bar"></div>
+          </div>
+        </button>
+
+        <!-- Replay Walkthrough Intro Button -->
+        <button class="reopen-envelope-btn replay-walkthrough-btn" type="button" aria-label="Replay Walkthrough Intro">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <span>Mansion Intro</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         STAGE 2: THE GRAND ENTRANCE (Mukappu Vaasal & Thinnai)
+         Carved Burma teakwood double doors, raised veranda & motion portrait reveal
+         ====================================================================== -->
+    <section class="mukappu-vaasal-section" id="mukappu-vaasal">
+      <div class="section-header reveal" style="margin-bottom: 2rem;">
+        <span class="section-tag">முகப்பு வாசல் &bull; The Grand Entrance</span>
+        <h2 class="section-title" style="color: var(--color-gold-light);">Chettinad Mukappu Vaasal</h2>
+        <div class="divider-ornament">
+          <span>&diamondsuit;</span>
+        </div>
+        <p class="section-desc" style="color: #dfd9ce;">
+          Step into our ancestral sanctuary. Touch the carved Burma teakwood doors to cross the raised veranda (thinnai) and enter our celebratory mutram.
+        </p>
+      </div>
+
+      <!-- Carved Burma Teakwood Double Door Structure -->
+      <div id="door-frame-wrapper" class="door-frame-wrapper">
+        <!-- Festive Mango Leaf & Marigold Toran Lintel -->
+        <div class="toran-lintel"></div>
+
+        <!-- Interior View: Thinnai Veranda revealed as doors open -->
+        <div class="door-interior-view">
+          <div class="door-interior-content">
+            <span style="font-family: var(--font-label); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-vermillion); margin-bottom: 0.6rem; display: block;">
+              || நல்வரவு || Welcome Greeting
+            </span>
+            <h3 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; color: var(--color-vermillion); margin-bottom: 0.8rem;">
+              The Thinnai Veranda
+            </h3>
+            <p style="font-family: var(--font-body); font-size: 1.15rem; color: var(--color-teak); line-height: 1.6; margin-bottom: 1.5rem;">
+              Sunlight streams past polished stone pillars and warm brass kuthuvilakku lamps. Annamalai &amp; Sarmila joyfully welcome you to their celebration.
+            </p>
+            <button id="enter-mutram-btn" class="btn-lux btn-primary-lux" type="button">
+              Enter Central Courtyard &darr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Left Teakwood Door Leaf with Brass Knocker -->
+        <div class="door-leaf door-leaf-left" title="Click to open Burma Teakwood Door">
+          <div class="door-knocker"></div>
+        </div>
+
+        <!-- Right Teakwood Door Leaf with Brass Knocker -->
+        <div class="door-leaf door-leaf-right" title="Click to open Burma Teakwood Door">
+          <div class="door-knocker"></div>
+        </div>
+
+        <!-- Interactive Door Swing Button -->
+        <div class="door-open-cta-box">
+          <button id="door-open-btn" class="door-open-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
+            </svg>
+            திறக்க சொடுக்கவும் &bull; Click to Open Door
+          </button>
+        </div>
+      </div>
+
+      <!-- Embedded Motion Portrait / Couple Reveal Greeting in Thinnai -->
+      <div class="thinnai-reveal-card reveal" id="thinnai-reveal">
+        <span class="section-tag">மணமக்கள் வரவேற்பு &bull; Couple Reveal</span>
+        <h3 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; color: var(--color-vermillion); margin: 0.6rem 0 1.2rem 0;">
+          Annamalai &amp; Sarmila Welcome You
+        </h3>
+
+        <div class="motion-portrait-container">
+          <img src="./assets/hero-couple.jpg" alt="Annamalai and Sarmila in traditional South Indian wedding attire" class="motion-portrait-image">
+          <div class="motion-portrait-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-gold-light);">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span>Thiruparankundram &bull; Madurai &bull; 22 Nov 2026</span>
+          </div>
+        </div>
+
+        <p style="font-family: var(--font-body); font-size: 1.25rem; font-style: italic; color: var(--color-teak); max-width: 640px; margin: 0 auto 1.5rem auto;">
+          &ldquo;வணக்கம். With grateful hearts and the blessings of Lord Murugan and our beloved elders, we invite you to step into our ancestral celebration.&rdquo;
+        </p>
+
+        <a href="#mutram" class="btn-lux btn-secondary-lux">
+          Proceed into Central Courtyard &darr;
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         STAGE 3: THE CENTRAL COURTYARD / MUTRAM (The Main Hub)
+         Sunlit sky well, Athangudi floor tiles, brass Urli & 4 Interactive Pillars
+         ====================================================================== -->
+    <section class="mutram-hub-section athangudi-tile-pattern" id="mutram">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">பெரிய வீடு &bull; Central Courtyard</span>
+          <h2 class="section-title">The Mutram (முற்றம்) Hub</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">
+            Paved with geometric Athangudi tiles and sunlit through the open sky well. Touch each architectural pillar to explore the ceremonies, royal feast, memories, and venue map.
+          </p>
+        </div>
+
+        <!-- Central Urli with Floating Lotuses & Marigolds -->
+        <div class="central-urli-box reveal">
+          <div class="urli-vessel">
+            <div class="urli-water">
+              <div class="urli-water-ripple"></div>
+              <div class="urli-lotus">🪷</div>
+              <div class="urli-marigolds">
+                <span class="urli-petal p1"></span>
+                <span class="urli-petal p2"></span>
+                <span class="urli-petal p3"></span>
+              </div>
+            </div>
+          </div>
+          <span style="font-family: var(--font-label); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-gold-dark); margin-top: 0.8rem;">
+            மங்கள ஊருளி &bull; Sacred Urli with Floating Lotuses
+          </span>
+        </div>
+
+        <!-- The 4 Interactive Architectural Navigation Pillars -->
+        <div class="pillars-grid">
+          <!-- Pillar 1: Manavarai (Wedding Rituals & Timing) -->
+          <a href="#manavarai" class="pillar-portal-card reveal stagger-1" data-target="manavarai">
+            <div class="pillar-icon-medallion">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2L2 9l10 7 10-7-10-7z"/>
+                <path d="M2 17l10 7 10-7"/>
+                <path d="M2 12l10 7 10-7"/>
+              </svg>
+            </div>
+            <div class="pillar-tamil-title">மணவறை</div>
+            <div class="pillar-eng-title">Manavarai &bull; Wedding Stage</div>
+            <p class="pillar-desc">
+              Glide directly to the sacred wedding stage displaying the Muhurtham and Reception timelines.
+            </p>
+            <span class="pillar-action-tag">
+              View Timelines &rarr;
+            </span>
+          </a>
+
+          <!-- Pillar 2: Virundhu Koodam (Chettinad Feast Menu) -->
+          <a href="#virundhu-koodam" class="pillar-portal-card reveal stagger-2" data-target="virundhu-koodam">
+            <div class="pillar-icon-medallion">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+              </svg>
+            </div>
+            <div class="pillar-tamil-title">விருந்து கூடம்</div>
+            <div class="pillar-eng-title">Virundhu Koodam &bull; Feast Menu</div>
+            <p class="pillar-desc">
+              Unfold our authentic banana-leaf feast card detailing signature traditional Chettinad courses.
+            </p>
+            <span class="pillar-action-tag">
+              Unfold Banana Leaf &rarr;
+            </span>
+          </a>
+
+          <!-- Pillar 3: Ninaivu Arangam (Story & Photo Gallery) -->
+          <a href="#ninaivu-arangam" class="pillar-portal-card reveal stagger-3" data-target="ninaivu-arangam">
+            <div class="pillar-icon-medallion">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </div>
+            <div class="pillar-tamil-title">நினைவு அரங்கம்</div>
+            <div class="pillar-eng-title">Ninaivu Arangam &bull; Story &amp; Gallery</div>
+            <p class="pillar-desc">
+              Walk the pillared corridor of carved frames revealing our journey, engagement, and travel memories.
+            </p>
+            <span class="pillar-action-tag">
+              View Gallery &rarr;
+            </span>
+          </a>
+
+          <!-- Pillar 4: Vazhikaatti (Venue & Route Map) -->
+          <a href="#vazhikaatti" class="pillar-portal-card reveal stagger-4" data-target="vazhikaatti">
+            <div class="pillar-icon-medallion">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+                <line x1="8" y1="2" x2="8" y2="18"/>
+                <line x1="16" y1="6" x2="16" y2="22"/>
+              </svg>
+            </div>
+            <div class="pillar-tamil-title">வழிகாட்டி</div>
+            <div class="pillar-eng-title">Vazhikaatti &bull; Route Map</div>
+            <p class="pillar-desc">
+              Roll out an antique parchment map with interactive Google Maps navigation to the temple and hall.
+            </p>
+            <span class="pillar-action-tag">
+              Roll Out Map &rarr;
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         HERO SECTION: Auspicious Invocation, Couple Names & Live Countdown
+         ====================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-content">
+        <span class="hero-subheading reveal stagger-1">
+          || ஓம் முருகா || Om Sri Ganeshaya Namaha || சுபமுகூர்த்தம் ||
+        </span>
+        
+        <h1 class="hero-names reveal stagger-2">
+          Annamalai <span>&amp;</span> Sarmila
+        </h1>
+
+        <div class="hero-date-location reveal stagger-3">
+          <span class="hero-date-item">Sunday, 22 November 2026</span>
+          <span class="hero-date-dot"></span>
+          <span class="hero-date-item">Thiruparankundram &bull; Madurai, Tamil Nadu</span>
+        </div>
+
+        <!-- Framed Fine-Art Dravidian Arch Couple Portrait -->
+        <div class="hero-portrait-wrapper reveal-zoom stagger-3">
+          <div class="hero-portrait-frame">
+            <img src="./assets/hero-couple.jpg" alt="Annamalai and Sarmila in traditional South Indian wedding attire at Madurai Temple" class="hero-portrait-img">
+          </div>
+          <div class="hero-portrait-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span>Thiruparankundram &bull; Madurai</span>
+          </div>
+        </div>
+
+        <!-- Live Countdown Ticker to Auspicious Muhurtham -->
+        <div class="countdown-wrapper reveal stagger-4">
+          <p class="countdown-heading">Counting Down To Subha Muhurtham</p>
+          <div class="countdown-grid" id="countdown-clock">
+            <div class="countdown-card">
+              <span class="countdown-num" id="days">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-card">
+              <span class="countdown-num" id="hours">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-card">
+              <span class="countdown-num" id="minutes">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-card">
+              <span class="countdown-num" id="seconds">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#rsvp" class="btn-lux btn-primary-lux">
+              RSVP For Muhurtham &amp; Feast
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <button id="add-to-calendar-btn" class="btn-lux btn-secondary-lux" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Save to Calendar (.ics)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         AUSPICIOUS INVOCATION & FAMILY NOTE
+         ====================================================================== -->
+    <section class="couple-note-section section-padding">
+      <div class="container">
+        <div class="couple-quote-card reveal">
+          <div class="quote-script">&ldquo;மங்கலம் பொங்குக &bull; மங்கள நாண் பூட்டுக&rdquo;</div>
+          <p class="quote-body">
+            With the divine blessings of Lord Murugan at Thiruparankundram and the heartfelt prayers of our parents and elders, we, <strong>Annamalai &amp; Sarmila</strong>, invite you and your family to grace our sacred wedding ceremony, bless our union, and join us for the traditional Chettinad Kalyana Virundhu feast.
+          </p>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="quote-author">With Loving Respects &mdash; Families of Annamalai &amp; Sarmila</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PILLAR 1 TARGET: MANAVARAI (Wedding Rituals & Timing)
+         ====================================================================== -->
+    <section class="itinerary-section section-padding" id="manavarai">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">மணவறை &bull; Sacred Stage</span>
+          <h2 class="section-title">Order of Auspicious Events</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">Traditional rituals, sacred Vedic chanting, divine music, and joyous feasts across two memorable days.</p>
+        </div>
+
+        <div class="itinerary-grid">
+          <!-- Item 1 -->
+          <div class="itinerary-card reveal stagger-1">
+            <div class="itinerary-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="itinerary-time">Sat, 21 Nov &bull; 18:30 IST</div>
+              <h3 class="itinerary-title">Mappillai Azhaippu &amp; Sangeeth</h3>
+              <p class="itinerary-desc">Welcoming the groom with royal traditional honors, garland exchange, joyous family music, and authentic Chettinad dinner.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="itinerary-card reveal stagger-2">
+            <div class="itinerary-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <div class="itinerary-time">Sun, 22 Nov &bull; 05:30 IST</div>
+              <h3 class="itinerary-title">Mangala Isai &amp; Nadaswaram</h3>
+              <p class="itinerary-desc">Sacred dawn ragas played on the Nadaswaram and Thavil, filling the Thiruparankundram temple hall with divine vibrations.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="itinerary-card reveal stagger-3">
+            <div class="itinerary-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="itinerary-time">Sun, 22 Nov &bull; 06:00 &ndash; 07:30 IST</div>
+              <h3 class="itinerary-title">Subha Muhurtham &amp; Thali Kettu</h3>
+              <p class="itinerary-desc">The sacred hour: Kanyadaanam, tying of the sacred Mangalsutra (Thali), Saptapadi (seven steps), and showering of holy Akshata.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="itinerary-card reveal stagger-1">
+            <div class="itinerary-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="itinerary-time">Sun, 22 Nov &bull; 08:00 IST Onwards</div>
+              <h3 class="itinerary-title">Chettinad Kalyana Virundhu</h3>
+              <p class="itinerary-desc">Grand feast served on fresh banana leaves: hot ghee rice, aromatic sambar, rasam, avial, appalam, vadai, and sweet payasam.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="itinerary-card reveal stagger-2">
+            <div class="itinerary-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="itinerary-time">Sun, 22 Nov &bull; 18:30 IST</div>
+              <h3 class="itinerary-title">Grand Wedding Reception</h3>
+              <p class="itinerary-desc">An evening of greetings, blessings, family photographs on stage, and an extravagant celebratory dinner banquet.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="itinerary-card reveal stagger-3">
+            <div class="itinerary-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M8 21h8m-4-13v13m-7-9l7-5 7 5v4a7 7 0 0 1-14 0z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="itinerary-time">Post Reception</div>
+              <h3 class="itinerary-title">Kalyana Thamboolam Distribution</h3>
+              <p class="itinerary-desc">Giving of traditional thamboolam bags with betel leaves, coconuts, sweets, and heartfelt gratitude to our esteemed guests.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PILLAR 2 TARGET: VIRUNDHU KOODAM (Unfolding Banana Leaf Feast Menu)
+         ====================================================================== -->
+    <section class="banana-leaf-section" id="virundhu-koodam">
+      <div class="container banana-leaf-container">
+        <div class="section-header reveal">
+          <span class="section-tag">விருந்து கூடம் &bull; Banana Leaf Feast</span>
+          <h2 class="section-title">Chettinad Kalyana Virundhu</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">
+            Served on fresh vibrant banana leaves with traditional courses cooked with pure ghee, stone-ground Chettinad spices, and love.
+          </p>
+        </div>
+
+        <!-- Realistic Unfolding Banana Leaf Card -->
+        <div class="leaf-wrapper banana-leaf-unfold reveal">
+          <div class="leaf-center-spine"></div>
+
+          <div class="leaf-header">
+            <div class="tamil-sub">|| அறுசுவை கல்யாண விருந்து ||</div>
+            <h3 class="main-title">Signature Traditional Menu</h3>
+          </div>
+
+          <!-- Course Filter Tabs -->
+          <div class="leaf-course-tabs">
+            <button class="leaf-course-tab is-active" data-filter="all" type="button">அனைத்தும் &bull; Full Feast</button>
+            <button class="leaf-course-tab" data-filter="welcome" type="button">ஆரம்பம் &bull; Starters &amp; Sweets</button>
+            <button class="leaf-course-tab" data-filter="main" type="button">முதன்மையானவை &bull; Main Courses</button>
+            <button class="leaf-course-tab" data-filter="finale" type="button">முடிவுகள் &bull; Rasam &amp; Payasam</button>
+          </div>
+
+          <!-- Feast Dishes Grid -->
+          <div class="leaf-dishes-grid">
+            <!-- Dish 1 -->
+            <div class="dish-card" data-category="welcome">
+              <div class="dish-icon-box">🫓</div>
+              <div>
+                <div class="dish-tamil-name">செட்டிநாடு வெள்ளை பணியாரம்</div>
+                <div class="dish-eng-name">Chettinad Vellai Paniyaram</div>
+                <p class="dish-description">Pillowy soft crisp-edged rice dumplings served with fresh spicy Karaikudi red tomato chutney.</p>
+              </div>
+            </div>
+
+            <!-- Dish 2 -->
+            <div class="dish-card" data-category="welcome">
+              <div class="dish-icon-box">🍮</div>
+              <div>
+                <div class="dish-tamil-name">திருநெல்வேலி அல்வா &amp; பால் பாயாசம்</div>
+                <div class="dish-eng-name">Halwa &amp; Elachi Paal Payasam</div>
+                <p class="dish-description">Ghee-dripping wheat halwa paired with slow-simmered fragrant milk payasam garnished with roasted cashews.</p>
+              </div>
+            </div>
+
+            <!-- Dish 3 -->
+            <div class="dish-card" data-category="main">
+              <div class="dish-icon-box">🍚</div>
+              <div>
+                <div class="dish-tamil-name">மணக்கும் நெய் &amp; பொன்னி சாதம்</div>
+                <div class="dish-eng-name">Hot Ponni Rice &amp; Pure Desi Ghee</div>
+                <p class="dish-description">Steaming hot seeraga samba and ponni rice crowned with a generous ladle of aromatic melted butter ghee.</p>
+              </div>
+            </div>
+
+            <!-- Dish 4 -->
+            <div class="dish-card" data-category="main">
+              <div class="dish-icon-box">🍲</div>
+              <div>
+                <div class="dish-tamil-name">செட்டிநாடு கல்யாண சாம்பார்</div>
+                <div class="dish-eng-name">Chettinad Kalyana Sambar</div>
+                <p class="dish-description">Aromatic toor dal stew simmered with tender country drumsticks, small shallots, and freshly ground coriander spices.</p>
+              </div>
+            </div>
+
+            <!-- Dish 5 -->
+            <div class="dish-card" data-category="main">
+              <div class="dish-icon-box">🍆</div>
+              <div>
+                <div class="dish-tamil-name">அத்தங்குடி கத்தரிக்காய் கொத்சு</div>
+                <div class="dish-eng-name">Athangudi Ennai Kathirikai Gothsu</div>
+                <p class="dish-description">Baby eggplants slow-roasted in cold-pressed gingelly oil with Chettinad tamarind reduction.</p>
+              </div>
+            </div>
+
+            <!-- Dish 6 -->
+            <div class="dish-card" data-category="main">
+              <div class="dish-icon-box">🥔</div>
+              <div>
+                <div class="dish-tamil-name">காரைக்குடி உருளைக்கிழங்கு வறுவல்</div>
+                <div class="dish-eng-name">Karaikudi Baby Potato Roast</div>
+                <p class="dish-description">Golden pan-fried baby potatoes tossed in fragrant curry leaves, crushed black pepper, and fennel seeds.</p>
+              </div>
+            </div>
+
+            <!-- Dish 7 -->
+            <div class="dish-card" data-category="finale">
+              <div class="dish-icon-box">🍍</div>
+              <div>
+                <div class="dish-tamil-name">மதுரை அன்னாசி மிளகு ரசம்</div>
+                <div class="dish-eng-name">Madurai Pineapple Pepper Rasam</div>
+                <p class="dish-description">A rejuvenating tangy broth infused with crushed black pepper, cumin, fresh pineapple chunks, and cilantro.</p>
+              </div>
+            </div>
+
+            <!-- Dish 8 -->
+            <div class="dish-card" data-category="finale">
+              <div class="dish-icon-box">🍃</div>
+              <div>
+                <div class="dish-tamil-name">கல்யாண தாம்பூலம் &amp; மங்கள பீடா</div>
+                <div class="dish-eng-name">Kalyana Thamboolam &amp; Sweet Paan</div>
+                <p class="dish-description">Traditional betel leaves, areca nut, gulkand, and aromatic digestive spices to conclude the feast auspiciously.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PILLAR 3 TARGET: NINAIVU ARANGAM (Story & Photo Gallery)
+         ====================================================================== -->
+    <section class="story-section section-padding" id="ninaivu-arangam">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">நினைவு அரங்கம் &bull; Sacred Story</span>
+          <h2 class="section-title">Our Sacred Journey</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">From family blessings and joyful conversations to stepping into holy matrimony in the historic temple city of Madurai.</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Milestone 1 -->
+          <div class="timeline-item reveal stagger-1">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <span class="timeline-year">The Beginning</span>
+              <h3 class="timeline-title">When Stars Aligned</h3>
+              <p class="timeline-desc">
+                With the grace of elders, our horoscopes harmonized, and our first meeting in Tamil Nadu sparked an instant connection filled with mutual respect, laughter, and shared cultural values.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="timeline-item reveal stagger-2">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <span class="timeline-year">The Tradition</span>
+              <h3 class="timeline-title">Nichayathartham (Engagement)</h3>
+              <p class="timeline-desc">
+                Surrounded by both families, we exchanged auspicious thamboolam plates, fragrant Madurai malli, and the formal Lagna Patrika, sealing our promise with the blessings of all generations.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="timeline-item reveal stagger-3">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <span class="timeline-year">Auspicious Blessings</span>
+              <h3 class="timeline-title">The Sacred Abode of Murugan</h3>
+              <p class="timeline-desc">
+                Choosing Thiruparankundram &mdash; where Lord Murugan and Deivanai wed &mdash; as our sacred sanctuary to begin our eternal journey of love, dharma, and togetherness.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 4 -->
+          <div class="timeline-item reveal stagger-4">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <span class="timeline-year">22 November 2026</span>
+              <h3 class="timeline-title">Subha Muhurtham</h3>
+              <p class="timeline-desc">
+                The golden Thali will be tied amidst the resonant melodies of the Nadaswaram, Vedic mantras, and an auspicious shower of Akshata from our beloved guests.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillared Photo Gallery of Moments -->
+        <div style="margin-top: 5rem;">
+          <div class="section-header reveal">
+            <span class="section-tag">நிழற்படங்கள் &bull; Moments of Joy</span>
+            <h2 class="section-title">Sacred Glimpses</h2>
+            <div class="divider-ornament">
+              <span>&diamondsuit;</span>
+            </div>
+          </div>
+
+          <div class="gallery-grid">
+            <div class="gallery-item gallery-item-wide reveal stagger-1" data-caption="Annamalai &amp; Sarmila amidst the historic temple stone pillars">
+              <img src="./assets/hero-couple.jpg" alt="Annamalai and Sarmila at Madurai Temple" class="gallery-thumb">
+              <div class="gallery-overlay">
+                <span class="gallery-caption">Annamalai &amp; Sarmila amidst the temple stone pillars</span>
+              </div>
+            </div>
+
+            <div class="gallery-item reveal stagger-2" data-caption="The sacred Thali, betel leaves, turmeric &amp; Madurai malli">
+              <img src="./assets/gallery-thali.jpg" alt="Sacred Thali on betel leaves and jasmine" class="gallery-thumb">
+              <div class="gallery-overlay">
+                <span class="gallery-caption">The sacred Thali, betel leaves, turmeric &amp; Madurai malli</span>
+              </div>
+            </div>
+
+            <div class="gallery-item reveal stagger-3" data-caption="Thiruparankundram Gopuram bathed in auspicious morning light">
+              <img src="./assets/venue-temple.jpg" alt="Thiruparankundram temple gopuram and mandapam" class="gallery-thumb">
+              <div class="gallery-overlay">
+                <span class="gallery-caption">Thiruparankundram Gopuram bathed in auspicious morning light</span>
+              </div>
+            </div>
+
+            <div class="gallery-item gallery-item-wide reveal stagger-4" data-caption="Blessed with showers of Akshata rice and floral garlands">
+              <img src="./assets/gallery-muhurtham.jpg" alt="Auspicious Akshata shower during Muhurtham" class="gallery-thumb">
+              <div class="gallery-overlay">
+                <span class="gallery-caption">Blessed with showers of Akshata rice and floral garlands</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PILLAR 4 TARGET: VAZHIKAATTI (Venue & Route Map)
+         ====================================================================== -->
+    <section class="parchment-map-section" id="vazhikaatti">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">வழிகாட்டி &bull; Route Guide</span>
+          <h2 class="section-title">The Wedding Venues &amp; Map</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">Celebrated in the revered temple city of Madurai, Tamil Nadu.</p>
+        </div>
+
+        <!-- Antique Parchment Scroll Rollout Container -->
+        <div class="parchment-scroll-container parchment-unroll reveal">
+          <div class="venues-grid">
+            <!-- Venue 1: Thiruparankundram Temple Mandapam -->
+            <div class="venue-card">
+              <div class="venue-img-wrapper">
+                <img src="./assets/venue-temple.jpg" alt="Thiruparankundram Murugan Temple Madurai" class="venue-img">
+                <span class="venue-pill">Muhurtham &amp; Feast</span>
+              </div>
+              <div class="venue-content">
+                <h3 class="venue-title">Thiruparankundram Murugan Temple</h3>
+                <div class="venue-address">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; margin-top:2px;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>Thiruparankundram Sri Murugan Temple Mandapam, Madurai, Tamil Nadu 625005</span>
+                </div>
+                <p class="venue-desc">
+                  The sacred first abode of Lord Murugan (Arupadai Veedu) where the divine marriage of Murugan and Deivanai took place. Blessed with ancient stone carvings, traditional mandapams, and auspicious heritage.
+                </p>
+                <div class="venue-actions">
+                  <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="btn-lux btn-primary-lux btn-sm-lux">
+                    Open Google Maps
+                  </a>
+                  <a href="http://maps.apple.com/?q=Thiruparankundram+Murugan+Temple+Madurai" target="_blank" rel="noopener noreferrer" class="btn-lux btn-secondary-lux btn-sm-lux">
+                    Apple Maps
+                  </a>
+                  <button class="btn-lux btn-secondary-lux btn-sm-lux" data-copy="Thiruparankundram Murugan Temple, Madurai, Tamil Nadu 625005" data-toast="Temple address copied!">
+                    Copy Address
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Venue 2: Reception Mandapam -->
+            <div class="venue-card">
+              <div class="venue-img-wrapper">
+                <img src="./assets/gallery-muhurtham.jpg" alt="Madurai Wedding Mandapam Celebration" class="venue-img">
+                <span class="venue-pill">Grand Evening Reception</span>
+              </div>
+              <div class="venue-content">
+                <h3 class="venue-title">Meenakshi Grand Kalyana Mandapam</h3>
+                <div class="venue-address">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0; margin-top:2px;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>Thiruparankundram Main Road, Madurai, Tamil Nadu 625005</span>
+                </div>
+                <p class="venue-desc">
+                  An air-conditioned luxury marriage hall equipped with spacious dining halls, grand stage floral decor, and ample guest parking for the evening reception and photography.
+                </p>
+                <div class="venue-actions">
+                  <a href="https://maps.app.goo.gl/XvsBgxvmvMFd9t9U6" target="_blank" rel="noopener noreferrer" class="btn-lux btn-primary-lux btn-sm-lux">
+                    View Location
+                  </a>
+                  <button class="btn-lux btn-secondary-lux btn-sm-lux" data-copy="Thiruparankundram Main Road, Madurai, Tamil Nadu 625005" data-toast="Reception hall address copied!">
+                    Copy Address
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Embedded Interactive Google Map -->
+          <div class="map-embed-wrapper">
+            <iframe 
+              class="map-embed-iframe"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15722.56948564249!2d78.0645!3d9.8828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c504a434c44b%3A0x8aa8d8d3f18e9508!2sThiruparankundram%2C%20Madurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Thiruparankundram Madurai Map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         TRADITIONAL ATTIRE & CHETTINAD COLOR PALETTE
+         ====================================================================== -->
+    <section class="dresscode-section section-padding" id="dresscode">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">ஆடை அலங்காரம் &bull; Festive Elegance</span>
+          <h2 class="section-title">Traditional Attire &amp; Palette</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+        </div>
+
+        <div class="dresscode-card reveal">
+          <div class="dresscode-badge">South Indian Traditional &bull; Silk Splendor</div>
+          <p class="dresscode-text">
+            We encourage our esteemed guests to celebrate in rich South Indian traditional attire. Ladies are lovingly invited to wear traditional Kanchipuram Silk Sarees (Pattu Pudavai) or ethnic wear with temple jewelry and fragrant Madurai jasmine (mallipoo). Gentlemen are invited to wear pure Silk Veshti (Dhoti) with Angavastram or elegant Silk Kurtas.
+          </p>
+
+          <p style="font-family: var(--font-label); font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-vermillion); margin-bottom: 1.5rem;">
+            Auspicious Chettinad Heritage Palette
+          </p>
+
+          <div class="palette-container">
+            <div class="swatch-group">
+              <div class="swatch-circle" style="background: #9B2226; border: 1px solid #D4AF37;"></div>
+              <span class="swatch-label">Kumkum Vermillion</span>
+            </div>
+            <div class="swatch-group">
+              <div class="swatch-circle" style="background: #D4AF37;"></div>
+              <span class="swatch-label">Temple Gold</span>
+            </div>
+            <div class="swatch-group">
+              <div class="swatch-circle" style="background: #1D3557;"></div>
+              <span class="swatch-label">Athangudi Indigo</span>
+            </div>
+            <div class="swatch-group">
+              <div class="swatch-circle" style="background: #2B1E16;"></div>
+              <span class="swatch-label">Teakwood Charcoal</span>
+            </div>
+            <div class="swatch-group">
+              <div class="swatch-circle" style="background: #EAA023;"></div>
+              <span class="swatch-label">Turmeric Amber</span>
+            </div>
+            <div class="swatch-group">
+              <div class="swatch-circle" style="background: #FFF9ED; border: 1px solid #D4AF37;"></div>
+              <span class="swatch-label">Sandalwood Ivory</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MADURAI TRAVEL & STAY GUIDE
+         ====================================================================== -->
+    <section class="travel-section section-padding" id="travel">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">விருந்தினர் உபசரிப்பு &bull; Hospitality</span>
+          <h2 class="section-title">Madurai Travel &amp; Stay</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">Key details for our beloved guests traveling to the cultural capital of Tamil Nadu.</p>
+        </div>
+
+        <div class="travel-grid">
+          <!-- Travel Card 1 -->
+          <div class="travel-card reveal stagger-1">
+            <span class="travel-tag">Transit</span>
+            <h3 class="travel-title">Reaching Madurai</h3>
+            <p class="travel-text">
+              <strong>Madurai Airport (IXM)</strong> offers direct flights from Chennai, Bengaluru, Mumbai, and Delhi, and is only 20 minutes from Thiruparankundram. <strong>Madurai Junction (MDU)</strong> is connected by Vande Bharat and superfast trains across India.
+            </p>
+          </div>
+
+          <!-- Travel Card 2 -->
+          <div class="travel-card reveal stagger-2">
+            <span class="travel-tag">Stay</span>
+            <h3 class="travel-title">Recommended Hotels</h3>
+            <p class="travel-text">
+              Special guest accommodations have been arranged at <em>Heritage Madurai</em>, <em>Courtyard by Marriott Madurai</em>, and <em>Fortune Pandiyan Hotel</em>. Mention <strong>ANNAMALAI-SARMILA-WEDDING</strong> for family rates.
+            </p>
+          </div>
+
+          <!-- Travel Card 3 -->
+          <div class="travel-card reveal stagger-3">
+            <span class="travel-tag">Sightseeing</span>
+            <h3 class="travel-title">Madurai Highlights</h3>
+            <p class="travel-text">
+              While here, immerse in Madurai's rich heritage: visit the world-famous <strong>Arulmigu Meenakshi Amman Temple</strong>, the historic <strong>Thirumalai Nayakkar Mahal</strong>, and savor authentic Madurai Jigarthanda and Chettinad filter coffee!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SACRED RSVP SECTION WITH WHATSAPP SYNC
+         ====================================================================== -->
+    <section class="rsvp-section section-padding" id="rsvp">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">மங்கள வருகை &bull; Auspicious RSVP</span>
+          <h2 class="section-title">Will You Grace Our Wedding?</h2>
+          <div class="divider-ornament">
+            <span>&diamondsuit;</span>
+          </div>
+          <p class="section-desc">Please confirm your presence to help us prepare the traditional Chettinad Kalyana Virundhu feast.</p>
+        </div>
+
+        <div class="rsvp-container reveal">
+          <!-- RSVP Input Form -->
+          <form id="rsvp-form" class="rsvp-form">
+            <div class="form-group">
+              <label for="guest-name" class="form-label">Full Name(s) *</label>
+              <input type="text" id="guest-name" class="form-input" placeholder="e.g. Senthil Kumar & Family" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Will You Attend? *</label>
+              <div class="attendance-pills">
+                <label>
+                  <input type="radio" name="attendance" value="Attending" class="attendance-radio" checked>
+                  <span class="attendance-label">&check; Joyfully Attending</span>
+                </label>
+                <label>
+                  <input type="radio" name="attendance" value="Declining" class="attendance-radio">
+                  <span class="attendance-label">&cross; Sending Blessings from Afar</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="guest-count" class="form-label">Total Number of Attending Guests</label>
+              <select id="guest-count" class="form-select">
+                <option value="1">1 Guest</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5+ Guests (Family)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Traditional Feast Dietary Preferences</label>
+              <div class="dietary-checkbox-grid">
+                <label>
+                  <input type="checkbox" name="dietary" value="Traditional Pure Veg" class="dietary-input" checked>
+                  <span class="dietary-label">Traditional Pure Veg (Banana Leaf)</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="dietary" value="Jain Vegetarian" class="dietary-input">
+                  <span class="dietary-label">Jain Vegetarian</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="dietary" value="Vegan" class="dietary-input">
+                  <span class="dietary-label">Vegan</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="dietary" value="Nut Allergy" class="dietary-input">
+                  <span class="dietary-label">Nut Allergy</span>
+                </label>
+              </div>
+              <input type="text" id="dietary-other" class="form-input" placeholder="Any special dietary requirements (optional)" style="margin-top: 0.6rem;">
+            </div>
+
+            <div class="form-group">
+              <label for="song-request" class="form-label">A Favorite Nadaswaram / Tamil Wedding Melody</label>
+              <input type="text" id="song-request" class="form-input" placeholder="e.g. Kalyana Malai, Alaipayuthey...">
+            </div>
+
+            <div class="form-group">
+              <label for="guest-message" class="form-label">Blessings &amp; Wishes for Annamalai &amp; Sarmila</label>
+              <textarea id="guest-message" class="form-textarea" placeholder="Share your warm blessings and heartfelt wishes with the couple..."></textarea>
+            </div>
+
+            <div style="margin-top: 2rem;">
+              <button type="submit" class="btn-lux btn-primary-lux" style="width: 100%;">
+                Submit RSVP Confirmation
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- RSVP Confirmation Success State -->
+          <div id="rsvp-success-card" class="rsvp-success-card">
+            <div class="rsvp-success-icon">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-vermillion); margin-bottom: 0.5rem;">
+              Nandri, <span id="rsvp-success-guest-name">Dear Guest</span>!
+            </h3>
+            <p style="font-family: var(--font-body); font-size: 1.15rem; color: var(--on-surface-variant); max-width: 480px; margin: 0 auto 1.8rem auto;">
+              Your RSVP has been warmly received. You can also send an instant confirmation directly to Annamalai &amp; Sarmila via WhatsApp below:
+            </p>
+            <a id="rsvp-whatsapp-btn" href="#" class="btn-lux btn-whatsapp-rsvp" style="display: inline-flex;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+              Confirm via WhatsApp
+            </a>
+          </div>
+
+          <!-- Couple Admin Link -->
+          <div style="text-align: center;">
+            <button id="admin-trigger-link" class="admin-trigger-link" type="button">
+              View Guest List &amp; Export CSV (Couple Admin)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       COUPLE ADMIN GUEST LIST MODAL
+       ======================================================================== -->
+  <div id="admin-modal" class="admin-modal" role="dialog" aria-modal="true" aria-label="Guest List Admin">
+    <div class="admin-content">
+      <div class="admin-header">
+        <div>
+          <h3 class="admin-title">Confirmed Guest List</h3>
+          <p style="font-family: var(--font-label); font-size: 0.8rem; color: var(--on-surface-variant);">
+            Total Attending Guests: <strong id="total-attending-count" style="color: var(--color-vermillion);">0</strong>
+          </p>
+        </div>
+        <button id="admin-close-btn" class="lightbox-close-btn" style="position: static; width: 36px; height: 36px;" aria-label="Close Admin Modal">
+          &times;
+        </button>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="guest-list-table">
+          <thead>
+            <tr>
+              <th>Guest Name</th>
+              <th>Status</th>
+              <th>Seats</th>
+              <th>Dietary</th>
+              <th>Melody Request</th>
+            </tr>
+          </thead>
+          <tbody id="guest-list-tbody">
+            <!-- Populated dynamically by rsvp.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+        <button id="export-csv-btn" class="btn-lux btn-primary-lux btn-sm-lux" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Export CSV File
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       LIGHTBOX MODAL FOR GALLERY
+       ======================================================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Preview">
+    <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close Lightbox">&times;</button>
+    <button id="lightbox-prev" class="lightbox-nav-btn lightbox-prev" aria-label="Previous Image">&lsaquo;</button>
+    <button id="lightbox-next" class="lightbox-nav-btn lightbox-next" aria-label="Next Image">&rsaquo;</button>
+    <div class="lightbox-img-box">
+      <img id="lightbox-img" src="" alt="" class="lightbox-img">
+      <div id="lightbox-title" class="lightbox-title"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FLOATING ACTION BAR (Pill Navigation)
+       ======================================================================== -->
+  <div id="floating-action-bar" class="floating-action-bar is-hidden">
+    <a href="#rsvp" class="floating-pill-btn floating-pill-rsvp">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M20 6L9 17l-5-5"/>
+      </svg>
+      RSVP Now
+    </a>
+    <a href="#manavarai" class="floating-pill-btn" style="background: rgba(212, 175, 55, 0.18); color: var(--color-teak);">
+      Muhurtham
+    </a>
+    <a href="#hero" class="floating-pill-btn floating-pill-top" aria-label="Back to Top">
+      &uarr;
+    </a>
+  </div>
+
+  <!-- ========================================================================
+       SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-monogram">A &amp; S</div>
+      <div class="footer-names">Annamalai &amp; Sarmila</div>
+      <div class="footer-date">22 November 2026 &bull; Thiruparankundram, Madurai</div>
+      
+      <p class="footer-quote">
+        &ldquo;இணை பிரியாத அன்போடும் இறைவனின் திருவருளோடும் இல்லறம் துவங்கும் இனிய தருணம்.&rdquo;
+      </p>
+
+      <div class="footer-copyright">
+        <span>&copy; 2026 Annamalai &amp; Sarmila &bull; Chettinad Heritage Grandeur &bull;</span>
+        <button class="reopen-envelope-btn replay-walkthrough-btn" type="button" style="display: inline-flex; padding: 0.25rem 0.65rem; font-size: 0.68rem;">
+          Replay Mansion Walkthrough
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/particles.js"></script>
+  <script src="./js/audio.js"></script>
+  <script src="./js/heritage-walkthrough.js"></script>
+  <script src="./js/banana-leaf.js"></script>
+  <script src="./js/countdown.js"></script>
+  <script src="./js/gallery.js"></script>
+  <script src="./js/rsvp.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

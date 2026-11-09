@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Annamalai &amp; Sarmila</title>
+  <meta name="title" content="Annamalai &amp; Sarmila" />
+  <meta name="description" content="You're warmly invited to celebrate the wedding ceremony of Annamalai &amp; Sarmila on Sunday, 22 November 2026 at Thiruparankundram, Madurai, Tamil Nadu." />
+  <meta name="theme-color" content="#3b4432" />
+  <meta name="color-scheme" content="only light" />
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Annamalai &amp; Sarmila" />
+  <meta property="og:description" content="Join Annamalai &amp; Sarmila on Sunday, 22 November 2026 at Thiruparankundram, Madurai." />
+  <meta property="og:image" content="./assets/title-logo.jpg" />
+
+  <!-- Favicon & Device Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64x64.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+
+  <!-- Google Fonts: Dancing Script, Cormorant Garamond, Playfair Display, Cinzel, Plus Jakarta Sans, Noto Naskh Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#f4f6f1',
+              100: '#e5ebd9',
+              200: '#cbd7b7',
+              300: '#aabf90',
+              400: '#8ca66f',
+              500: '#6b7d55',
+              600: '#526141',
+              700: '#3e5634',
+              800: '#3b4432',
+              900: '#232a1e'
+            },
+            champagne: {
+              100: '#fdfbf7',
+              200: '#f7f2e6',
+              300: '#ebdcc5',
+              400: '#d5be9b',
+              500: '#8a7a4e',
+              600: '#73643c',
+              700: '#584c2d'
+            },
+            cream: '#f8f5f0',
+            cardCream: '#f7f2e6',
+            darkStage: '#0f0f0f'
+          },
+          fontFamily: {
+            dancing: ['"Dancing Script"', 'cursive'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['"Noto Naskh Arabic"', 'serif']
+          },
+          boxShadow: {
+            'royal': '0 20px 40px -15px rgba(59, 68, 50, 0.18), 0 0 0 1px rgba(138, 122, 78, 0.22)',
+            'royal-lg': '0 28px 50px -15px rgba(59, 68, 50, 0.25), 0 0 0 1px rgba(138, 122, 78, 0.3)',
+            'gold-inner': 'inset 0 0 0 1px rgba(138, 122, 78, 0.35)',
+            'card-soft': '0 10px 30px -5px rgba(59, 68, 50, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Canvas Confetti for Scratch Card celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --primary: 95 20% 30%;
+      --primary-foreground: 45 40% 97%;
+      --background: 45 38% 96%;
+      --foreground: 95 25% 16%;
+      --card: 45 42% 94%;
+      --card-foreground: 95 25% 16%;
+      --muted-foreground: 95 12% 38%;
+      --cream: 42 40% 93%;
+      --gold: 40 45% 45%;
+      --gold-light: 42 50% 78%;
+      --border: 45 25% 82%;
+      --theme-sage: #3b4432;
+      --theme-gold: #8a7a4e;
+      --theme-cream: #f8f5f0;
+    }
+
+    html, body {
+      background-color: #0f0f0f;
+      color: #20261b;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Royal Grace Tapestry Background styling */
+    .royal-tapestry-wrapper {
+      background-color: rgb(214, 197, 172);
+      background-image: url('assets/royal-grace/royal-grace-welcome-bg.jpg'), url('assets/royal-grace/royal-grace-general-bg.jpg');
+      background-position: top center, center 140.4888vw;
+      background-repeat: no-repeat, repeat-y;
+      background-size: 100% auto, 100% auto;
+    }
+
+    /* Fallback if local images are loading */
+    @supports not (background-image: url('assets/royal-grace/royal-grace-welcome-bg.jpg')) {
+      .royal-tapestry-wrapper {
+        background-color: #f7f2e6;
+      }
+    }
+
+    .end-tapestry-banner {
+      background-image: url('assets/royal-grace/royal-grace-end-bg.jpg');
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+    }
+
+    /* Text shadows matching Zareqia royal-grace */
+    .text-shadow-hero {
+      text-shadow: 0 2px 14px rgba(255, 255, 255, 0.65), 0 1px 3px rgba(255, 255, 255, 0.9);
+    }
+    .text-shadow-soft {
+      text-shadow: 0 1px 6px rgba(255, 255, 255, 0.6);
+    }
+    .text-shadow-scroll {
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.85);
+    }
+
+    /* Subtle shimmer animation */
+    @keyframes goldShimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #8a7a4e 0%, #e8dcbe 50%, #8a7a4e 100%);
+      background-size: 200% 100%;
+      animation: goldShimmer 4s infinite linear;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Pulse animation for tap button */
+    @keyframes pulseRing {
+      0% { transform: scale(0.92); opacity: 0.8; }
+      50% { transform: scale(1.08); opacity: 0.35; }
+      100% { transform: scale(0.92); opacity: 0.8; }
+    }
+    .pulse-ring {
+      animation: pulseRing 2.4s infinite ease-in-out;
+    }
+
+    /* Vinyl disc rotation for music player */
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spin-playing {
+      animation: spinVinyl 5s linear infinite;
+    }
+
+    /* Audio Equalizer bars animation */
+    @keyframes eqBar1 { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+    @keyframes eqBar2 { 0%, 100% { height: 16px; } 50% { height: 6px; } }
+    @keyframes eqBar3 { 0%, 100% { height: 8px; } 50% { height: 20px; } }
+    .eq-bar-1 { animation: eqBar1 0.8s ease-in-out infinite; }
+    .eq-bar-2 { animation: eqBar2 0.7s ease-in-out infinite 0.15s; }
+    .eq-bar-3 { animation: eqBar3 0.9s ease-in-out infinite 0.3s; }
+
+    /* Scratch canvas cursor */
+    .scratch-cursor {
+      cursor: grab;
+      touch-action: none;
+    }
+    .scratch-cursor:active {
+      cursor: grabbing;
+    }
+
+    /* RTL Arabic layout */
+    [dir="rtl"] {
+      text-align: right;
+    }
+    [dir="rtl"] .font-dancing {
+      font-family: 'Noto Naskh Arabic', serif !important;
+      font-weight: 700;
+    }
+    [dir="rtl"] .font-cormorant {
+      font-family: 'Noto Naskh Arabic', serif !important;
+    }
+  </style>
+</head>
+<body class="bg-darkStage">
+
+  <!-- ========================================================================
+       AUDIO PLAYER (Soundtrack: "Chill" - track3.mp3)
+       ======================================================================== -->
+  <audio id="wedding-audio" loop preload="auto">
+    <source src="assets/royal-grace/royal-grace-music.mp3" type="audio/mp3">
+    <source src="https://zareqia.com/__l5e/assets-v1/d58c0b7f-ae8f-429c-bb86-d0dee3a95d9b/track3.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- ========================================================================
+       TOP FLOATING CONTROLS (Brand Title Logo & Music Toggle)
+       ======================================================================== -->
+  <div class="fixed top-4 inset-x-4 z-50 flex items-center justify-between pointer-events-none">
+    <!-- Top-Left Title Logo Badge -->
+    <a href="#hero-curtain-stage" aria-label="Annamalai &amp; Sarmila Wedding"
+       class="group pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 shadow-lg backdrop-blur-md bg-[#0f0f0f]/80 hover:bg-[#0f0f0f]/95 text-[#faf7f2] border border-[#8a7a4e]/50 hover:border-[#8a7a4e]">
+      <img src="assets/favicon-64x64.png" alt="A &amp; S Logo" class="w-5 h-5 rounded-full object-contain" />
+      <span class="font-cormorant font-bold text-sm tracking-widest text-[#dfd7bf] group-hover:text-white transition-colors">A &amp; S</span>
+    </a>
+
+    <!-- Floating Music Toggle Button -->
+    <button id="music-toggle-btn" type="button" aria-label="Toggle Wedding Music"
+            class="group pointer-events-auto relative inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 shadow-lg backdrop-blur-md bg-[#0f0f0f]/75 hover:bg-[#0f0f0f]/90 text-[#faf7f2] border border-[#8a7a4e]/50 hover:border-[#8a7a4e]">
+      <!-- Vinyl spinning icon -->
+      <div id="vinyl-icon" class="w-5 h-5 rounded-full border border-[#8a7a4e] flex items-center justify-center bg-[#20261b]">
+        <div class="w-2 h-2 rounded-full bg-[#8a7a4e]"></div>
+      </div>
+      <!-- Equalizer Bars -->
+      <div id="eq-bars" class="flex items-end gap-0.5 h-4 w-4">
+        <span class="w-1 bg-[#8a7a4e] rounded-t-sm h-1"></span>
+        <span class="w-1 bg-[#8a7a4e] rounded-t-sm h-1"></span>
+        <span class="w-1 bg-[#8a7a4e] rounded-t-sm h-1"></span>
+      </div>
+      <span id="music-btn-text" class="hidden sm:inline-block">Music</span>
+    </button>
+  </div>
+
+  <!-- ========================================================================
+       STAGE 1: HERO CINEMATIC CURTAIN REVEAL
+       ======================================================================== -->
+  <section id="hero-curtain-stage" class="relative min-h-[100dvh] w-full overflow-hidden flex items-center justify-center bg-[#0f0f0f] select-none">
+    
+    <!-- Video Element (The Authentic Royal Grace Curtain Video) -->
+    <video id="hero-curtain-video"
+           class="absolute inset-0 h-full w-full object-cover cursor-pointer z-0"
+           playsinline
+           muted
+           preload="auto"
+           controlslist="nodownload noplaybackrate noremoteplayback nofullscreen"
+           disablepictureinpicture>
+      <source src="assets/royal-grace/royal-grace.mp4" type="video/mp4">
+      <source src="https://zareqia.com/__l5e/assets-v1/f78157f3-208f-4fec-923c-b4edfd81bf82/royal-grace.mp4" type="video/mp4">
+    </video>
+
+    <!-- Canvas Poster to avoid blank frame before video load -->
+    <canvas id="hero-poster-canvas" class="absolute inset-0 h-full w-full object-cover pointer-events-none z-[1] transition-opacity duration-700"></canvas>
+
+
+    <!-- Animated Typography (Fades in smoothly when the curtains open) -->
+    <div id="couple-typography-container" class="relative -top-10 md:-top-14 z-10 flex w-full flex-col items-center justify-center px-6 text-center pointer-events-none opacity-0 translate-y-8 transition-all duration-1000 ease-out">
+      
+      <!-- Royal Monogram Title Logo Crest -->
+      <div class="mb-3">
+        <div class="inline-block relative w-20 h-20 md:w-28 md:h-28 rounded-full p-1 bg-[#f7f2e6]/95 border border-[#8a7a4e]/40 shadow-[0_8px_25px_rgba(59,68,50,0.25)]">
+          <img src="assets/title-logo.png" alt="Annamalai &amp; Sarmila Monogram Logo" class="w-full h-full object-contain rounded-full" />
+        </div>
+      </div>
+
+      <!-- "We are getting married" Subtitle -->
+      <p class="mb-2 whitespace-pre-line font-dancing text-xl md:text-3xl text-[#3b4432] text-shadow-hero font-semibold">
+        We are getting married
+      </p>
+
+      <!-- Delicate Horizontal Divider with Centered Heart -->
+      <div class="my-3 flex items-center justify-center gap-3">
+        <div class="h-px w-16 bg-[#3b4432]/45"></div>
+        <svg class="w-3 h-3 text-[#3b4432]" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <div class="h-px w-16 bg-[#3b4432]/45"></div>
+      </div>
+
+      <!-- Groom Name -->
+      <div class="my-1">
+        <h1 id="groom-name" class="font-dancing text-6xl leading-none md:text-9xl text-[#3b4432] text-shadow-hero font-bold tracking-tight">
+          Annamalai
+        </h1>
+        <p id="groom-subtext" class="mt-2 font-cormorant text-sm md:text-base italic text-[#3b4432]/85 text-shadow-soft whitespace-pre-line">
+          With the divine blessings of parents &amp; elders &bull; Madurai
+        </p>
+      </div>
+
+      <!-- Ampersand Divider -->
+      <p class="my-2 font-dancing text-3xl md:text-5xl text-[#3b4432]/80 text-shadow-soft">
+        &amp;
+      </p>
+
+      <!-- Bride Name -->
+      <div class="my-1">
+        <h1 id="bride-name" class="font-dancing text-6xl leading-none md:text-9xl text-[#3b4432] text-shadow-hero font-bold tracking-tight">
+          Sarmila
+        </h1>
+        <p id="bride-subtext" class="mt-2 font-cormorant text-sm md:text-base italic text-[#3b4432]/85 text-shadow-soft whitespace-pre-line">
+          With the divine blessings of parents &amp; elders &bull; Tamil Nadu
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Floating Scroll Indicator (Appears when curtains open) -->
+    <a href="#welcome-section" id="scroll-prompt"
+       class="absolute inset-x-0 bottom-16 md:bottom-20 z-10 flex flex-col items-center gap-1.5 pointer-events-auto opacity-0 transition-opacity duration-1000 ease-out">
+      <span class="text-xs uppercase font-bold tracking-[0.25em] text-[#3b4432] text-shadow-scroll">
+        Scroll
+      </span>
+      <svg class="w-7 h-7 text-[#3b4432] animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </a>
+
+  </section>
+
+  <!-- ========================================================================
+       STAGE 2: TAPESTRY BACKGROUND & INVITATION SECTIONS
+       ======================================================================== -->
+  <main class="royal-tapestry-wrapper relative w-full overflow-hidden text-[#20261b]">
+
+    <!-- ------------------------------------------------------------------------
+         WELCOME SECTION
+         ------------------------------------------------------------------------ -->
+    <section id="welcome-section" class="relative px-6 py-24 md:px-14 md:py-32 overflow-hidden">
+      <div class="max-w-2xl mx-auto text-center relative z-10">
+        
+        <!-- Top Ornamental Divider -->
+        <div class="flex items-center justify-center gap-3 mb-8">
+          <div class="h-px w-20 bg-gradient-to-r from-transparent to-[#8a7a4e]"></div>
+          <svg class="w-4 h-4 text-[#8a7a4e]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <div class="h-px w-20 bg-gradient-to-l from-transparent to-[#8a7a4e]"></div>
+        </div>
+
+        <!-- Welcome Message -->
+        <p id="welcome-message-text" class="font-cormorant text-2xl md:text-3xl leading-relaxed italic text-[#3b4432] text-shadow-soft whitespace-pre-line">
+          With the divine blessings of Lord Murugan at Thiruparankundram and the heartfelt prayers of our parents and elders, we, Annamalai &amp; Sarmila, warmly invite you and your family to grace our sacred wedding ceremony, bless our union, and join us for the celebrations ❤
+        </p>
+
+        <!-- Bottom Ornamental Divider -->
+        <div class="flex items-center justify-center gap-3 mt-8">
+          <div class="h-px w-20 bg-gradient-to-r from-transparent to-[#8a7a4e]"></div>
+          <svg class="w-4 h-4 text-[#8a7a4e]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <div class="h-px w-20 bg-gradient-to-l from-transparent to-[#8a7a4e]"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------------
+         INTERACTIVE SCRATCH CARD (SAVE THE DATE) & COUNTDOWN SECTION
+         ------------------------------------------------------------------------ -->
+    <section id="scratch-section" class="relative px-4 py-16 md:px-8 max-w-4xl mx-auto">
+      
+      <!-- Card Container with Ornate Paper Finish -->
+      <div class="relative rounded-3xl p-6 md:p-10 shadow-royal-lg backdrop-blur-md bg-[#f7f2e6]/90 border border-[#8a7a4e]/30 text-center overflow-hidden">
+        
+        <!-- Header Text -->
+        <div class="mb-6">
+          <svg class="w-8 h-8 mx-auto text-[#3b4432] mb-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <h2 class="font-cormorant text-2xl md:text-3xl font-semibold text-[#3b4432]">
+            Save The Date
+          </h2>
+          <p class="text-xs uppercase tracking-[0.2em] text-[#6b7d55] mt-1">
+            Scratch the gold seal below to reveal our wedding date
+          </p>
+        </div>
+
+        <!-- Scratch Canvas Wrapper -->
+        <div class="relative w-full max-w-md mx-auto aspect-[16/10] rounded-2xl overflow-hidden shadow-royal border-2 border-[#8a7a4e]/40 select-none">
+          
+          <!-- Revealed Underlayer Content -->
+          <div id="scratch-revealed-content" class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#faf7f2] to-[#ede6d4] text-[#3b4432]">
+            <span class="text-xs uppercase font-bold tracking-[0.3em] text-[#8a7a4e] mb-1">
+              You're Invited!
+            </span>
+            <span id="revealed-day" class="font-cinzel text-sm uppercase tracking-widest text-[#526141]">
+              Sunday
+            </span>
+            <div id="revealed-date-num" class="font-dancing text-6xl md:text-7xl font-bold my-1 text-[#3b4432]">
+              22
+            </div>
+            <span id="revealed-month-year" class="font-cinzel text-base md:text-lg font-semibold tracking-widest text-[#3b4432]">
+              November 2026
+            </span>
+            <span id="revealed-time" class="mt-2 text-xs uppercase tracking-widest font-semibold text-[#6b7d55] px-3 py-1 rounded-full bg-[#3b4432]/10">
+              06:00 AM – 07:30 AM IST
+            </span>
+          </div>
+
+          <!-- HTML5 Canvas Scratch Foil Overlay -->
+          <canvas id="scratch-canvas" class="absolute inset-0 w-full h-full scratch-cursor z-10 transition-opacity duration-500"></canvas>
+        </div>
+
+        <!-- Direct Instant Reveal Button (For quick convenience / accessibility) -->
+        <div class="mt-4">
+          <button id="quick-reveal-btn" type="button" class="text-xs font-medium uppercase tracking-widest text-[#6b7d55] hover:text-[#3b4432] underline decoration-[#8a7a4e]/50 transition-colors">
+            Can't scratch? Click to reveal instantly ✨
+          </button>
+        </div>
+
+        <!-- "Add to Calendar" Dropdown Button -->
+        <div class="mt-8 flex flex-col items-center relative z-20">
+          <div class="relative inline-block text-left">
+            <button id="calendar-dropdown-trigger" type="button"
+                    class="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-xs md:text-sm font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-royal hover:shadow-royal-lg bg-[#3b4432] hover:bg-[#526141] text-[#faf7f2]">
+              <!-- Calendar Icon -->
+              <svg class="w-4 h-4 text-[#e5d7ad]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span id="calendar-btn-label">Add to Calendar</span>
+              <svg class="w-3.5 h-3.5 ml-1 text-[#e5d7ad]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <!-- Calendar Options Popover -->
+            <div id="calendar-dropdown-menu" class="hidden absolute left-1/2 -translate-x-1/2 mt-3 w-64 rounded-2xl p-2 shadow-2xl backdrop-blur-xl bg-[#f7f2e6]/95 border border-[#8a7a4e]/40 z-50">
+              <button id="cal-opt-google" type="button" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left text-xs font-medium text-[#3b4432] hover:bg-[#3b4432]/10 transition-colors">
+                <span class="w-2 h-2 rounded-full bg-[#8a7a4e]"></span>
+                <span>Google Calendar</span>
+              </button>
+              <button id="cal-opt-apple" type="button" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left text-xs font-medium text-[#3b4432] hover:bg-[#3b4432]/10 transition-colors">
+                <span class="w-2 h-2 rounded-full bg-[#526141]"></span>
+                <span>Apple Calendar (.ics)</span>
+              </button>
+              <button id="cal-opt-outlook" type="button" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left text-xs font-medium text-[#3b4432] hover:bg-[#3b4432]/10 transition-colors">
+                <span class="w-2 h-2 rounded-full bg-[#3b4432]"></span>
+                <span>Outlook Calendar</span>
+              </button>
+              <button id="cal-opt-yahoo" type="button" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-left text-xs font-medium text-[#3b4432] hover:bg-[#3b4432]/10 transition-colors">
+                <span class="w-2 h-2 rounded-full bg-[#8a7a4e]"></span>
+                <span>Yahoo Calendar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------------------------
+             LIVE COUNTDOWN TIMER
+             ------------------------------------------------------------------ -->
+        <div class="mt-12 pt-8 border-t border-[#8a7a4e]/20">
+          <h3 class="font-cormorant text-xl md:text-2xl italic font-semibold text-[#3b4432] mb-6">
+            Counting Down to Forever
+          </h3>
+
+          <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-lg mx-auto">
+            <!-- Days -->
+            <div class="flex flex-col items-center justify-center p-3 md:p-4 rounded-2xl bg-[#faf7f2] border border-[#8a7a4e]/25 shadow-card-soft">
+              <span id="countdown-days" class="font-cinzel text-2xl md:text-4xl font-bold text-[#3b4432]">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold text-[#6b7d55] mt-1">Days</span>
+            </div>
+            <!-- Hours -->
+            <div class="flex flex-col items-center justify-center p-3 md:p-4 rounded-2xl bg-[#faf7f2] border border-[#8a7a4e]/25 shadow-card-soft">
+              <span id="countdown-hours" class="font-cinzel text-2xl md:text-4xl font-bold text-[#3b4432]">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold text-[#6b7d55] mt-1">Hours</span>
+            </div>
+            <!-- Minutes -->
+            <div class="flex flex-col items-center justify-center p-3 md:p-4 rounded-2xl bg-[#faf7f2] border border-[#8a7a4e]/25 shadow-card-soft">
+              <span id="countdown-minutes" class="font-cinzel text-2xl md:text-4xl font-bold text-[#3b4432]">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold text-[#6b7d55] mt-1">Minutes</span>
+            </div>
+            <!-- Seconds -->
+            <div class="flex flex-col items-center justify-center p-3 md:p-4 rounded-2xl bg-[#faf7f2] border border-[#8a7a4e]/25 shadow-card-soft">
+              <span id="countdown-seconds" class="font-cinzel text-2xl md:text-4xl font-bold text-[#8a7a4e]">00</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold text-[#6b7d55] mt-1">Seconds</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------------
+         PRE-WEDDING EVENTS SECTION
+         ------------------------------------------------------------------------ -->
+    <section id="pre-wedding-section" class="relative px-4 py-16 md:px-8 max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <svg class="w-8 h-8 mx-auto text-[#8a7a4e] mb-2" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2Z"/>
+        </svg>
+        <h2 class="font-cormorant text-3xl md:text-4xl font-bold text-[#3b4432]">
+          Pre-Wedding Celebrations
+        </h2>
+        <p class="text-xs uppercase tracking-[0.2em] text-[#6b7d55] mt-1">
+          Ceremonies of joy &amp; blessings
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Mappillai Azhaippu & Sangeeth Card -->
+        <div class="rounded-3xl p-6 md:p-8 shadow-royal backdrop-blur-md bg-[#f7f2e6]/90 border border-[#8a7a4e]/30 flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full bg-[#8a7a4e]/15 text-[#8a7a4e] text-xs font-semibold uppercase tracking-widest mb-3">
+              Royal Honors &amp; Music
+            </div>
+            <h3 class="font-dancing text-4xl text-[#3b4432] font-bold mb-2">
+              Mappillai Azhaippu &amp; Sangeeth
+            </h3>
+            <p class="text-sm font-medium text-[#526141] mb-1">
+              📅 <span>Saturday, 21 November 2026</span>
+            </p>
+            <p class="text-sm font-medium text-[#526141] mb-3">
+              ⏰ <span>06:30 PM IST</span>
+            </p>
+            <p class="font-cormorant text-base italic text-[#3b4432]/90">
+              Welcoming the groom with royal traditional honors, garland exchange, joyous family music, and an authentic celebratory Chettinad dinner.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#8a7a4e]/20 flex items-center justify-between text-xs text-[#6b7d55]">
+            <span>Dress: Traditional Festive</span>
+            <span class="font-semibold text-[#8a7a4e]">Thiruparankundram, Madurai</span>
+          </div>
+        </div>
+
+        <!-- Mangala Isai Card -->
+        <div class="rounded-3xl p-6 md:p-8 shadow-royal backdrop-blur-md bg-[#f7f2e6]/90 border border-[#8a7a4e]/30 flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full bg-[#8a7a4e]/15 text-[#8a7a4e] text-xs font-semibold uppercase tracking-widest mb-3">
+              Auspicious Dawn Ragas
+            </div>
+            <h3 class="font-dancing text-4xl text-[#3b4432] font-bold mb-2">
+              Mangala Isai &amp; Nadaswaram
+            </h3>
+            <p class="text-sm font-medium text-[#526141] mb-1">
+              📅 <span>Sunday, 22 November 2026</span>
+            </p>
+            <p class="text-sm font-medium text-[#526141] mb-3">
+              ⏰ <span>05:30 AM IST</span>
+            </p>
+            <p class="font-cormorant text-base italic text-[#3b4432]/90">
+              Sacred dawn ragas played on the Nadaswaram and Thavil, filling the Thiruparankundram temple hall with divine vibrations.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#8a7a4e]/20 flex items-center justify-between text-xs text-[#6b7d55]">
+            <span>Dress: Traditional Silk</span>
+            <span class="font-semibold text-[#8a7a4e]">Temple Mandapam</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------------
+         PROGRAM TIMELINE (WEDDING DAY ITINERARY)
+         ------------------------------------------------------------------------ -->
+    <section id="program-section" class="relative px-4 py-16 md:px-8 max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <svg class="w-8 h-8 mx-auto text-[#3b4432] mb-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <h2 class="font-cormorant text-3xl md:text-4xl font-bold text-[#3b4432]">
+          Program Timeline
+        </h2>
+        <p class="text-xs uppercase tracking-[0.2em] text-[#6b7d55] mt-1">
+          Sunday, 22 November 2026
+        </p>
+      </div>
+
+      <!-- Vertical Timeline -->
+      <div class="relative pl-6 md:pl-10 space-y-8 before:absolute before:left-2 md:before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-[#8a7a4e] before:via-[#3b4432] before:to-[#8a7a4e]">
+        
+        <!-- Timeline Item 1 -->
+        <div class="relative group">
+          <!-- Timeline Node Dot -->
+          <div class="absolute -left-6 md:-left-10 top-1.5 w-5 h-5 rounded-full bg-[#f7f2e6] border-4 border-[#3b4432] shadow-md group-hover:scale-125 transition-transform duration-300"></div>
+          
+          <div class="rounded-2xl p-6 shadow-royal backdrop-blur-md bg-[#f7f2e6]/95 border border-[#8a7a4e]/25">
+            <div class="flex items-center justify-between gap-4 mb-2">
+              <h3 class="font-playfair text-xl font-bold text-[#3b4432]">
+                Subha Muhurtham &amp; Thali Kettu
+              </h3>
+              <span class="px-3 py-1 rounded-full bg-[#8a7a4e] text-xs font-semibold text-[#faf7f2] whitespace-nowrap">
+                06:00 – 07:30 AM IST
+              </span>
+            </div>
+            <p class="font-cormorant text-base italic text-[#526141]">
+              The sacred hour: Kanyadaanam, tying of the sacred Mangalsutra (Thali), Saptapadi (seven steps), and showering of holy Akshata.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative group">
+          <!-- Timeline Node Dot -->
+          <div class="absolute -left-6 md:-left-10 top-1.5 w-5 h-5 rounded-full bg-[#8a7a4e] border-4 border-[#faf7f2] shadow-md group-hover:scale-125 transition-transform duration-300"></div>
+          
+          <div class="rounded-2xl p-6 shadow-royal-lg backdrop-blur-md bg-[#faf7f2] border-2 border-[#8a7a4e]/40">
+            <div class="flex items-center justify-between gap-4 mb-2">
+              <h3 class="font-playfair text-xl md:text-2xl font-bold text-[#3b4432]">
+                Chettinad Kalyana Virundhu
+              </h3>
+              <span class="px-3 py-1 rounded-full bg-[#3b4432]/10 text-xs font-semibold text-[#3b4432] whitespace-nowrap">
+                08:00 AM IST Onwards
+              </span>
+            </div>
+            <p class="font-cormorant text-base italic text-[#526141]">
+              Grand traditional feast served on fresh banana leaves: hot ghee rice, aromatic sambar, rasam, avial, appalam, vadai, and sweet payasam.
+            </p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative group">
+          <!-- Timeline Node Dot -->
+          <div class="absolute -left-6 md:-left-10 top-1.5 w-5 h-5 rounded-full bg-[#f7f2e6] border-4 border-[#3b4432] shadow-md group-hover:scale-125 transition-transform duration-300"></div>
+          
+          <div class="rounded-2xl p-6 shadow-royal backdrop-blur-md bg-[#f7f2e6]/95 border border-[#8a7a4e]/25">
+            <div class="flex items-center justify-between gap-4 mb-2">
+              <h3 class="font-playfair text-xl font-bold text-[#3b4432]">
+                Grand Wedding Reception
+              </h3>
+              <span class="px-3 py-1 rounded-full bg-[#3b4432]/10 text-xs font-semibold text-[#3b4432] whitespace-nowrap">
+                06:30 PM IST (18:30)
+              </span>
+            </div>
+            <p class="font-cormorant text-base italic text-[#526141]">
+              An evening of greetings, blessings, family photographs on stage, and an extravagant celebratory dinner banquet.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------------
+         VENUE & GOOGLE MAPS SECTION
+         ------------------------------------------------------------------------ -->
+    <section id="venue-section" class="relative px-4 py-16 md:px-8 max-w-4xl mx-auto">
+      <div class="rounded-3xl p-6 md:p-10 shadow-royal-lg backdrop-blur-md bg-[#f7f2e6]/95 border border-[#8a7a4e]/30 overflow-hidden">
+        
+        <div class="text-center mb-8">
+          <svg class="w-8 h-8 mx-auto text-[#8a7a4e] mb-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <h2 class="font-cormorant text-3xl md:text-4xl font-bold text-[#3b4432]">
+            The Wedding Venue
+          </h2>
+          <p id="venue-name-text" class="font-playfair text-2xl font-bold text-[#8a7a4e] mt-2">
+            Thiruparankundram Sri Murugan Temple Mandapam
+          </p>
+          <p id="venue-address-text" class="font-cormorant text-lg italic text-[#526141] mt-1">
+            Thiruparankundram, Madurai, Tamil Nadu 625005
+          </p>
+          <p class="font-cormorant text-sm italic text-[#6b7d55] mt-1">
+            Evening Reception: Meenakshi Grand Kalyana Mandapam, Thiruparankundram Main Road, Madurai
+          </p>
+        </div>
+
+        <!-- Embedded Interactive Google Map -->
+        <div class="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-[#8a7a4e]/30 mb-8">
+          <iframe id="google-maps-iframe"
+                  class="absolute inset-0 w-full h-full border-0"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15722.56948564249!2d78.0645!3d9.8828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c504a434c44b%3A0x8aa8d8d3f18e9508!2sThiruparankundram%2C%20Madurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Thiruparankundram Madurai Map">
+          </iframe>
+        </div>
+
+        <!-- Get Directions Action Button -->
+        <div class="text-center">
+          <a id="maps-link-btn"
+             href="https://maps.app.goo.gl/GKZoPy7D2pUyoqYP7"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-royal hover:shadow-royal-lg bg-[#3b4432] hover:bg-[#526141] text-[#faf7f2]">
+            <svg class="w-4 h-4 text-[#e5d7ad]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+            <span>View on Google Maps</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ------------------------------------------------------------------------
+         GUEST BOOK & RSVP SECTION
+         ------------------------------------------------------------------------ -->
+    <section id="rsvp-section" class="relative px-4 py-16 md:px-8 max-w-3xl mx-auto">
+      <div class="rounded-3xl p-6 md:p-10 shadow-royal-lg backdrop-blur-md bg-[#f7f2e6]/95 border border-[#8a7a4e]/30">
+        
+        <div class="text-center mb-8">
+          <svg class="w-8 h-8 mx-auto text-[#3b4432] mb-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+          </svg>
+          <h2 class="font-cormorant text-3xl md:text-4xl font-bold text-[#3b4432]">
+            RSVP &amp; Guest Wishes
+          </h2>
+          <p class="text-xs uppercase tracking-[0.2em] text-[#6b7d55] mt-1">
+            Please let us know if you can join us
+          </p>
+        </div>
+
+        <!-- RSVP Form -->
+        <form id="rsvp-form" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-[#3b4432] mb-1">
+                Your Full Name *
+              </label>
+              <input type="text" id="rsvp-name" required
+                     placeholder="e.g. Eleanor Vance"
+                     class="w-full px-4 py-3 rounded-xl bg-[#faf7f2] border border-[#8a7a4e]/30 text-sm text-[#3b4432] focus:outline-none focus:border-[#3b4432] focus:ring-1 focus:ring-[#3b4432] transition-all">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-[#3b4432] mb-1">
+                Will you attend? *
+              </label>
+              <select id="rsvp-attending" required
+                      class="w-full px-4 py-3 rounded-xl bg-[#faf7f2] border border-[#8a7a4e]/30 text-sm text-[#3b4432] focus:outline-none focus:border-[#3b4432] focus:ring-1 focus:ring-[#3b4432] transition-all">
+                <option value="yes">Joyfully Attending</option>
+                <option value="no">Regretfully Decline</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-[#3b4432] mb-1">
+                Number of Guests
+              </label>
+              <input type="number" id="rsvp-guests" min="1" max="10" value="1"
+                     class="w-full px-4 py-3 rounded-xl bg-[#faf7f2] border border-[#8a7a4e]/30 text-sm text-[#3b4432] focus:outline-none focus:border-[#3b4432] focus:ring-1 focus:ring-[#3b4432] transition-all">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-[#3b4432] mb-1">
+                Dietary Requirements
+              </label>
+              <input type="text" id="rsvp-diet" placeholder="Traditional Pure Veg (Banana Leaf), Jain Vegetarian, etc."
+                     class="w-full px-4 py-3 rounded-xl bg-[#faf7f2] border border-[#8a7a4e]/30 text-sm text-[#3b4432] focus:outline-none focus:border-[#3b4432] focus:ring-1 focus:ring-[#3b4432] transition-all">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-[#3b4432] mb-1">
+              Blessing &amp; Message for the Couple
+            </label>
+            <textarea id="rsvp-message" rows="3"
+                      placeholder="Share your warm blessings and heartfelt wishes with Annamalai &amp; Sarmila..."
+                      class="w-full px-4 py-3 rounded-xl bg-[#faf7f2] border border-[#8a7a4e]/30 text-sm text-[#3b4432] focus:outline-none focus:border-[#3b4432] focus:ring-1 focus:ring-[#3b4432] transition-all"></textarea>
+          </div>
+
+          <div class="text-center pt-2">
+            <button type="submit"
+                    class="inline-flex items-center gap-2 rounded-full px-9 py-3.5 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-royal hover:shadow-royal-lg bg-[#3b4432] hover:bg-[#526141] text-[#faf7f2]">
+              <span>Confirm RSVP &amp; Send Wishes</span>
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------------
+         STAGE 11: CLOSING BANNER & FAREWELL
+         ------------------------------------------------------------------------ -->
+    <section id="closing-section" class="end-tapestry-banner relative px-6 py-28 md:py-40 text-center text-[#3b4432] overflow-hidden">
+      <div class="max-w-2xl mx-auto relative z-10">
+        
+        <!-- Royal Monogram Seal -->
+        <div class="mb-4">
+          <div class="inline-block relative w-16 h-16 md:w-20 md:h-20 rounded-full p-1 bg-[#f7f2e6]/95 border border-[#8a7a4e]/40 shadow-royal">
+            <img src="assets/title-logo.png" alt="Annamalai &amp; Sarmila Monogram" class="w-full h-full object-contain rounded-full" />
+          </div>
+        </div>
+
+        <h2 class="font-cormorant text-3xl md:text-5xl font-bold italic leading-tight mb-4 text-shadow-soft">
+          We can't wait to celebrate with you!
+        </h2>
+
+        <p class="font-dancing text-4xl md:text-6xl font-bold text-[#3b4432] mt-4 text-shadow-hero">
+          Annamalai &amp; Sarmila
+        </p>
+
+        <div class="mt-8 flex items-center justify-center gap-3">
+          <div class="h-px w-24 bg-gradient-to-r from-transparent to-[#3b4432]"></div>
+          <span class="font-cinzel text-xs tracking-widest text-[#526141]">22 • 11 • 2026</span>
+          <div class="h-px w-24 bg-gradient-to-l from-transparent to-[#3b4432]"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="bg-[#0f0f0f] py-8 text-center text-xs text-[#8a7a4e]/70 border-t border-[#8a7a4e]/20">
+    <div class="max-w-md mx-auto px-4">
+      <p class="font-dancing text-xl text-[#faf7f2]/90 mb-1">With love &amp; gratitude</p>
+      <p>&copy; 2026 Annamalai &amp; Sarmila &bull; Thiruparankundram, Madurai</p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FLOATING BACK TO TOP BUTTON
+       ======================================================================== -->
+  <button id="back-to-top-btn" type="button" aria-label="Back to Top"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#3b4432] text-[#faf7f2] shadow-royal hover:shadow-royal-lg hover:bg-[#526141] transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- ========================================================================
+       CLIENT APPLICATION LOGIC & CONFIGURATION
+       ======================================================================== -->
+  <script>
+    /**
+     * CENTRALIZED INVITATION CONFIGURATION
+     * You can customize names, dates, venues, or messages here.
+     */
+    const INVITATION_CONFIG = {
+      groomName: "Annamalai",
+      groomSubText: "With the divine blessings of parents & elders • Madurai",
+      brideName: "Sarmila",
+      brideSubText: "With the divine blessings of parents & elders • Tamil Nadu",
+      weddingDate: "2026-11-22",
+      weddingTime: "06:00",
+      timezone: "Asia/Kolkata",
+      venueName: "Thiruparankundram Sri Murugan Temple Mandapam",
+      venueAddress: "Thiruparankundram, Madurai, Tamil Nadu 625005",
+      googleMapsUrl: "https://maps.app.goo.gl/GKZoPy7D2pUyoqYP7",
+      googleMapsQuery: "Thiruparankundram Murugan Temple Madurai",
+      welcomeMessage: "With the divine blessings of Lord Murugan at Thiruparankundram and the heartfelt prayers of our parents and elders, we, Annamalai & Sarmila, warmly invite you and your family to grace our sacred wedding ceremony, bless our union, and join us for the celebrations ❤",
+      endMessage: "We can't wait to celebrate with you!",
+      targetTimestamp: new Date("2026-11-22T06:00:00+05:30").getTime()
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initHeroStage();
+      initAudioPlayer();
+      initScratchCard();
+      initCountdown();
+      initCalendarIntegration();
+      initGuestbookRSVP();
+      initBackToTop();
+    });
+
+    /**
+     * 1. HERO CURTAIN STAGE CONTROLLER
+     */
+    function initHeroStage() {
+      const video = document.getElementById('hero-curtain-video');
+      const canvas = document.getElementById('hero-poster-canvas');
+      const typography = document.getElementById('couple-typography-container');
+      const scrollPrompt = document.getElementById('scroll-prompt');
+      const heroSection = document.getElementById('hero-curtain-stage');
+
+      let hasOpened = false;
+
+      // Draw initial poster snapshot once metadata is ready
+      if (video && canvas) {
+        video.addEventListener('loadeddata', () => {
+          try {
+            if (video.videoWidth > 0 && video.videoHeight > 0) {
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            }
+          } catch (e) {
+            console.warn("Canvas poster snapshot note:", e);
+          }
+        });
+      }
+
+      // User tap anywhere on hero stage triggers the reveal
+      async function triggerReveal() {
+        if (hasOpened) return;
+        hasOpened = true;
+
+        // Play audio soundtrack
+        playAudio();
+
+        // Play the video
+        try {
+          if (video) {
+            video.muted = true;
+            video.playsInline = true;
+            await video.play();
+          }
+          // Fade out the static poster canvas
+          if (canvas) {
+            canvas.style.opacity = '0';
+          }
+        } catch (err) {
+          console.log("Video play triggered:", err);
+        }
+
+        // Trigger typography appearance around 5.5s (synchronized with drapes parting)
+        setTimeout(() => {
+          revealTypography();
+        }, 5500);
+
+        // Also reveal on video ended as safe fallback
+        if (video) {
+          video.addEventListener('ended', () => {
+            revealTypography();
+          }, { once: true });
+        }
+      }
+
+      function revealTypography() {
+        if (typography) {
+          typography.style.opacity = '1';
+          typography.style.transform = 'translateY(0)';
+        }
+        if (scrollPrompt) {
+          scrollPrompt.style.opacity = '1';
+        }
+      }
+
+      if (heroSection) {
+        heroSection.addEventListener('click', triggerReveal);
+        heroSection.addEventListener('touchstart', triggerReveal, { passive: true });
+      }
+    }
+
+    /**
+     * 2. AUDIO PLAYER CONTROLLER
+     */
+    let isAudioPlaying = false;
+    const audio = document.getElementById('wedding-audio');
+    const musicBtn = document.getElementById('music-toggle-btn');
+    const vinylIcon = document.getElementById('vinyl-icon');
+    const eqBars = document.getElementById('eq-bars');
+    const eqSpans = eqBars ? eqBars.querySelectorAll('span') : [];
+
+    function initAudioPlayer() {
+      if (!audio || !musicBtn) return;
+      audio.volume = 0.65;
+
+      musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isAudioPlaying) {
+          pauseAudio();
+        } else {
+          playAudio();
+        }
+      });
+    }
+
+    function playAudio() {
+      if (!audio) return;
+      audio.play().then(() => {
+        isAudioPlaying = true;
+        if (vinylIcon) vinylIcon.classList.add('spin-playing');
+        if (eqSpans.length === 3) {
+          eqSpans[0].classList.add('eq-bar-1');
+          eqSpans[1].classList.add('eq-bar-2');
+          eqSpans[2].classList.add('eq-bar-3');
+        }
+      }).catch(err => {
+        console.log("Audio autoplay prevented, requires direct tap:", err);
+      });
+    }
+
+    function pauseAudio() {
+      if (!audio) return;
+      audio.pause();
+      isAudioPlaying = false;
+      if (vinylIcon) vinylIcon.classList.remove('spin-playing');
+      if (eqSpans.length === 3) {
+        eqSpans[0].classList.remove('eq-bar-1');
+        eqSpans[1].classList.remove('eq-bar-2');
+        eqSpans[2].classList.remove('eq-bar-3');
+      }
+    }
+
+
+    /**
+     * 4. INTERACTIVE CANVAS SCRATCH CARD
+     */
+    function initScratchCard() {
+      const canvas = document.getElementById('scratch-canvas');
+      const quickRevealBtn = document.getElementById('quick-reveal-btn');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let isDrawing = false;
+      let isCleared = false;
+
+      // Match canvas internal resolution to display size
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+        drawFoil(rect.width, rect.height);
+      }
+
+      // Draw metallic sage & gold foil with sparkles and specks
+      function drawFoil(w, h) {
+        if (isCleared) return;
+        // Radial Gradient: #eee6d2 -> #9aa584 -> #4a5540
+        const grad = ctx.createRadialGradient(w * 0.4, h * 0.35, 10, w * 0.5, h * 0.5, Math.max(w, h) * 0.75);
+        grad.addColorStop(0, '#eee6d2');
+        grad.addColorStop(0.45, '#9aa584');
+        grad.addColorStop(1, '#4a5540');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Add metallic speckles & shimmer particles
+        const numSpecks = Math.floor(w * h * 0.22);
+        for (let i = 0; i < numSpecks; i++) {
+          const x = Math.random() * w;
+          const y = Math.random() * h;
+          const rand = Math.random();
+          let color;
+          if (rand < 0.55) color = `rgba(238, 230, 210, ${0.35 + 0.55 * Math.random()})`;
+          else if (rand < 0.85) color = `rgba(154, 165, 132, ${0.4 + 0.5 * Math.random()})`;
+          else if (rand < 0.95) color = `rgba(74, 85, 64, ${0.4 + 0.4 * Math.random()})`;
+          else color = `rgba(255, 255, 255, ${0.55 + 0.4 * Math.random()})`;
+
+          ctx.fillStyle = color;
+          const size = Math.random() < 0.9 ? 1 : 1.5;
+          ctx.fillRect(x, y, size, size);
+        }
+
+        // Overlay centered scratch hint text
+        ctx.save();
+        ctx.font = '600 13px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = 'rgba(59, 68, 50, 0.9)';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('✨ SCRATCH WITH FINGER OR MOUSE ✨', w / 2, h / 2);
+        ctx.restore();
+      }
+
+      // Scratching action
+      function scratchAt(clientX, clientY) {
+        if (isCleared) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 26, 0, Math.PI * 2);
+        ctx.fill();
+
+        checkScratchPercentage();
+      }
+
+      // Calculate how much foil has been removed
+      let checkThrottle = null;
+      function checkScratchPercentage() {
+        if (isCleared) return;
+        if (checkThrottle) return;
+        checkThrottle = setTimeout(() => {
+          checkThrottle = null;
+          try {
+            const dpr = window.devicePixelRatio || 1;
+            const w = canvas.width;
+            const h = canvas.height;
+            const imgData = ctx.getImageData(0, 0, w, h);
+            const pixels = imgData.data;
+            let clearCount = 0;
+            const step = 32; // Sample every 32nd pixel for 60fps performance
+            for (let i = 3; i < pixels.length; i += 4 * step) {
+              if (pixels[i] === 0) {
+                clearCount++;
+              }
+            }
+            const totalSampled = pixels.length / (4 * step);
+            const percent = (clearCount / totalSampled) * 100;
+
+            if (percent > 42) {
+              completeScratch();
+            }
+          } catch (e) {
+            console.log("Scratch calculation note:", e);
+          }
+        }, 120);
+      }
+
+      function completeScratch() {
+        if (isCleared) return;
+        isCleared = true;
+        canvas.style.opacity = '0';
+        setTimeout(() => {
+          canvas.style.display = 'none';
+        }, 500);
+
+        // Fire celebratory wedding confetti
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 80,
+            spread: 75,
+            origin: { y: 0.6 },
+            colors: ['#9aa584', '#8a7a4e', '#eee6d2', '#3b4432', '#faf7f2']
+          });
+        }
+      }
+
+      // Event listeners for Mouse
+      canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        scratchAt(e.clientX, e.clientY);
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDrawing) return;
+        scratchAt(e.clientX, e.clientY);
+      });
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+
+      // Event listeners for Touch screens
+      canvas.addEventListener('touchstart', (e) => {
+        isDrawing = true;
+        if (e.touches[0]) scratchAt(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      canvas.addEventListener('touchmove', (e) => {
+        if (!isDrawing) return;
+        if (e.touches[0]) scratchAt(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      canvas.addEventListener('touchend', () => { isDrawing = false; });
+
+      // Quick reveal button
+      if (quickRevealBtn) {
+        quickRevealBtn.addEventListener('click', completeScratch);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      setTimeout(resizeCanvas, 100);
+    }
+
+    /**
+     * 5. REAL-TIME COUNTDOWN TIMER
+     */
+    function initCountdown() {
+      const targetTime = INVITATION_CONFIG.targetTimestamp;
+      const elDays = document.getElementById('countdown-days');
+      const elHours = document.getElementById('countdown-hours');
+      const elMins = document.getElementById('countdown-minutes');
+      const elSecs = document.getElementById('countdown-seconds');
+
+      function updateTicker() {
+        const now = Date.now();
+        const diff = Math.max(0, targetTime - now);
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        if (elDays) elDays.textContent = String(days).padStart(2, '0');
+        if (elHours) elHours.textContent = String(hours).padStart(2, '0');
+        if (elMins) elMins.textContent = String(mins).padStart(2, '0');
+        if (elSecs) elSecs.textContent = String(secs).padStart(2, '0');
+      }
+
+      updateTicker();
+      setInterval(updateTicker, 1000);
+    }
+
+    /**
+     * 6. CALENDAR INTEGRATION (Google, Apple iCal, Outlook, Yahoo)
+     */
+    function initCalendarIntegration() {
+      const trigger = document.getElementById('calendar-dropdown-trigger');
+      const menu = document.getElementById('calendar-dropdown-menu');
+      if (!trigger || !menu) return;
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+
+      const eventData = {
+        title: "Wedding of Annamalai & Sarmila",
+        description: "Join us in celebrating the auspicious wedding ceremony of Annamalai & Sarmila at Thiruparankundram Sri Murugan Temple Mandapam, Madurai.",
+        location: "Thiruparankundram Sri Murugan Temple Mandapam, Madurai, Tamil Nadu 625005",
+        startISO: "20261122T003000Z",
+        endISO: "20261122T153000Z"
+      };
+
+      // 1. Google Calendar
+      document.getElementById('cal-opt-google')?.addEventListener('click', () => {
+        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventData.title)}&dates=${eventData.startISO}/${eventData.endISO}&details=${encodeURIComponent(eventData.description)}&location=${encodeURIComponent(eventData.location)}`;
+        window.open(url, '_blank');
+      });
+
+      // 2. Apple Calendar / iCal (.ics file generation)
+      document.getElementById('cal-opt-apple')?.addEventListener('click', () => {
+        const icsContent = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Annamalai and Sarmila//Wedding Invitation//EN',
+          'CALSCALE:GREGORIAN',
+          'BEGIN:VEVENT',
+          `SUMMARY:${eventData.title}`,
+          `DESCRIPTION:${eventData.description}`,
+          `LOCATION:${eventData.location}`,
+          `DTSTART:${eventData.startISO}`,
+          `DTEND:${eventData.endISO}`,
+          'STATUS:CONFIRMED',
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'annamalai-sarmila-wedding.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+
+      // 3. Outlook
+      document.getElementById('cal-opt-outlook')?.addEventListener('click', () => {
+        const url = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(eventData.title)}&body=${encodeURIComponent(eventData.description)}&location=${encodeURIComponent(eventData.location)}&startdt=2026-11-22T06:00:00&enddt=2026-11-22T21:00:00`;
+        window.open(url, '_blank');
+      });
+
+      // 4. Yahoo
+      document.getElementById('cal-opt-yahoo')?.addEventListener('click', () => {
+        const url = `https://calendar.yahoo.com/?v=60&title=${encodeURIComponent(eventData.title)}&desc=${encodeURIComponent(eventData.description)}&in_loc=${encodeURIComponent(eventData.location)}&st=${eventData.startISO}&dur=1500`;
+        window.open(url, '_blank');
+      });
+    }
+
+    /**
+     * 7. RSVP CONTROLLER
+     */
+    function initGuestbookRSVP() {
+      const form = document.getElementById('rsvp-form');
+      const storageKey = 'royal_grace_wedding_rsvps';
+
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('rsvp-name')?.value.trim();
+          const attending = document.getElementById('rsvp-attending')?.value;
+          const guests = document.getElementById('rsvp-guests')?.value;
+          const diet = document.getElementById('rsvp-diet')?.value.trim();
+          const message = document.getElementById('rsvp-message')?.value.trim();
+
+          if (!name) return;
+
+          const newEntry = {
+            name,
+            attending,
+            guests,
+            diet,
+            message,
+            submittedAt: new Date().toISOString()
+          };
+
+          try {
+            const stored = JSON.parse(localStorage.getItem(storageKey)) || [];
+            stored.unshift(newEntry);
+            localStorage.setItem(storageKey, JSON.stringify(stored));
+          } catch (e) {}
+
+          // Celebration confetti
+          if (typeof confetti === 'function') {
+            confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 } });
+          }
+
+          alert("Thank you! Your RSVP and heartfelt blessings have been received.");
+          form.reset();
+        });
+      }
+    }
+
+    /**
+     * 8. BACK TO TOP BUTTON
+     */
+    function initBackToTop() {
+      const btn = document.getElementById('back-to-top-btn');
+      if (!btn) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          btn.style.opacity = '1';
+          btn.style.pointerEvents = 'auto';
+          btn.style.transform = 'translateY(0)';
+        } else {
+          btn.style.opacity = '0';
+          btn.style.pointerEvents = 'none';
+          btn.style.transform = 'translateY(16px)';
+        }
+      }, { passive: true });
+
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>
